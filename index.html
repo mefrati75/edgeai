@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EdgeFirst AI - AI Apps Without the Surveillance</title>
+    <title>EdgeFirst AI | The Factory for Edge-First AI Apps</title>
     <style>
         * {
             margin: 0;
@@ -12,493 +12,938 @@
         }
         
         :root {
-            --primary: #1E3A8A;
-            --secondary: #10B981;
-            --accent: #F59E0B;
-            --dark: #1F2937;
-            --light: #F9FAFB;
-            --gray: #6B7280;
+            --neon-purple: #8B5CF6;
+            --neon-pink: #EC4899;
+            --neon-blue: #3B82F6;
+            --neon-cyan: #06B6D4;
+            --neon-green: #10B981;
+            --electric-yellow: #FDE047;
+            --dark-bg: #0A0A0B;
+            --dark-surface: #18181B;
+            --light-text: #FAFAFA;
+            --dim-text: #A1A1AA;
         }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
+            background: var(--dark-bg);
+            color: var(--light-text);
+            overflow-x: hidden;
             line-height: 1.6;
-            color: var(--dark);
-            background: var(--light);
         }
         
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+        /* Animated Gradient Background */
+        .gradient-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(125deg, 
+                var(--neon-purple), 
+                var(--neon-pink), 
+                var(--neon-blue), 
+                var(--neon-cyan));
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            opacity: 0.1;
+            z-index: -1;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
         
         /* Navigation */
         nav {
-            background: white;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-            position: sticky;
+            position: fixed;
             top: 0;
-            z-index: 100;
+            width: 100%;
+            padding: 1.5rem 2rem;
+            background: rgba(10, 10, 11, 0.8);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
         
-        nav .container {
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 20px;
         }
         
         .logo {
             font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--primary);
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--neon-cyan), var(--neon-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.05em;
         }
         
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 2.5rem;
             list-style: none;
+            align-items: center;
         }
         
         .nav-links a {
-            color: var(--dark);
+            color: var(--dim-text);
             text-decoration: none;
-            transition: color 0.3s;
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
         }
         
         .nav-links a:hover {
-            color: var(--primary);
+            color: var(--light-text);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--neon-cyan), var(--neon-purple));
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .start-building-btn {
+            padding: 0.6rem 1.5rem;
+            background: linear-gradient(135deg, var(--neon-purple), var(--neon-pink));
+            border: none;
+            border-radius: 100px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 0 30px rgba(236, 72, 153, 0.3);
+        }
+        
+        .start-building-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 40px rgba(236, 72, 153, 0.5);
         }
         
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, var(--primary), #2563EB);
-            color: white;
-            padding: 6rem 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6rem 2rem 4rem;
+            position: relative;
+        }
+        
+        .hero-content {
+            max-width: 1200px;
             text-align: center;
+            z-index: 1;
+        }
+        
+        .hero-badge {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: rgba(139, 92, 246, 0.1);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: 100px;
+            color: var(--neon-purple);
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
         }
         
         .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            animation: fadeInUp 0.8s ease;
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.03em;
         }
         
-        .hero .subhead {
+        .gradient-text {
+            background: linear-gradient(135deg, 
+                var(--neon-cyan), 
+                var(--neon-purple), 
+                var(--neon-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 200% 200%;
+            animation: gradientText 5s ease infinite;
+        }
+        
+        @keyframes gradientText {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--dim-text);
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            line-height: 1.5;
+        }
+        
+        /* Prompt Interface */
+        .prompt-container {
+            max-width: 800px;
+            margin: 3rem auto;
+            position: relative;
+        }
+        
+        .prompt-box {
+            background: rgba(24, 24, 27, 0.6);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 25px 50px -12px rgba(139, 92, 246, 0.25);
+            transition: all 0.3s;
+        }
+        
+        .prompt-box:hover {
+            border-color: rgba(139, 92, 246, 0.5);
+            box-shadow: 0 30px 60px -12px rgba(139, 92, 246, 0.35);
+        }
+        
+        .prompt-label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            color: var(--neon-purple);
+            font-weight: 600;
+        }
+        
+        .prompt-icon {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--neon-purple), var(--neon-pink));
+            border-radius: 6px;
+        }
+        
+        .prompt-input {
+            width: 100%;
+            background: rgba(10, 10, 11, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 0.75rem;
+            padding: 1rem 1.5rem;
+            color: var(--light-text);
+            font-size: 1.125rem;
+            font-family: 'SF Mono', 'Monaco', monospace;
+            transition: all 0.3s;
+        }
+        
+        .prompt-input:focus {
+            outline: none;
+            border-color: rgba(139, 92, 246, 0.5);
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+        }
+        
+        .prompt-input::placeholder {
+            color: var(--dim-text);
+            opacity: 0.5;
+        }
+        
+        .prompt-suggestions {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+        
+        .suggestion-chip {
+            padding: 0.5rem 1rem;
+            background: rgba(139, 92, 246, 0.1);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            border-radius: 100px;
+            color: var(--dim-text);
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .suggestion-chip:hover {
+            background: rgba(139, 92, 246, 0.2);
+            border-color: rgba(139, 92, 246, 0.4);
+            color: var(--light-text);
+            transform: translateY(-2px);
+        }
+        
+        /* Features Grid */
+        .features {
+            padding: 6rem 2rem;
+            background: var(--dark-surface);
+            position: relative;
+        }
+        
+        .features-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-title {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--neon-cyan), var(--neon-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background: rgba(24, 24, 27, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, 
+                var(--neon-cyan), 
+                var(--neon-purple), 
+                var(--neon-pink));
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+        
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--neon-purple), var(--neon-pink));
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--light-text);
+        }
+        
+        .feature-card p {
+            color: var(--dim-text);
+            line-height: 1.6;
+        }
+        
+        /* Apps Showcase */
+        .apps-showcase {
+            padding: 6rem 2rem;
+            position: relative;
+        }
+        
+        .app-cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .app-card {
+            background: linear-gradient(135deg, 
+                rgba(139, 92, 246, 0.1), 
+                rgba(236, 72, 153, 0.1));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        
+        .app-card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, 
+                rgba(139, 92, 246, 0.1) 0%, 
+                transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+        }
+        
+        .app-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: rgba(139, 92, 246, 0.3);
+        }
+        
+        .app-card:hover::after {
+            opacity: 1;
+        }
+        
+        .app-status {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+        }
+        
+        .status-live {
+            background: rgba(16, 185, 129, 0.2);
+            color: var(--neon-green);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+        
+        .status-coming {
+            background: rgba(253, 224, 71, 0.2);
+            color: var(--electric-yellow);
+            border: 1px solid rgba(253, 224, 71, 0.3);
+        }
+        
+        .app-card h3 {
+            font-size: 1.75rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, var(--light-text), var(--dim-text));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .app-tagline {
+            color: var(--dim-text);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+        
+        .app-features {
+            list-style: none;
+        }
+        
+        .app-features li {
+            color: var(--dim-text);
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .app-features li::before {
+            content: '→';
+            color: var(--neon-cyan);
+            font-weight: bold;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 8rem 2rem;
+            background: linear-gradient(135deg, 
+                rgba(139, 92, 246, 0.05), 
+                rgba(6, 182, 212, 0.05));
+            position: relative;
+            text-align: center;
+        }
+        
+        .cta-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .cta-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        
+        .cta-subtitle {
             font-size: 1.25rem;
-            opacity: 0.9;
-            max-width: 600px;
-            margin: 0 auto 2rem;
-            animation: fadeInUp 0.8s ease 0.2s both;
+            color: var(--dim-text);
+            margin-bottom: 3rem;
         }
         
         .cta-buttons {
             display: flex;
-            gap: 1rem;
+            gap: 1.5rem;
             justify-content: center;
-            animation: fadeInUp 0.8s ease 0.4s both;
-        }
-        
-        .btn {
-            padding: 0.75rem 2rem;
-            border: none;
-            border-radius: 0.5rem;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-            text-decoration: none;
-            display: inline-block;
+            flex-wrap: wrap;
         }
         
         .btn-primary {
-            background: var(--secondary);
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, var(--neon-purple), var(--neon-pink));
+            border: none;
+            border-radius: 100px;
             color: white;
+            font-size: 1.125rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 10px 40px rgba(139, 92, 246, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 50px rgba(139, 92, 246, 0.4);
         }
         
         .btn-secondary {
-            background: white;
-            color: var(--primary);
+            padding: 1rem 2.5rem;
+            background: transparent;
+            border: 2px solid rgba(139, 92, 246, 0.5);
+            border-radius: 100px;
+            color: var(--light-text);
+            font-size: 1.125rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
         }
         
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-        
-        /* Problem Section */
-        .problem {
-            padding: 4rem 0;
-            background: white;
-        }
-        
-        .section-title {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 3rem;
-            color: var(--primary);
-        }
-        
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-        
-        .stat-card {
-            text-align: center;
-            padding: 2rem;
-            background: var(--light);
-            border-radius: 1rem;
-            transition: transform 0.3s;
-        }
-        
-        .stat-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: var(--primary);
-        }
-        
-        .stat-label {
-            color: var(--gray);
-            margin-top: 0.5rem;
-        }
-        
-        /* Apps Section */
-        .apps {
-            padding: 4rem 0;
-            background: var(--light);
-        }
-        
-        .apps-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-        
-        .app-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 1rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        
-        .app-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-        }
-        
-        .app-card h3 {
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-        
-        .app-card .badge {
-            display: inline-block;
-            padding: 0.25rem 0.75rem;
-            background: var(--secondary);
-            color: white;
-            border-radius: 0.25rem;
-            font-size: 0.875rem;
-            margin-top: 1rem;
-        }
-        
-        .app-card .coming-soon {
-            background: var(--accent);
-        }
-        
-        /* Tech Section */
-        .tech {
-            padding: 4rem 0;
-            background: white;
-        }
-        
-        .tech-stack {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-        
-        .tech-category h4 {
-            color: var(--primary);
-            margin-bottom: 1rem;
-            font-size: 1.25rem;
-        }
-        
-        .tech-category ul {
-            list-style: none;
-        }
-        
-        .tech-category li {
-            padding: 0.5rem 0;
-            color: var(--dark);
-            display: flex;
-            align-items: center;
-        }
-        
-        .tech-category li:before {
-            content: "→";
-            color: var(--secondary);
-            margin-right: 0.5rem;
-            font-weight: bold;
+        .btn-secondary:hover {
+            background: rgba(139, 92, 246, 0.1);
+            border-color: rgba(139, 92, 246, 0.8);
+            transform: translateY(-3px);
         }
         
         /* Footer */
         footer {
-            background: var(--dark);
-            color: white;
-            padding: 3rem 0;
-            text-align: center;
+            padding: 4rem 2rem 2rem;
+            background: var(--dark-surface);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
         
         .footer-content {
-            margin-bottom: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 3rem;
         }
         
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: 1rem;
+        .footer-brand h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--neon-cyan), var(--neon-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         
-        .footer-links a {
-            color: white;
+        .footer-brand p {
+            color: var(--dim-text);
+            line-height: 1.6;
+            max-width: 350px;
+        }
+        
+        .footer-column h4 {
+            color: var(--light-text);
+            margin-bottom: 1.5rem;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .footer-column a {
+            color: var(--dim-text);
             text-decoration: none;
-            opacity: 0.8;
-            transition: opacity 0.3s;
+            transition: color 0.3s;
         }
         
-        .footer-links a:hover {
-            opacity: 1;
+        .footer-column a:hover {
+            color: var(--neon-cyan);
         }
         
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            text-align: center;
+            color: var(--dim-text);
+        }
+        
+        /* Floating Elements */
+        .floating-orb {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, 
+                rgba(139, 92, 246, 0.3) 0%, 
+                transparent 70%);
+            filter: blur(60px);
+            animation: float 20s ease-in-out infinite;
+            pointer-events: none;
+        }
+        
+        .orb-1 {
+            top: 10%;
+            left: -150px;
+            animation-delay: 0s;
+        }
+        
+        .orb-2 {
+            bottom: 10%;
+            right: -150px;
+            animation-delay: 10s;
+            background: radial-gradient(circle, 
+                rgba(6, 182, 212, 0.3) 0%, 
+                transparent 70%);
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -30px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
         }
         
         /* Mobile Responsive */
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
             .nav-links {
                 display: none;
             }
             
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
+            .hero h1 {
+                font-size: 3rem;
             }
             
-            .stats-grid,
-            .apps-grid,
-            .tech-stack {
+            .hero-subtitle {
+                font-size: 1.125rem;
+            }
+            
+            .features-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .cta-title {
+                font-size: 2.5rem;
             }
         }
     </style>
 </head>
 <body>
+    <div class="gradient-bg"></div>
+    
     <!-- Navigation -->
     <nav>
-        <div class="container">
+        <div class="nav-container">
             <div class="logo">EdgeFirst AI</div>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
+                <li><a href="#features">Features</a></li>
                 <li><a href="#apps">Apps</a></li>
-                <li><a href="#technology">Technology</a></li>
                 <li><a href="#developers">Developers</a></li>
-                <li><a href="#about">About</a></li>
+                <li><button class="start-building-btn">Start Building</button></li>
             </ul>
         </div>
     </nav>
-
+    
     <!-- Hero Section -->
     <section class="hero" id="home">
-        <div class="container">
-            <h1>AI Apps Without the Surveillance</h1>
-            <p class="subhead">
-                We build intelligent apps that run entirely on your devices. 
-                No cloud storage. No data harvesting. Just powerful AI that respects you.
+        <div class="floating-orb orb-1"></div>
+        <div class="floating-orb orb-2"></div>
+        
+        <div class="hero-content">
+            <div class="hero-badge">🏭 The AI App Factory</div>
+            
+            <h1>
+                We Build <span class="gradient-text">AI Apps</span><br>
+                That Respect Your Privacy
+            </h1>
+            
+            <p class="hero-subtitle">
+                EdgeFirst AI is the factory for next-generation AI applications. Every app we build runs entirely on your device. 
+                Your data never leaves. No surveillance. No monetization. Just powerful AI that works for you, not against you.
             </p>
-            <div class="cta-buttons">
-                <a href="#apps" class="btn btn-primary">Explore Our Apps</a>
-                <a href="#developers" class="btn btn-secondary">Partner With Us</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Problem Section -->
-    <section class="problem">
-        <div class="container">
-            <h2 class="section-title">The Cloud Lie</h2>
-            <p style="text-align: center; max-width: 800px; margin: 0 auto; color: var(--gray);">
-                Every app claims it needs cloud servers for AI processing. They're wrong.
-                Your iPhone has AI capabilities that rival data centers. Google's Gemini Nano 
-                runs without internet. Yet apps still upload everything to their servers.
-                Why? Because your data is their product.
-            </p>
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-number">94M</div>
-                    <div class="stat-label">Parameter LLMs run on Raspberry Pi</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">10x</div>
-                    <div class="stat-label">Faster iPhone AI than 5 years ago</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">0%</div>
-                    <div class="stat-label">Of your data needs to leave your device</div>
+            
+            <!-- Mission Statement -->
+            <div class="prompt-container">
+                <div class="prompt-box" style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(6, 182, 212, 0.1)); border-color: rgba(16, 185, 129, 0.3);">
+                    <div class="prompt-label" style="color: var(--neon-green);">
+                        <div class="prompt-icon" style="background: linear-gradient(135deg, var(--neon-green), var(--neon-cyan));">🛡️</div>
+                        <span>The EdgeFirst Promise</span>
+                    </div>
+                    <div style="padding: 1rem; color: var(--light-text); line-height: 1.8;">
+                        <strong>We're not just another app studio.</strong> We're proving that powerful AI doesn't need to harvest your data. 
+                        Every app we ship demonstrates that privacy and functionality aren't mutually exclusive. 
+                        <span style="color: var(--neon-cyan);">Your data stays on your device. Always.</span>
+                    </div>
+                    <div class="prompt-suggestions">
+                        <div class="suggestion-chip">0 bytes to cloud</div>
+                        <div class="suggestion-chip">&lt;100ms AI response</div>
+                        <div class="suggestion-chip">100% offline capable</div>
+                        <div class="suggestion-chip">Complete data ownership</div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- Apps Section -->
-    <section class="apps" id="apps">
-        <div class="container">
-            <h2 class="section-title">Our Apps Portfolio</h2>
-            <div class="apps-grid">
-                <div class="app-card">
-                    <h3>Where Is</h3>
-                    <p>Family Location Intelligence</p>
-                    <ul style="list-style: none; padding: 1rem 0;">
-                        <li>• Real-time coordination</li>
-                        <li>• Package tracking</li>
-                        <li>• Natural language AI</li>
-                        <li>• Zero cloud storage</li>
-                    </ul>
-                    <span class="badge">Available Now</span>
-                </div>
-                <div class="app-card">
-                    <h3>GutFlow</h3>
-                    <p>Digestive Health AI</p>
-                    <ul style="list-style: none; padding: 1rem 0;">
-                        <li>• Food analysis</li>
-                        <li>• Pattern recognition</li>
-                        <li>• Medical privacy</li>
-                        <li>• Nutritionist insights</li>
-                    </ul>
-                    <span class="badge">Available Now</span>
-                </div>
-                <div class="app-card">
-                    <h3>BudgetAI</h3>
-                    <p>Financial Intelligence</p>
-                    <ul style="list-style: none; padding: 1rem 0;">
-                        <li>• Expense tracking</li>
-                        <li>• Smart budgeting</li>
-                        <li>• Investment insights</li>
-                        <li>• Bank-level privacy</li>
-                    </ul>
-                    <span class="badge coming-soon">Q2 2025</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Technology Section -->
-    <section class="tech" id="technology">
-        <div class="container">
-            <h2 class="section-title">EdgeFirst Technology</h2>
-            <div class="tech-stack">
-                <div class="tech-category">
-                    <h4>Foundation Models</h4>
-                    <ul>
-                        <li>Apple Intelligence (iOS/macOS)</li>
-                        <li>Gemini Nano (Android/Chrome)</li>
-                        <li>Llama.cpp (Cross-platform)</li>
-                        <li>ONNX Runtime (Web)</li>
-                    </ul>
-                </div>
-                <div class="tech-category">
-                    <h4>Edge Infrastructure</h4>
-                    <ul>
-                        <li>SQLite/CoreData for local storage</li>
-                        <li>WebRTC for peer-to-peer sync</li>
-                        <li>End-to-end encryption</li>
-                        <li>Stateless cloud relay (optional)</li>
-                    </ul>
-                </div>
-                <div class="tech-category">
-                    <h4>AI Optimization</h4>
-                    <ul>
-                        <li>4-bit quantization</li>
-                        <li>Model compression</li>
-                        <li>Edge-specific fine-tuning</li>
-                        <li>Hardware acceleration (NPU/GPU)</li>
-                    </ul>
-                </div>
-                <div class="tech-category">
-                    <h4>Performance Metrics</h4>
-                    <ul>
-                        <li>&lt;100ms response time</li>
-                        <li>Offline capable</li>
-                        <li>0 bytes to cloud storage</li>
-                        <li>90% lower infrastructure costs</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Developers Section -->
-    <section class="apps" id="developers">
-        <div class="container">
-            <h2 class="section-title">EdgeFirst Incubator</h2>
-            <p style="text-align: center; max-width: 800px; margin: 0 auto 3rem; color: var(--gray);">
-                We help developers build edge-first AI apps. Join our incubator program and get technical mentorship,
-                SDK access, go-to-market support, and seed funding for qualified teams.
-            </p>
-            <div style="text-align: center;">
-                <a href="#" class="btn btn-primary">Apply to Incubator</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer id="about">
-        <div class="container">
-            <div class="footer-content">
-                <h3 style="margin-bottom: 1rem;">EdgeFirst AI</h3>
-                <p style="opacity: 0.8; max-width: 600px; margin: 0 auto;">
-                    We're engineers who got tired of building surveillance infrastructure 
-                    disguised as apps. Every app we build proves that privacy and functionality 
-                    aren't mutually exclusive.
+    
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="features-container">
+            <div class="section-header">
+                <h2 class="section-title">How We Build Different</h2>
+                <p style="color: var(--dim-text); font-size: 1.25rem;">
+                    As a factory for edge-first AI apps, we've reimagined how intelligent software should work.
                 </p>
             </div>
-            <div class="footer-links">
-                <a href="#">Documentation</a>
-                <a href="#">Blog</a>
-                <a href="#">GitHub</a>
-                <a href="#">Contact</a>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🏭</div>
+                    <h3>Factory-Built for Privacy</h3>
+                    <p>Every app starts with privacy by design. We use Apple Intelligence, Gemini Nano, and open models. Your data never touches our servers.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Lightning-Fast AI</h3>
+                    <p>Sub-100ms inference using on-device neural engines. No network round trips. No API rate limits. Just instant, private intelligence.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🔧</div>
+                    <h3>Production-Grade Apps</h3>
+                    <p>We ship real products to real users. Each app is battle-tested, App Store ready, and built to scale without cloud dependency.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>User-First Business Model</h3>
+                    <p>We make money from features, not data. No ads, no tracking, no surveillance capitalism. Just honest software that serves users.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🌐</div>
+                    <h3>Offline-First Architecture</h3>
+                    <p>Every app works without internet. Optional P2P sync for collaboration. Your users own their experience.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">💎</div>
+                    <h3>90% Lower Costs</h3>
+                    <p>No cloud infrastructure. No scaling headaches. No data egress fees. Just sustainable, predictable pricing.</p>
+                </div>
             </div>
-            <p style="margin-top: 2rem; opacity: 0.6;">
-                © 2024 EdgeFirst AI. Your data stays yours.
+        </div>
+    </section>
+    
+    <!-- Apps Showcase -->
+    <section class="apps-showcase" id="apps">
+        <div class="section-header">
+            <h2 class="section-title">Fresh From Our Factory</h2>
+            <p style="color: var(--dim-text); font-size: 1.25rem; margin-bottom: 3rem;">
+                Real apps. Real users. Zero surveillance. Here's what we're shipping.
             </p>
         </div>
+        
+        <div class="app-cards-container">
+            <div class="app-card">
+                <span class="app-status status-live">Live Now</span>
+                <h3>Where Is</h3>
+                <p class="app-tagline">Family coordination reimagined</p>
+                <ul class="app-features">
+                    <li>Real-time location intelligence</li>
+                    <li>Natural language queries</li>
+                    <li>Package & delivery tracking</li>
+                    <li>100% private family network</li>
+                </ul>
+            </div>
+            
+            <div class="app-card">
+                <span class="app-status status-live">Live Now</span>
+                <h3>GutFlow</h3>
+                <p class="app-tagline">Your personal digestive health AI</p>
+                <ul class="app-features">
+                    <li>Food pattern analysis</li>
+                    <li>Symptom tracking</li>
+                    <li>Nutritionist-grade insights</li>
+                    <li>Medical data never leaves device</li>
+                </ul>
+            </div>
+            
+            <div class="app-card">
+                <span class="app-status status-coming">Q2 2025</span>
+                <h3>BudgetAI</h3>
+                <p class="app-tagline">Financial intelligence that's truly yours</p>
+                <ul class="app-features">
+                    <li>Smart expense categorization</li>
+                    <li>Investment recommendations</li>
+                    <li>Bank-level encryption</li>
+                    <li>Zero financial data in cloud</li>
+                </ul>
+            </div>
+            
+            <div class="app-card">
+                <span class="app-status status-coming">Q3 2025</span>
+                <h3>StudyBuddy</h3>
+                <p class="app-tagline">Personalized learning assistant</p>
+                <ul class="app-features">
+                    <li>Adaptive study plans</li>
+                    <li>Knowledge gap analysis</li>
+                    <li>Exam preparation AI</li>
+                    <li>Student data stays private</li>
+                </ul>
+            </div>
+            
+            <div class="app-card">
+                <span class="app-status status-coming">Q4 2025</span>
+                <h3>HealthVault</h3>
+                <p class="app-tagline">Medical records meet AI</p>
+                <ul class="app-features">
+                    <li>Intelligent health insights</li>
+                    <li>Medication reminders</li>
+                    <li>Symptom analysis</li>
+                    <li>HIPAA-compliant by design</li>
+                </ul>
+            </div>
+            
+            <div class="app-card">
+                <span class="app-status status-coming">2026</span>
+                <h3>Your App Here</h3>
+                <p class="app-tagline">Join the edge revolution</p>
+                <ul class="app-features">
+                    <li>Custom AI models</li>
+                    <li>White-label deployment</li>
+                    <li>Full source code access</li>
+                    <li>EdgeFirst SDK included</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="cta-section" id="developers">
+        <div class="cta-content">
+            <h2 class="cta-title">
+                Join the <span class="gradient-text">Edge Revolution</span>
+            </h2>
+            <p class="cta-subtitle">
+                Partner with us to build your next AI app. We handle the technology, 
+                you bring the vision. Together, we're proving that users deserve better.
+            </p>
+            <div class="cta-buttons">
+                <button class="btn-primary">Partner With Us</button>
+                <button class="btn-secondary">Explore Our Apps</button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>EdgeFirst AI</h3>
+                <p>The factory for edge-first AI applications. We build the future where your data stays yours, your apps work offline, and AI serves you—not advertisers.</p>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Products</h4>
+                <ul>
+                    <li><a href="#">Where Is</a></li>
+                    <li><a href="#">GutFlow</a></li>
+                    <li><a href="#">BudgetAI</a></li>
+                    <li><a href="#">EdgeFirst SDK</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Developers</h4>
+                <ul>
+                    <li><a href="#">Documentation</a></li>
+                    <li><a href="#">API Reference</a></li>
+                    <li><a href="#">Incubator Program</a></li>
+                    <li><a href="#">Open Source</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>© 2024 EdgeFirst AI. Your data stays yours. Always.</p>
+        </div>
     </footer>
-
+    
     <script>
-        // Smooth scrolling for navigation links
+        // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -511,24 +956,88 @@
                 }
             });
         });
-
-        // Add scroll animations
+        
+        // Prompt input animation
+        const promptInput = document.querySelector('.prompt-input');
+        const suggestions = document.querySelectorAll('.suggestion-chip');
+        
+        suggestions.forEach(chip => {
+            chip.addEventListener('click', () => {
+                const examples = {
+                    '📍 Family location tracker': 'Create a family location app that shows real-time positions, sends smart notifications, and works completely offline...',
+                    '💰 Personal finance AI': 'Build a finance tracker that categorizes expenses using AI, predicts spending patterns, and never uploads bank data...',
+                    '🧠 Study assistant': 'Design an AI tutor that adapts to learning styles, generates practice questions, and keeps all student data private...',
+                    '🏥 Health records manager': 'Develop a health app that organizes medical records, tracks symptoms with AI insights, and maintains HIPAA compliance...'
+                };
+                
+                const text = chip.textContent;
+                if (examples[text]) {
+                    promptInput.value = '';
+                    typeWriter(examples[text], promptInput);
+                }
+            });
+        });
+        
+        function typeWriter(text, element, speed = 30) {
+            let i = 0;
+            element.focus();
+            function type() {
+                if (i < text.length) {
+                    element.value += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            type();
+        }
+        
+        // Parallax effect on scroll
+        window.addEventListener('scroll', () => {
+            const scrolled = window.scrollY;
+            const orbs = document.querySelectorAll('.floating-orb');
+            
+            orbs.forEach((orb, index) => {
+                const speed = index === 0 ? 0.5 : 0.3;
+                orb.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+        
+        // Intersection Observer for animations
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -100px 0px'
         };
-
+        
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.style.animation = 'fadeInUp 0.6s ease both';
+                    entry.target.style.opacity = '0';
+                    entry.target.style.transform = 'translateY(30px)';
+                    
+                    setTimeout(() => {
+                        entry.target.style.transition = 'all 0.6s ease';
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, 100);
+                    
+                    observer.unobserve(entry.target);
                 }
             });
         }, observerOptions);
-
-        // Observe all cards and sections
-        document.querySelectorAll('.stat-card, .app-card, .tech-category').forEach(el => {
+        
+        // Observe all feature and app cards
+        document.querySelectorAll('.feature-card, .app-card').forEach(el => {
             observer.observe(el);
+        });
+        
+        // Add hover effect to prompt box
+        const promptBox = document.querySelector('.prompt-box');
+        promptBox.addEventListener('mouseenter', () => {
+            promptBox.style.transform = 'scale(1.02)';
+        });
+        
+        promptBox.addEventListener('mouseleave', () => {
+            promptBox.style.transform = 'scale(1)';
         });
     </script>
 </body>
