@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EdgeFirst AI | The Factory for Edge-First AI Apps</title>
+    <title>Adios | Your Home Cloud Architecture</title>
     <style>
         * {
             margin: 0;
@@ -12,48 +12,60 @@
         }
         
         :root {
-            --neon-purple: #8B5CF6;
-            --neon-pink: #EC4899;
-            --neon-blue: #3B82F6;
-            --neon-cyan: #06B6D4;
-            --neon-green: #10B981;
-            --electric-yellow: #FDE047;
-            --dark-bg: #0A0A0B;
-            --dark-surface: #18181B;
-            --light-text: #FAFAFA;
-            --dim-text: #A1A1AA;
+            --primary: #7C3AED;
+            --primary-dark: #6D28D9;
+            --secondary: #06B6D4;
+            --accent: #F59E0B;
+            --success: #10B981;
+            --danger: #EF4444;
+            --dark: #0F172A;
+            --dark-surface: #1E293B;
+            --light: #F8FAFC;
+            --text: #CBD5E1;
+            --text-dim: #64748B;
+            --border: rgba(148, 163, 184, 0.1);
+            --gradient-1: linear-gradient(135deg, #667EEA 0%, #764BA2 100%);
+            --gradient-2: linear-gradient(135deg, #F093FB 0%, #F5576C 100%);
+            --gradient-3: linear-gradient(135deg, #4FACFE 0%, #00F2FE 100%);
+            --gradient-4: linear-gradient(135deg, #43E97B 0%, #38F9D7 100%);
         }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
-            background: var(--dark-bg);
-            color: var(--light-text);
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
+            background: #FAFAFA;
+            color: #2F4F2F;
             overflow-x: hidden;
             line-height: 1.6;
         }
         
-        /* Animated Gradient Background */
-        .gradient-bg {
+        /* Animated Background */
+        .animated-bg {
             position: fixed;
+            width: 100%;
+            height: 100%;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(125deg, 
-                var(--neon-purple), 
-                var(--neon-pink), 
-                var(--neon-blue), 
-                var(--neon-cyan));
-            background-size: 400% 400%;
-            animation: gradientShift 15s ease infinite;
-            opacity: 0.1;
             z-index: -1;
+            background: var(--dark);
+            overflow: hidden;
         }
         
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        .animated-bg::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            top: -50%;
+            left: -50%;
+            background: radial-gradient(circle at 20% 50%, rgba(124, 58, 237, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(6, 182, 212, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 40% 20%, rgba(245, 158, 11, 0.05) 0%, transparent 50%);
+            animation: rotate 30s linear infinite;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
         
         /* Navigation */
@@ -61,11 +73,11 @@
             position: fixed;
             top: 0;
             width: 100%;
-            padding: 1.5rem 2rem;
-            background: rgba(10, 10, 11, 0.8);
+            padding: 1rem 2rem;
+            background: rgba(15, 23, 42, 0.8);
             backdrop-filter: blur(20px);
             z-index: 1000;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid var(--border);
         }
         
         .nav-container {
@@ -77,42 +89,48 @@
         }
         
         .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
             font-size: 1.5rem;
             font-weight: 900;
-            background: linear-gradient(135deg, var(--neon-cyan), var(--neon-purple));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -0.05em;
+            color: var(--light);
+            text-decoration: none;
+        }
+        
+        .logo svg {
+            width: 40px;
+            height: 40px;
         }
         
         .nav-links {
             display: flex;
-            gap: 2.5rem;
+            gap: 2rem;
             list-style: none;
             align-items: center;
         }
         
         .nav-links a {
-            color: var(--dim-text);
+            color: var(--text);
             text-decoration: none;
             font-weight: 500;
             transition: all 0.3s;
             position: relative;
+            padding: 0.5rem 0;
         }
         
         .nav-links a:hover {
-            color: var(--light-text);
+            color: var(--light);
         }
         
         .nav-links a::after {
             content: '';
             position: absolute;
-            bottom: -5px;
+            bottom: 0;
             left: 0;
             width: 0;
             height: 2px;
-            background: linear-gradient(90deg, var(--neon-cyan), var(--neon-purple));
+            background: var(--gradient-1);
             transition: width 0.3s;
         }
         
@@ -120,21 +138,23 @@
             width: 100%;
         }
         
-        .start-building-btn {
-            padding: 0.6rem 1.5rem;
-            background: linear-gradient(135deg, var(--neon-purple), var(--neon-pink));
+        .nav-cta {
+            padding: 0.75rem 2rem;
+            background: var(--gradient-1);
             border: none;
-            border-radius: 100px;
+            border-radius: 50px;
             color: white;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s;
-            box-shadow: 0 0 30px rgba(236, 72, 153, 0.3);
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3);
         }
         
-        .start-building-btn:hover {
+        .nav-cta:hover {
             transform: translateY(-2px);
-            box-shadow: 0 0 40px rgba(236, 72, 153, 0.5);
+            box-shadow: 0 8px 25px rgba(124, 58, 237, 0.4);
         }
         
         /* Hero Section */
@@ -143,165 +163,264 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 6rem 2rem 4rem;
+            padding: 6rem 2rem;
             position: relative;
         }
         
         .hero-content {
             max-width: 1200px;
+            width: 100%;
             text-align: center;
             z-index: 1;
         }
         
         .hero-badge {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
             padding: 0.5rem 1.5rem;
-            background: rgba(139, 92, 246, 0.1);
-            border: 1px solid rgba(139, 92, 246, 0.3);
-            border-radius: 100px;
-            color: var(--neon-purple);
-            font-size: 0.875rem;
-            font-weight: 600;
+            background: rgba(124, 58, 237, 0.1);
+            border: 1px solid rgba(124, 58, 237, 0.3);
+            border-radius: 50px;
             margin-bottom: 2rem;
-            animation: pulse 2s infinite;
         }
         
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
+        .hero-badge svg {
+            width: 20px;
+            height: 20px;
+        }
+        
+        .hero-badge span {
+            color: #6B8E23;
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
         }
         
         .hero h1 {
-            font-size: clamp(3rem, 8vw, 6rem);
+            font-size: clamp(3rem, 7vw, 5rem);
             font-weight: 900;
             line-height: 1.1;
             margin-bottom: 1.5rem;
-            letter-spacing: -0.03em;
-        }
-        
-        .gradient-text {
-            background: linear-gradient(135deg, 
-                var(--neon-cyan), 
-                var(--neon-purple), 
-                var(--neon-pink));
+            background: linear-gradient(135deg, #667EEA 0%, #764BA2 50%, #F093FB 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            background-size: 200% 200%;
-            animation: gradientText 5s ease infinite;
-        }
-        
-        @keyframes gradientText {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
         }
         
         .hero-subtitle {
             font-size: 1.5rem;
-            color: var(--dim-text);
-            max-width: 700px;
-            margin: 0 auto 3rem;
-            line-height: 1.5;
-        }
-        
-        /* Prompt Interface */
-        .prompt-container {
+            color: var(--text);
             max-width: 800px;
-            margin: 3rem auto;
+            margin: 0 auto 3rem;
+            line-height: 1.6;
+        }
+        
+        /* Architecture Visualization */
+        .architecture-viz {
+            max-width: 1000px;
+            margin: 4rem auto;
+            padding: 3rem;
+            background: rgba(30, 41, 59, 0.3);
+            border: 1px solid var(--border);
+            border-radius: 2rem;
+            backdrop-filter: blur(10px);
+        }
+        
+        .arch-title {
+            text-align: center;
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: #8FBC8F;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 3rem;
+        }
+        
+        .arch-diagram {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .home-cloud-box {
+            width: 100%;
+            max-width: 700px;
+            padding: 2.5rem;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            border: 2px solid transparent;
+            background-clip: padding-box;
+            border-image: linear-gradient(135deg, #667EEA, #764BA2) 1;
+            border-radius: 1.5rem;
             position: relative;
+            overflow: hidden;
         }
         
-        .prompt-box {
-            background: rgba(24, 24, 27, 0.6);
-            border: 1px solid rgba(139, 92, 246, 0.3);
-            border-radius: 1rem;
-            padding: 1.5rem;
-            backdrop-filter: blur(20px);
-            box-shadow: 0 25px 50px -12px rgba(139, 92, 246, 0.25);
-            transition: all 0.3s;
+        .home-cloud-box::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(135deg, #667EEA, #764BA2);
+            border-radius: 1.5rem;
+            z-index: -1;
+            opacity: 0.3;
+            animation: pulse-border 3s ease-in-out infinite;
         }
         
-        .prompt-box:hover {
-            border-color: rgba(139, 92, 246, 0.5);
-            box-shadow: 0 30px 60px -12px rgba(139, 92, 246, 0.35);
+        @keyframes pulse-border {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
         }
         
-        .prompt-label {
+        .home-cloud-header {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-            color: var(--neon-purple);
-            font-weight: 600;
+            gap: 1rem;
+            margin-bottom: 2rem;
         }
         
-        .prompt-icon {
-            width: 24px;
-            height: 24px;
+        .home-cloud-header svg {
+            width: 40px;
+            height: 40px;
+        }
+        
+        .home-cloud-header h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667EEA, #764BA2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .devices-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1rem;
+        }
+        
+        .device-card {
+            padding: 1.25rem;
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(102, 126, 234, 0.2);
+            border-radius: 1rem;
+            text-align: center;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .device-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(102, 126, 234, 0.5);
+            background: rgba(102, 126, 234, 0.1);
+        }
+        
+        .device-card svg {
+            width: 40px;
+            height: 40px;
+            margin-bottom: 0.5rem;
+        }
+        
+        .device-card span {
+            display: block;
+            font-size: 0.875rem;
+            color: var(--text);
+        }
+        
+        .flow-indicator {
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, var(--neon-purple), var(--neon-pink));
-            border-radius: 6px;
-        }
-        
-        .prompt-input {
-            width: 100%;
-            background: rgba(10, 10, 11, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 0.75rem;
-            padding: 1rem 1.5rem;
-            color: var(--light-text);
-            font-size: 1.125rem;
-            font-family: 'SF Mono', 'Monaco', monospace;
-            transition: all 0.3s;
-        }
-        
-        .prompt-input:focus {
-            outline: none;
-            border-color: rgba(139, 92, 246, 0.5);
-            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
-        }
-        
-        .prompt-input::placeholder {
-            color: var(--dim-text);
-            opacity: 0.5;
-        }
-        
-        .prompt-suggestions {
-            display: flex;
-            gap: 0.75rem;
-            flex-wrap: wrap;
-            margin-top: 1rem;
-        }
-        
-        .suggestion-chip {
-            padding: 0.5rem 1rem;
-            background: rgba(139, 92, 246, 0.1);
-            border: 1px solid rgba(139, 92, 246, 0.2);
-            border-radius: 100px;
-            color: var(--dim-text);
-            font-size: 0.875rem;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .suggestion-chip:hover {
-            background: rgba(139, 92, 246, 0.2);
-            border-color: rgba(139, 92, 246, 0.4);
-            color: var(--light-text);
-            transform: translateY(-2px);
-        }
-        
-        /* Features Grid */
-        .features {
-            padding: 6rem 2rem;
-            background: var(--dark-surface);
+            height: 60px;
             position: relative;
         }
         
-        .features-container {
+        .flow-line {
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(180deg, transparent, var(--secondary), transparent);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .flow-line::after {
+            content: '';
+            position: absolute;
+            top: -100%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, transparent, var(--light), transparent);
+            animation: flow 2s linear infinite;
+        }
+        
+        @keyframes flow {
+            to { top: 100%; }
+        }
+        
+        .broker-box {
+            width: 100%;
+            max-width: 700px;
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(79, 172, 254, 0.1));
+            border: 2px solid rgba(6, 182, 212, 0.3);
+            border-radius: 1.5rem;
+            position: relative;
+        }
+        
+        .broker-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .broker-header svg {
+            width: 36px;
+            height: 36px;
+        }
+        
+        .broker-header h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #8FBC8F;
+        }
+        
+        .broker-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+        
+        .broker-feature {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem;
+            background: rgba(6, 182, 212, 0.05);
+            border-radius: 0.75rem;
+            font-size: 0.875rem;
+            color: var(--text);
+        }
+        
+        .broker-feature svg {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+        }
+        
+        /* Cloud Comparison */
+        .comparison-section {
+            padding: 6rem 2rem;
+            background: var(--dark-surface);
+        }
+        
+        .comparison-container {
             max-width: 1400px;
             margin: 0 auto;
         }
@@ -315,161 +434,196 @@
             font-size: 3rem;
             font-weight: 900;
             margin-bottom: 1rem;
-            background: linear-gradient(135deg, var(--neon-cyan), var(--neon-green));
+            background: linear-gradient(135deg, #F093FB 0%, #F5576C 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
         
-        .features-grid {
+        .section-subtitle {
+            font-size: 1.25rem;
+            color: var(--text);
+        }
+        
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+        
+        .comparison-card {
+            padding: 3rem;
+            border-radius: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .old-cloud {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(245, 87, 108, 0.1));
+            border: 2px solid rgba(239, 68, 68, 0.2);
+        }
+        
+        .new-cloud {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(56, 249, 215, 0.1));
+            border: 2px solid rgba(16, 185, 129, 0.2);
+        }
+        
+        .comparison-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .comparison-header svg {
+            width: 48px;
+            height: 48px;
+        }
+        
+        .comparison-header h3 {
+            font-size: 1.75rem;
+            font-weight: 700;
+        }
+        
+        .old-cloud h3 {
+            color: #CD5C5C;
+        }
+        
+        .new-cloud h3 {
+            color: #228B22;
+        }
+        
+        .comparison-list {
+            list-style: none;
+            space-y: 1rem;
+        }
+        
+        .comparison-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 0.75rem;
+            margin-bottom: 1rem;
+        }
+        
+        .comparison-list svg {
+            width: 24px;
+            height: 24px;
+            flex-shrink: 0;
+            margin-top: 0.125rem;
+        }
+        
+        .comparison-visual {
+            margin-top: 3rem;
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 1rem;
+            text-align: center;
+        }
+        
+        /* Apps Showcase */
+        .apps-section {
+            padding: 6rem 2rem;
+            position: relative;
+        }
+        
+        .apps-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2rem;
+            max-width: 1400px;
+            margin: 3rem auto 0;
         }
         
-        .feature-card {
-            background: rgba(24, 24, 27, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+        .app-card {
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid var(--border);
             border-radius: 1.5rem;
             padding: 2rem;
             position: relative;
             overflow: hidden;
             transition: all 0.3s;
+            cursor: pointer;
         }
         
-        .feature-card::before {
+        .app-card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, 
-                var(--neon-cyan), 
-                var(--neon-purple), 
-                var(--neon-pink));
-            opacity: 0;
-            transition: opacity 0.3s;
+            height: 4px;
+            background: var(--gradient-1);
+            transform: scaleX(0);
+            transition: transform 0.3s;
         }
         
-        .feature-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(255, 255, 255, 0.1);
+        .app-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
         
-        .feature-card:hover::before {
-            opacity: 1;
+        .app-card:hover::before {
+            transform: scaleX(1);
         }
         
-        .feature-icon {
+        .app-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+        
+        .app-icon {
             width: 60px;
             height: 60px;
-            background: linear-gradient(135deg, var(--neon-purple), var(--neon-pink));
+            background: var(--gradient-1);
             border-radius: 1rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
         }
         
-        .feature-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--light-text);
-        }
-        
-        .feature-card p {
-            color: var(--dim-text);
-            line-height: 1.6;
-        }
-        
-        /* Apps Showcase */
-        .apps-showcase {
-            padding: 6rem 2rem;
-            position: relative;
-        }
-        
-        .app-cards-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-        
-        .app-card {
-            background: linear-gradient(135deg, 
-                rgba(139, 92, 246, 0.1), 
-                rgba(236, 72, 153, 0.1));
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 1.5rem;
-            padding: 2rem;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s;
-        }
-        
-        .app-card::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, 
-                rgba(139, 92, 246, 0.1) 0%, 
-                transparent 70%);
-            opacity: 0;
-            transition: opacity 0.3s;
-            pointer-events: none;
-        }
-        
-        .app-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            border-color: rgba(139, 92, 246, 0.3);
-        }
-        
-        .app-card:hover::after {
-            opacity: 1;
+        .app-icon svg {
+            width: 32px;
+            height: 32px;
         }
         
         .app-status {
-            display: inline-block;
-            padding: 0.25rem 0.75rem;
-            border-radius: 100px;
+            padding: 0.375rem 1rem;
+            border-radius: 50px;
             font-size: 0.75rem;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.05em;
-            margin-bottom: 1rem;
         }
         
         .status-live {
             background: rgba(16, 185, 129, 0.2);
-            color: var(--neon-green);
+            color: #228B22;
             border: 1px solid rgba(16, 185, 129, 0.3);
         }
         
-        .status-coming {
-            background: rgba(253, 224, 71, 0.2);
-            color: var(--electric-yellow);
-            border: 1px solid rgba(253, 224, 71, 0.3);
+        .status-soon {
+            background: rgba(245, 158, 11, 0.2);
+            color: var(--accent);
+            border: 1px solid rgba(245, 158, 11, 0.3);
         }
         
-        .app-card h3 {
+        .app-content h3 {
             font-size: 1.75rem;
+            font-weight: 700;
             margin-bottom: 0.5rem;
-            background: linear-gradient(135deg, var(--light-text), var(--dim-text));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--light);
         }
         
-        .app-tagline {
-            color: var(--dim-text);
+        .app-description {
+            color: var(--text);
             margin-bottom: 1.5rem;
-            font-weight: 500;
+            font-size: 1rem;
         }
         
         .app-features {
@@ -477,26 +631,25 @@
         }
         
         .app-features li {
-            color: var(--dim-text);
-            padding: 0.5rem 0;
             display: flex;
             align-items: center;
             gap: 0.75rem;
+            padding: 0.5rem 0;
+            color: var(--text);
+            font-size: 0.95rem;
         }
         
-        .app-features li::before {
-            content: '→';
-            color: var(--neon-cyan);
-            font-weight: bold;
+        .app-features svg {
+            width: 20px;
+            height: 20px;
+            color: #8FBC8F;
+            flex-shrink: 0;
         }
         
         /* CTA Section */
         .cta-section {
             padding: 8rem 2rem;
-            background: linear-gradient(135deg, 
-                rgba(139, 92, 246, 0.05), 
-                rgba(6, 182, 212, 0.05));
-            position: relative;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
             text-align: center;
         }
         
@@ -506,15 +659,18 @@
         }
         
         .cta-title {
-            font-size: 3.5rem;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
             font-weight: 900;
             margin-bottom: 1.5rem;
-            line-height: 1.2;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         
         .cta-subtitle {
             font-size: 1.25rem;
-            color: var(--dim-text);
+            color: var(--text);
             margin-bottom: 3rem;
         }
         
@@ -525,39 +681,39 @@
             flex-wrap: wrap;
         }
         
-        .btn-primary {
+        .btn {
             padding: 1rem 2.5rem;
-            background: linear-gradient(135deg, var(--neon-purple), var(--neon-pink));
-            border: none;
-            border-radius: 100px;
-            color: white;
+            border-radius: 50px;
             font-size: 1.125rem;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s;
-            box-shadow: 0 10px 40px rgba(139, 92, 246, 0.3);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .btn-primary {
+            background: var(--gradient-1);
+            color: white;
+            border: none;
+            box-shadow: 0 10px 30px rgba(124, 58, 237, 0.3);
         }
         
         .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 15px 50px rgba(139, 92, 246, 0.4);
+            box-shadow: 0 15px 40px rgba(124, 58, 237, 0.4);
         }
         
         .btn-secondary {
-            padding: 1rem 2.5rem;
             background: transparent;
-            border: 2px solid rgba(139, 92, 246, 0.5);
-            border-radius: 100px;
-            color: var(--light-text);
-            font-size: 1.125rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
+            color: var(--light);
+            border: 2px solid rgba(124, 58, 237, 0.5);
         }
         
         .btn-secondary:hover {
-            background: rgba(139, 92, 246, 0.1);
-            border-color: rgba(139, 92, 246, 0.8);
+            background: rgba(124, 58, 237, 0.1);
             transform: translateY(-3px);
         }
         
@@ -565,35 +721,46 @@
         footer {
             padding: 4rem 2rem 2rem;
             background: var(--dark-surface);
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-top: 1px solid var(--border);
         }
         
         .footer-content {
             max-width: 1400px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
+            grid-template-columns: 2fr repeat(3, 1fr);
             gap: 4rem;
             margin-bottom: 3rem;
         }
         
-        .footer-brand h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, var(--neon-cyan), var(--neon-purple));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
         }
         
-        .footer-brand p {
-            color: var(--dim-text);
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--light);
+        }
+        
+        .footer-logo svg {
+            width: 36px;
+            height: 36px;
+        }
+        
+        .footer-description {
+            color: var(--text);
             line-height: 1.6;
             max-width: 350px;
         }
         
         .footer-column h4 {
-            color: var(--light-text);
+            color: var(--light);
             margin-bottom: 1.5rem;
             font-size: 0.875rem;
             text-transform: uppercase;
@@ -609,72 +776,37 @@
         }
         
         .footer-column a {
-            color: var(--dim-text);
+            color: var(--text);
             text-decoration: none;
             transition: color 0.3s;
         }
         
         .footer-column a:hover {
-            color: var(--neon-cyan);
+            color: #6B8E23;
         }
         
         .footer-bottom {
             padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-top: 1px solid var(--border);
             text-align: center;
-            color: var(--dim-text);
+            color: var(--text-dim);
         }
         
-        /* Floating Elements */
-        .floating-orb {
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            background: radial-gradient(circle, 
-                rgba(139, 92, 246, 0.3) 0%, 
-                transparent 70%);
-            filter: blur(60px);
-            animation: float 20s ease-in-out infinite;
-            pointer-events: none;
-        }
-        
-        .orb-1 {
-            top: 10%;
-            left: -150px;
-            animation-delay: 0s;
-        }
-        
-        .orb-2 {
-            bottom: 10%;
-            right: -150px;
-            animation-delay: 10s;
-            background: radial-gradient(circle, 
-                rgba(6, 182, 212, 0.3) 0%, 
-                transparent 70%);
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            33% { transform: translate(30px, -30px) scale(1.1); }
-            66% { transform: translate(-20px, 20px) scale(0.9); }
-        }
-        
-        /* Mobile Responsive */
+        /* Responsive */
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
             }
             
             .hero h1 {
-                font-size: 3rem;
+                font-size: 2.5rem;
             }
             
-            .hero-subtitle {
-                font-size: 1.125rem;
+            .comparison-grid {
+                grid-template-columns: 1fr;
             }
             
-            .features-grid {
+            .apps-grid {
                 grid-template-columns: 1fr;
             }
             
@@ -682,201 +814,551 @@
                 grid-template-columns: 1fr;
                 gap: 2rem;
             }
-            
-            .cta-title {
-                font-size: 2.5rem;
-            }
         }
     </style>
 </head>
 <body>
-    <div class="gradient-bg"></div>
+    <div class="animated-bg"></div>
     
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
-            <div class="logo">EdgeFirst AI</div>
+            <a href="#" class="logo">
+                <svg viewBox="0 0 40 40" fill="none">
+                    <rect width="40" height="40" rx="10" fill="#6B8E23"/>
+                    <text x="20" y="28" font-family="-apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="white">D</text>
+                </svg>
+                <span>DIOSPYROS</span>
+            </a>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
-                <li><a href="#features">Features</a></li>
+                <li><a href="#architecture">Architecture</a></li>
                 <li><a href="#apps">Apps</a></li>
                 <li><a href="#developers">Developers</a></li>
-                <li><button class="start-building-btn">Start Building</button></li>
+                <li><a href="#" class="nav-cta">Get Started</a></li>
             </ul>
         </div>
     </nav>
     
     <!-- Hero Section -->
     <section class="hero" id="home">
-        <div class="floating-orb orb-1"></div>
-        <div class="floating-orb orb-2"></div>
-        
         <div class="hero-content">
-            <div class="hero-badge">🏭 The AI App Factory</div>
+            <div class="hero-badge">
+                <svg viewBox="0 0 20 20" fill="none">
+                    <circle cx="10" cy="10" r="8" fill="#6B8E23" opacity="0.2"/>
+                    <circle cx="10" cy="10" r="3" fill="#6B8E23"/>
+                </svg>
+                <span>Edge-First Technology Stack</span>
+            </div>
             
-            <h1>
-                We Build <span class="gradient-text">AI Apps</span><br>
-                That Respect Your Privacy
-            </h1>
+            <h1>Complete Data Sovereignty</h1>
             
             <p class="hero-subtitle">
-                EdgeFirst AI is the factory for next-generation AI applications. Every app we build runs entirely on your device. 
-                Your data never leaves. No surveillance. No monetization. Just powerful AI that works for you, not against you.
+                Diospyros.app enables true personal cloud architecture where all apps run in your own infrastructure. 
+                With the Herald managing external interactions, you maintain complete sovereignty 
+                while staying connected to the world.
             </p>
             
-            <!-- Mission Statement -->
-            <div class="prompt-container">
-                <div class="prompt-box" style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(6, 182, 212, 0.1)); border-color: rgba(16, 185, 129, 0.3);">
-                    <div class="prompt-label" style="color: var(--neon-green);">
-                        <div class="prompt-icon" style="background: linear-gradient(135deg, var(--neon-green), var(--neon-cyan));">🛡️</div>
-                        <span>The EdgeFirst Promise</span>
+            <!-- Architecture Visualization -->
+            <div class="architecture-viz" id="architecture">
+                <div class="arch-title">The Diospyros Architecture</div>
+                <div class="arch-diagram">
+                    <!-- Home Cloud -->
+                    <div class="home-cloud-box">
+                        <div class="home-cloud-header">
+                            <svg viewBox="0 0 40 40" fill="none">
+                                <path d="M20 5L35 15V25C35 33.284 28.284 40 20 40C11.716 40 5 33.284 5 25V15L20 5Z" stroke="url(#home-gradient)" stroke-width="2" fill="rgba(102, 126, 234, 0.1)"/>
+                                <path d="M20 15L25 20L20 25L15 20L20 15Z" fill="url(#home-gradient)"/>
+                                <defs>
+                                    <linearGradient id="home-gradient" x1="5" y1="5" x2="35" y2="40">
+                                        <stop stop-color="#667EEA"/>
+                                        <stop offset="1" stop-color="#764BA2"/>
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                            <h3>YOUR IDIOS</h3>
+                        </div>
+                        <div class="devices-grid">
+                            <div class="device-card">
+                                <svg viewBox="0 0 40 40" fill="none">
+                                    <rect x="12" y="8" width="16" height="24" rx="2" stroke="#667EEA" stroke-width="2" fill="rgba(102, 126, 234, 0.1)"/>
+                                    <circle cx="20" cy="28" r="1.5" fill="#667EEA"/>
+                                </svg>
+                                <span>Phone</span>
+                            </div>
+                            <div class="device-card">
+                                <svg viewBox="0 0 40 40" fill="none">
+                                    <rect x="6" y="10" width="28" height="18" rx="2" stroke="#764BA2" stroke-width="2" fill="rgba(118, 75, 162, 0.1)"/>
+                                    <path d="M14 30H26" stroke="#764BA2" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                                <span>Laptop</span>
+                            </div>
+                            <div class="device-card">
+                                <svg viewBox="0 0 40 40" fill="none">
+                                    <rect x="8" y="12" width="24" height="16" rx="2" stroke="#667EEA" stroke-width="2" fill="rgba(102, 126, 234, 0.1)"/>
+                                    <circle cx="13" cy="20" r="1.5" fill="#667EEA"/>
+                                    <circle cx="20" cy="20" r="1.5" fill="#667EEA"/>
+                                    <circle cx="27" cy="20" r="1.5" fill="#667EEA"/>
+                                </svg>
+                                <span>Home NAS</span>
+                            </div>
+                            <div class="device-card">
+                                <svg viewBox="0 0 40 40" fill="none">
+                                    <path d="M25 15C25 11.134 21.866 8 18 8C14.686 8 11.726 10.291 10.937 13.5C8.195 14.088 6 16.549 6 19.5C6 22.866 8.634 26 12 26H25C27.761 26 30 23.761 30 21C30 18.239 27.761 16 25 16" stroke="#764BA2" stroke-width="2" fill="rgba(118, 75, 162, 0.1)"/>
+                                </svg>
+                                <span>Personal Cloud</span>
+                            </div>
+                        </div>
+                        <p style="margin-top: 1.5rem; text-align: center; color: var(--text); font-size: 0.95rem;">
+                            All your apps run HERE, in YOUR sovereign space
+                        </p>
                     </div>
-                    <div style="padding: 1rem; color: var(--light-text); line-height: 1.8;">
-                        <strong>We're not just another app studio.</strong> We're proving that powerful AI doesn't need to harvest your data. 
-                        Every app we ship demonstrates that privacy and functionality aren't mutually exclusive. 
-                        <span style="color: var(--neon-cyan);">Your data stays on your device. Always.</span>
+                    
+                    <!-- Flow Indicator -->
+                    <div class="flow-indicator">
+                        <div class="flow-line"></div>
                     </div>
-                    <div class="prompt-suggestions">
-                        <div class="suggestion-chip">0 bytes to cloud</div>
-                        <div class="suggestion-chip">&lt;100ms AI response</div>
-                        <div class="suggestion-chip">100% offline capable</div>
-                        <div class="suggestion-chip">Complete data ownership</div>
+                    
+                    <!-- Herald -->
+                    <div class="broker-box">
+                        <div class="broker-header">
+                            <svg viewBox="0 0 36 36" fill="none">
+                                <circle cx="18" cy="18" r="16" stroke="#06B6D4" stroke-width="2" fill="rgba(6, 182, 212, 0.1)"/>
+                                <path d="M18 10V26M10 18H26" stroke="#06B6D4" stroke-width="2" stroke-linecap="round"/>
+                                <circle cx="18" cy="18" r="4" fill="#06B6D4"/>
+                            </svg>
+                            <h3>YOUR BROKER</h3>
+                        </div>
+                        <div class="broker-features">
+                            <div class="broker-feature">
+                                <svg viewBox="0 0 20 20" fill="#06B6D4">
+                                    <path d="M10 2L3 7v6c0 3.866 3.134 7 7 7s7-3.134 7-7V7l-7-5z"/>
+                                </svg>
+                                <span>Stateless relay</span>
+                            </div>
+                            <div class="broker-feature">
+                                <svg viewBox="0 0 20 20" fill="#06B6D4">
+                                    <path d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v3.586L7.707 11.88a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 13.172V7z"/>
+                                </svg>
+                                <span>Message queue</span>
+                            </div>
+                            <div class="broker-feature">
+                                <svg viewBox="0 0 20 20" fill="#06B6D4">
+                                    <path d="M13 7H7v6h6V7z"/>
+                                    <path d="M10 18a8 8 0 100-16 8 8 0 000 16zm0-2a6 6 0 110-12 6 6 0 010 12z"/>
+                                </svg>
+                                <span>AI broker</span>
+                            </div>
+                            <div class="broker-feature">
+                                <svg viewBox="0 0 20 20" fill="#06B6D4">
+                                    <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
+                                    <path d="M10 4a6 6 0 00-4.472 10.018l1.428-1.428A4 4 0 1114.414 10h2.022A6 6 0 0010 4z"/>
+                                </svg>
+                                <span>Auto-expire</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- External World -->
+                    <div class="flow-indicator">
+                        <div class="flow-line"></div>
+                    </div>
+                    
+                    <div style="padding: 1.5rem; background: rgba(100, 116, 139, 0.1); border-radius: 1rem; text-align: center;">
+                        <span style="font-size: 1.5rem; margin-right: 0.5rem;">🌍</span>
+                        <span style="color: var(--text); font-weight: 600;">External World</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
     
-    <!-- Features Section -->
-    <section class="features" id="features">
-        <div class="features-container">
+    <!-- Cloud Comparison -->
+    <section class="comparison-section">
+        <div class="comparison-container">
             <div class="section-header">
-                <h2 class="section-title">How We Build Different</h2>
-                <p style="color: var(--dim-text); font-size: 1.25rem;">
-                    As a factory for edge-first AI apps, we've reimagined how intelligent software should work.
-                </p>
+                <h2 class="section-title">The Cloud Revolution</h2>
+                <p class="section-subtitle">See why millions are leaving surveillance clouds for home clouds</p>
             </div>
             
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">🏭</div>
-                    <h3>Factory-Built for Privacy</h3>
-                    <p>Every app starts with privacy by design. We use Apple Intelligence, Gemini Nano, and open models. Your data never touches our servers.</p>
+            <div class="comparison-grid">
+                <!-- Old Cloud -->
+                <div class="comparison-card old-cloud">
+                    <div class="comparison-header">
+                        <svg viewBox="0 0 48 48" fill="none">
+                            <path d="M24 8C15.163 8 8 15.163 8 24s7.163 16 16 16 16-7.163 16-16S32.837 8 24 8z" fill="rgba(239, 68, 68, 0.2)"/>
+                            <path d="M31 17L17 31M17 17l14 14" stroke="#EF4444" stroke-width="3" stroke-linecap="round"/>
+                        </svg>
+                        <h3>Traditional Cloud</h3>
+                    </div>
+                    <ul class="comparison-list">
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="#EF4444">
+                                <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
+                            </svg>
+                            <div>
+                                <strong>Your data on their servers</strong><br>
+                                <span style="color: var(--text-dim); font-size: 0.9rem;">Scattered across corporate data centers globally</span>
+                            </div>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="#EF4444">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            </svg>
+                            <div>
+                                <strong>You're the product</strong><br>
+                                <span style="color: var(--text-dim); font-size: 0.9rem;">Data mined for ads and sold to brokers</span>
+                            </div>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="#EF4444">
+                                <path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/>
+                            </svg>
+                            <div>
+                                <strong>Constant breaches</strong><br>
+                                <span style="color: var(--text-dim); font-size: 0.9rem;">Your personal info exposed regularly</span>
+                            </div>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="#EF4444">
+                                <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
+                            </svg>
+                            <div>
+                                <strong>No real ownership</strong><br>
+                                <span style="color: var(--text-dim); font-size: 0.9rem;">Terms change, prices increase, data held hostage</span>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="comparison-visual">
+                        <svg viewBox="0 0 200 100" fill="none" style="width: 100%; height: auto;">
+                            <circle cx="50" cy="50" r="8" fill="#EF4444"/>
+                            <circle cx="150" cy="30" r="8" fill="#EF4444"/>
+                            <circle cx="130" cy="70" r="8" fill="#EF4444"/>
+                            <circle cx="80" cy="40" r="8" fill="#EF4444"/>
+                            <circle cx="100" cy="60" r="8" fill="#EF4444"/>
+                            <path d="M50 50L150 30M50 50L130 70M50 50L80 40M50 50L100 60" stroke="#EF4444" stroke-width="1" opacity="0.3"/>
+                            <text x="100" y="90" text-anchor="middle" fill="#EF4444" font-size="12">Your data everywhere</text>
+                        </svg>
+                    </div>
                 </div>
                 
-                <div class="feature-card">
-                    <div class="feature-icon">⚡</div>
-                    <h3>Lightning-Fast AI</h3>
-                    <p>Sub-100ms inference using on-device neural engines. No network round trips. No API rate limits. Just instant, private intelligence.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">🔧</div>
-                    <h3>Production-Grade Apps</h3>
-                    <p>We ship real products to real users. Each app is battle-tested, App Store ready, and built to scale without cloud dependency.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">🎯</div>
-                    <h3>User-First Business Model</h3>
-                    <p>We make money from features, not data. No ads, no tracking, no surveillance capitalism. Just honest software that serves users.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">🌐</div>
-                    <h3>Offline-First Architecture</h3>
-                    <p>Every app works without internet. Optional P2P sync for collaboration. Your users own their experience.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">💎</div>
-                    <h3>90% Lower Costs</h3>
-                    <p>No cloud infrastructure. No scaling headaches. No data egress fees. Just sustainable, predictable pricing.</p>
+                <!-- New Cloud -->
+                <div class="comparison-card new-cloud">
+                    <div class="comparison-header">
+                        <svg viewBox="0 0 48 48" fill="none">
+                            <circle cx="24" cy="24" r="16" fill="rgba(16, 185, 129, 0.2)"/>
+                            <path d="M16 24l4 4 8-8" stroke="#10B981" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <h3>Diospyros Edge-First</h3>
+                    </div>
+                    <ul class="comparison-list">
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="#10B981">
+                                <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+                            </svg>
+                            <div>
+                                <strong>Your data at home</strong><br>
+                                <span style="color: var(--text-dim); font-size: 0.9rem;">Lives on your devices and personal storage</span>
+                            </div>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="#10B981">
+                                <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/>
+                            </svg>
+                            <div>
+                                <strong>You're the owner</strong><br>
+                                <span style="color: var(--text-dim); font-size: 0.9rem;">Complete sovereignty, no surveillance</span>
+                            </div>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="#10B981">
+                                <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2z"/>
+                            </svg>
+                            <div>
+                                <strong>Unbreachable</strong><br>
+                                <span style="color: var(--text-dim); font-size: 0.9rem;">No central servers to hack</span>
+                            </div>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="#10B981">
+                                <path d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2z"/>
+                            </svg>
+                            <div>
+                                <strong>Forever yours</strong><br>
+                                <span style="color: var(--text-dim); font-size: 0.9rem;">No subscriptions, no lock-in, no limits</span>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="comparison-visual">
+                        <svg viewBox="0 0 200 100" fill="none" style="width: 100%; height: auto;">
+                            <circle cx="100" cy="50" r="20" fill="rgba(16, 185, 129, 0.2)" stroke="#10B981" stroke-width="2"/>
+                            <circle cx="100" cy="50" r="8" fill="#10B981"/>
+                            <text x="100" y="90" text-anchor="middle" fill="#10B981" font-size="12">Your data at home</text>
+                        </svg>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
     
-    <!-- Apps Showcase -->
-    <section class="apps-showcase" id="apps">
+    <!-- Apps Section -->
+    <section class="apps-section" id="apps">
         <div class="section-header">
-            <h2 class="section-title">Fresh From Our Factory</h2>
-            <p style="color: var(--dim-text); font-size: 1.25rem; margin-bottom: 3rem;">
-                Real apps. Real users. Zero surveillance. Here's what we're shipping.
-            </p>
+            <h2 class="section-title">Apps Built for Your Home Cloud</h2>
+            <p class="section-subtitle">Real products proving that privacy and power aren't mutually exclusive</p>
         </div>
         
-        <div class="app-cards-container">
+        <div class="apps-grid">
+            <!-- Where Is App -->
             <div class="app-card">
-                <span class="app-status status-live">Live Now</span>
-                <h3>Where Is</h3>
-                <p class="app-tagline">Family coordination reimagined</p>
-                <ul class="app-features">
-                    <li>Real-time location intelligence</li>
-                    <li>Natural language queries</li>
-                    <li>Package & delivery tracking</li>
-                    <li>100% private family network</li>
-                </ul>
+                <div class="app-header">
+                    <div class="app-icon" style="background: linear-gradient(135deg, #667EEA, #764BA2);">
+                        <svg viewBox="0 0 32 32" fill="white">
+                            <path d="M16 2C10.477 2 6 6.477 6 12c0 7 10 18 10 18s10-11 10-18c0-5.523-4.477-10-10-10zm0 14a4 4 0 110-8 4 4 0 010 8z"/>
+                        </svg>
+                    </div>
+                    <span class="app-status status-live">LIVE</span>
+                </div>
+                <div class="app-content">
+                    <h3>Where Is</h3>
+                    <p class="app-description">Family coordination without surveillance</p>
+                    <ul class="app-features">
+                        <li>
+                            <svg viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                            </svg>
+                            Real-time location in family's home cloud
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                            </svg>
+                            Herald manages async family updates
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                            </svg>
+                            Natural language AI queries
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                            </svg>
+                            Zero corporate tracking
+                        </li>
+                    </ul>
+                </div>
             </div>
             
+            <!-- GutFlow App -->
             <div class="app-card">
-                <span class="app-status status-live">Live Now</span>
-                <h3>GutFlow</h3>
-                <p class="app-tagline">Your personal digestive health AI</p>
-                <ul class="app-features">
-                    <li>Food pattern analysis</li>
-                    <li>Symptom tracking</li>
-                    <li>Nutritionist-grade insights</li>
-                    <li>Medical data never leaves device</li>
-                </ul>
+                <div class="app-header">
+                    <div class="app-icon" style="background: linear-gradient(135deg, #43E97B, #38F9D7);">
+                        <svg viewBox="0 0 32 32" fill="white">
+                            <path d="M16 2C8.268 2 2 8.268 2 16s6.268 14 14 14 14-6.268 14-14S23.732 2 16 2zm6 15h-5v5h-2v-5h-5v-2h5v-5h2v5h5v2z"/>
+                        </svg>
+                    </div>
+                    <span class="app-status status-live">LIVE</span>
+                </div>
+                <div class="app-content">
+                    <h3>GutFlow</h3>
+                    <p class="app-description">Medical data that stays medical</p>
+                    <ul class="app-features">
+                        <li>
+                            <svg viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                            </svg>
+                            Health data never leaves your devices
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                            </svg>
+                            On-device pattern recognition AI
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                            </svg>
+                            Herald fetches nutrition data only
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                            </svg>
+                            Complete medical privacy
+                        </li>
+                    </ul>
+                </div>
             </div>
             
+            <!-- BudgetAI App -->
             <div class="app-card">
-                <span class="app-status status-coming">Q2 2025</span>
-                <h3>BudgetAI</h3>
-                <p class="app-tagline">Financial intelligence that's truly yours</p>
-                <ul class="app-features">
-                    <li>Smart expense categorization</li>
-                    <li>Investment recommendations</li>
-                    <li>Bank-level encryption</li>
-                    <li>Zero financial data in cloud</li>
-                </ul>
+                <div class="app-header">
+                    <div class="app-icon" style="background: linear-gradient(135deg, #FA709A, #FEE140);">
+                        <svg viewBox="0 0 32 32" fill="white">
+                            <path d="M16 2C8.268 2 2 8.268 2 16s6.268 14 14 14 14-6.268 14-14S23.732 2 16 2zm1 19.5v2h-2v-2c-2.21 0-4-1.79-4-4h2c0 1.1.9 2 2 2h2c1.1 0 2-.9 2-2s-.9-2-2-2h-2c-2.21 0-4-1.79-4-4s1.79-4 4-4v-2h2v2c2.21 0 4 1.79 4 4h-2c0-1.1-.9-2-2-2h-2c-1.1 0-2 .9-2 2s.9 2 2 2h2c2.21 0 4 1.79 4 4s-1.79 4-4 4z"/>
+                        </svg>
+                    </div>
+                    <span class="app-status status-soon">Q2 2025</span>
+                </div>
+                <div class="app-content">
+                    <h3>BudgetAI</h3>
+                    <p class="app-description">Financial intelligence, truly yours</p>
+                    <ul class="app-features">
+                        <li>
+                            <svg viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                            </svg>
+                            Bank data stays in home cloud
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                            </svg>
+                            Local transaction analysis
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                            </svg>
+                            Herald manages secure bank sync
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                            </svg>
+                            Zero financial surveillance
+                        </li>
+                    </ul>
+                </div>
             </div>
             
+            <!-- StudyBuddy App -->
             <div class="app-card">
-                <span class="app-status status-coming">Q3 2025</span>
-                <h3>StudyBuddy</h3>
-                <p class="app-tagline">Personalized learning assistant</p>
-                <ul class="app-features">
-                    <li>Adaptive study plans</li>
-                    <li>Knowledge gap analysis</li>
-                    <li>Exam preparation AI</li>
-                    <li>Student data stays private</li>
-                </ul>
+                <div class="app-header">
+                    <div class="app-icon" style="background: linear-gradient(135deg, #4FACFE, #00F2FE);">
+                        <svg viewBox="0 0 32 32" fill="white">
+                            <path d="M16 2L2 9l14 7 12-6v10h2V9L16 2zm0 14.5L5.5 11 16 5.5 26.5 11 16 16.5zM6 14.88V22l10 5 10-5v-7.12l-10 5-10-5z"/>
+                        </svg>
+                    </div>
+                    <span class="app-status status-soon">Q3 2025</span>
+                </div>
+                <div class="app-content">
+                    <h3>StudyBuddy</h3>
+                    <p class="app-description">Education without data harvesting</p>
+                    <ul class="app-features">
+                        <li>
+                            <svg viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                            </svg>
+                            Student data stays private
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                            </svg>
+                            On-device learning AI
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                            </svg>
+                            Herald coordinates study groups
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                            </svg>
+                            No academic surveillance
+                        </li>
+                    </ul>
+                </div>
             </div>
             
+            <!-- HealthVault App -->
             <div class="app-card">
-                <span class="app-status status-coming">Q4 2025</span>
-                <h3>HealthVault</h3>
-                <p class="app-tagline">Medical records meet AI</p>
-                <ul class="app-features">
-                    <li>Intelligent health insights</li>
-                    <li>Medication reminders</li>
-                    <li>Symptom analysis</li>
-                    <li>HIPAA-compliant by design</li>
-                </ul>
+                <div class="app-header">
+                    <div class="app-icon" style="background: linear-gradient(135deg, #F093FB, #F5576C);">
+                        <svg viewBox="0 0 32 32" fill="white">
+                            <path d="M22 2H10v6H4v22h24V8h-6V2zm-2 2v4h-8V4h8zm8 24H6V10h4v2h12v-2h4v18zm-12-8v4h-2v-4h-4v-2h4v-4h2v4h4v2h-4z"/>
+                        </svg>
+                    </div>
+                    <span class="app-status status-soon">Q4 2025</span>
+                </div>
+                <div class="app-content">
+                    <h3>HealthVault</h3>
+                    <p class="app-description">Medical records meet sovereignty</p>
+                    <ul class="app-features">
+                        <li>
+                            <svg viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                            </svg>
+                            Records in your home cloud only
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                            </svg>
+                            Local health insights AI
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                            </svg>
+                            Herald manages provider sync
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                            </svg>
+                            HIPAA-compliant by design
+                        </li>
+                    </ul>
+                </div>
             </div>
             
+            <!-- Your App -->
             <div class="app-card">
-                <span class="app-status status-coming">2026</span>
-                <h3>Your App Here</h3>
-                <p class="app-tagline">Join the edge revolution</p>
-                <ul class="app-features">
-                    <li>Custom AI models</li>
-                    <li>White-label deployment</li>
-                    <li>Full source code access</li>
-                    <li>EdgeFirst SDK included</li>
-                </ul>
+                <div class="app-header">
+                    <div class="app-icon" style="background: linear-gradient(135deg, #667EEA, #764BA2);">
+                        <svg viewBox="0 0 32 32" fill="white">
+                            <path d="M16 2C8.268 2 2 8.268 2 16s6.268 14 14 14 14-6.268 14-14S23.732 2 16 2zm1 15h6v2h-6v6h-2v-6H9v-2h6V9h2v8z"/>
+                        </svg>
+                    </div>
+                    <span class="app-status status-soon">2026</span>
+                </div>
+                <div class="app-content">
+                    <h3>Your App Here</h3>
+                    <p class="app-description">Join the home cloud revolution</p>
+                    <ul class="app-features">
+                        <li>
+                            <svg viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                            </svg>
+                            Build on Adios SDK
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                            </svg>
+                            Access our incubator
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                            </svg>
+                            $50K-$200K funding available
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                            </svg>
+                            1M+ privacy-conscious users
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
@@ -884,16 +1366,24 @@
     <!-- CTA Section -->
     <section class="cta-section" id="developers">
         <div class="cta-content">
-            <h2 class="cta-title">
-                Join the <span class="gradient-text">Edge Revolution</span>
-            </h2>
+            <h2 class="cta-title">Ready to Build the Post-Cloud World?</h2>
             <p class="cta-subtitle">
-                Partner with us to build your next AI app. We handle the technology, 
-                you bring the vision. Together, we're proving that users deserve better.
+                Join thousands of developers building apps that respect user sovereignty. 
+                Get access to the Adios SDK, funding, and a community that believes in true digital ownership.
             </p>
             <div class="cta-buttons">
-                <button class="btn-primary">Partner With Us</button>
-                <button class="btn-secondary">Explore Our Apps</button>
+                <a href="#" class="btn btn-primary">
+                    <svg viewBox="0 0 20 20" fill="currentColor" style="width: 20px; height: 20px;">
+                        <path d="M10 2a8 8 0 100 16 8 8 0 000-16zm1 11H9v-2h2v2zm0-4H9V5h2v4z"/>
+                    </svg>
+                    Apply to Incubator
+                </a>
+                <a href="#" class="btn btn-secondary">
+                    <svg viewBox="0 0 20 20" fill="currentColor" style="width: 20px; height: 20px;">
+                        <path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z"/>
+                    </svg>
+                    Learn About Herald
+                </a>
             </div>
         </div>
     </section>
@@ -902,8 +1392,17 @@
     <footer>
         <div class="footer-content">
             <div class="footer-brand">
-                <h3>EdgeFirst AI</h3>
-                <p>The factory for edge-first AI applications. We build the future where your data stays yours, your apps work offline, and AI serves you—not advertisers.</p>
+                <div class="footer-logo">
+                    <svg viewBox="0 0 36 36" fill="none">
+                        <rect width="36" height="36" rx="8" fill="#6B8E23"/>
+                        <text x="18" y="25" font-family="-apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="white">D</text>
+                    </svg>
+                    <span>DIOSPYROS</span>
+                </div>
+                <p class="footer-description">
+                    Building the edge-first technology stack that enables complete data sovereignty. 
+                    Your data, your devices, your control. Finally.
+                </p>
             </div>
             
             <div class="footer-column">
@@ -911,8 +1410,8 @@
                 <ul>
                     <li><a href="#">Where Is</a></li>
                     <li><a href="#">GutFlow</a></li>
-                    <li><a href="#">BudgetAI</a></li>
-                    <li><a href="#">EdgeFirst SDK</a></li>
+                    <li><a href="#">Adios SDK</a></li>
+                    <li><a href="#">Herald Proxy</a></li>
                 </ul>
             </div>
             
@@ -920,8 +1419,8 @@
                 <h4>Developers</h4>
                 <ul>
                     <li><a href="#">Documentation</a></li>
-                    <li><a href="#">API Reference</a></li>
                     <li><a href="#">Incubator Program</a></li>
+                    <li><a href="#">Herald Specs</a></li>
                     <li><a href="#">Open Source</a></li>
                 </ul>
             </div>
@@ -929,7 +1428,7 @@
             <div class="footer-column">
                 <h4>Company</h4>
                 <ul>
-                    <li><a href="#">About</a></li>
+                    <li><a href="#">Mission</a></li>
                     <li><a href="#">Blog</a></li>
                     <li><a href="#">Careers</a></li>
                     <li><a href="#">Contact</a></li>
@@ -938,107 +1437,8 @@
         </div>
         
         <div class="footer-bottom">
-            <p>© 2024 EdgeFirst AI. Your data stays yours. Always.</p>
+            <p>© 2024 Diospyros.app · Edge-First Technology Stack</p>
         </div>
     </footer>
-    
-    <script>
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-        
-        // Prompt input animation
-        const promptInput = document.querySelector('.prompt-input');
-        const suggestions = document.querySelectorAll('.suggestion-chip');
-        
-        suggestions.forEach(chip => {
-            chip.addEventListener('click', () => {
-                const examples = {
-                    '📍 Family location tracker': 'Create a family location app that shows real-time positions, sends smart notifications, and works completely offline...',
-                    '💰 Personal finance AI': 'Build a finance tracker that categorizes expenses using AI, predicts spending patterns, and never uploads bank data...',
-                    '🧠 Study assistant': 'Design an AI tutor that adapts to learning styles, generates practice questions, and keeps all student data private...',
-                    '🏥 Health records manager': 'Develop a health app that organizes medical records, tracks symptoms with AI insights, and maintains HIPAA compliance...'
-                };
-                
-                const text = chip.textContent;
-                if (examples[text]) {
-                    promptInput.value = '';
-                    typeWriter(examples[text], promptInput);
-                }
-            });
-        });
-        
-        function typeWriter(text, element, speed = 30) {
-            let i = 0;
-            element.focus();
-            function type() {
-                if (i < text.length) {
-                    element.value += text.charAt(i);
-                    i++;
-                    setTimeout(type, speed);
-                }
-            }
-            type();
-        }
-        
-        // Parallax effect on scroll
-        window.addEventListener('scroll', () => {
-            const scrolled = window.scrollY;
-            const orbs = document.querySelectorAll('.floating-orb');
-            
-            orbs.forEach((orb, index) => {
-                const speed = index === 0 ? 0.5 : 0.3;
-                orb.style.transform = `translateY(${scrolled * speed}px)`;
-            });
-        });
-        
-        // Intersection Observer for animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '0';
-                    entry.target.style.transform = 'translateY(30px)';
-                    
-                    setTimeout(() => {
-                        entry.target.style.transition = 'all 0.6s ease';
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }, 100);
-                    
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-        
-        // Observe all feature and app cards
-        document.querySelectorAll('.feature-card, .app-card').forEach(el => {
-            observer.observe(el);
-        });
-        
-        // Add hover effect to prompt box
-        const promptBox = document.querySelector('.prompt-box');
-        promptBox.addEventListener('mouseenter', () => {
-            promptBox.style.transform = 'scale(1.02)';
-        });
-        
-        promptBox.addEventListener('mouseleave', () => {
-            promptBox.style.transform = 'scale(1)';
-        });
-    </script>
 </body>
 </html>
