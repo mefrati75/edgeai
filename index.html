@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adios | Your Home Cloud Architecture</title>
+    <title>Diospirus | Edge-First Technology Stack</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,28 +13,28 @@
         }
         
         :root {
-            --primary: #7C3AED;
-            --primary-dark: #6D28D9;
-            --secondary: #06B6D4;
-            --accent: #F59E0B;
-            --success: #10B981;
-            --danger: #EF4444;
-            --dark: #0F172A;
-            --dark-surface: #1E293B;
-            --light: #F8FAFC;
-            --text: #CBD5E1;
-            --text-dim: #64748B;
-            --border: rgba(148, 163, 184, 0.1);
-            --gradient-1: linear-gradient(135deg, #667EEA 0%, #764BA2 100%);
-            --gradient-2: linear-gradient(135deg, #F093FB 0%, #F5576C 100%);
-            --gradient-3: linear-gradient(135deg, #4FACFE 0%, #00F2FE 100%);
-            --gradient-4: linear-gradient(135deg, #43E97B 0%, #38F9D7 100%);
+            --primary: #3E836B;
+            --primary-dark: #2E6352;
+            --secondary: #5FB67C;
+            --accent: #5FB67C;
+            --success: #5FB67C;
+            --danger: #E85D5D;
+            --dark: #F9F6ED;
+            --dark-surface: #FFFFFF;
+            --light: #2C2C2C;
+            --text: #2C2C2C;
+            --text-dim: #666666;
+            --border: #E2E2E2;
+            --gradient-1: linear-gradient(135deg, #3E836B 0%, #5FB67C 100%);
+            --gradient-2: linear-gradient(135deg, #5FB67C 0%, #7FC495 100%);
+            --gradient-3: linear-gradient(135deg, #3E836B 0%, #2E6352 100%);
+            --gradient-4: linear-gradient(135deg, #5FB67C 0%, #3E836B 100%);
         }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
-            background: #FAFAFA;
-            color: #2F4F2F;
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #F9F6ED;
+            color: #2C2C2C;
             overflow-x: hidden;
             line-height: 1.6;
         }
@@ -57,9 +58,9 @@
             height: 200%;
             top: -50%;
             left: -50%;
-            background: radial-gradient(circle at 20% 50%, rgba(124, 58, 237, 0.1) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 80%, rgba(6, 182, 212, 0.1) 0%, transparent 50%),
-                        radial-gradient(circle at 40% 20%, rgba(245, 158, 11, 0.05) 0%, transparent 50%);
+            background: radial-gradient(circle at 20% 50%, rgba(62, 131, 107, 0.08) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(95, 182, 124, 0.08) 0%, transparent 50%),
+                        radial-gradient(circle at 40% 20%, rgba(62, 131, 107, 0.05) 0%, transparent 50%);
             animation: rotate 30s linear infinite;
         }
         
@@ -74,7 +75,7 @@
             top: 0;
             width: 100%;
             padding: 1rem 2rem;
-            background: rgba(15, 23, 42, 0.8);
+            background: rgba(249, 246, 237, 0.95);
             backdrop-filter: blur(20px);
             z-index: 1000;
             border-bottom: 1px solid var(--border);
@@ -191,7 +192,7 @@
         }
         
         .hero-badge span {
-            color: #6B8E23;
+            color: #3E836B;
             font-size: 0.875rem;
             font-weight: 600;
             text-transform: uppercase;
@@ -203,7 +204,7 @@
             font-weight: 900;
             line-height: 1.1;
             margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, #667EEA 0%, #764BA2 50%, #F093FB 100%);
+            background: linear-gradient(135deg, #3E836B 0%, #5FB67C 50%, #F093FB 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -249,10 +250,10 @@
             width: 100%;
             max-width: 700px;
             padding: 2.5rem;
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            background: linear-gradient(135deg, rgba(62, 131, 107, 0.1), rgba(95, 182, 124, 0.1));
             border: 2px solid transparent;
             background-clip: padding-box;
-            border-image: linear-gradient(135deg, #667EEA, #764BA2) 1;
+            border-image: linear-gradient(135deg, #3E836B, #5FB67C) 1;
             border-radius: 1.5rem;
             position: relative;
             overflow: hidden;
@@ -265,7 +266,7 @@
             left: -2px;
             right: -2px;
             bottom: -2px;
-            background: linear-gradient(135deg, #667EEA, #764BA2);
+            background: linear-gradient(135deg, #3E836B, #5FB67C);
             border-radius: 1.5rem;
             z-index: -1;
             opacity: 0.3;
@@ -292,7 +293,7 @@
         .home-cloud-header h3 {
             font-size: 1.5rem;
             font-weight: 700;
-            background: linear-gradient(135deg, #667EEA, #764BA2);
+            background: linear-gradient(135deg, #3E836B, #5FB67C);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -307,7 +308,7 @@
         .device-card {
             padding: 1.25rem;
             background: rgba(15, 23, 42, 0.6);
-            border: 1px solid rgba(102, 126, 234, 0.2);
+            border: 1px solid rgba(62, 131, 107, 0.2);
             border-radius: 1rem;
             text-align: center;
             transition: all 0.3s;
@@ -316,8 +317,8 @@
         
         .device-card:hover {
             transform: translateY(-5px);
-            border-color: rgba(102, 126, 234, 0.5);
-            background: rgba(102, 126, 234, 0.1);
+            border-color: rgba(62, 131, 107, 0.5);
+            background: rgba(62, 131, 107, 0.1);
         }
         
         .device-card svg {
@@ -649,7 +650,7 @@
         /* CTA Section */
         .cta-section {
             padding: 8rem 2rem;
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
+            background: linear-gradient(135deg, rgba(62, 131, 107, 0.05), rgba(95, 182, 124, 0.05));
             text-align: center;
         }
         
@@ -782,7 +783,7 @@
         }
         
         .footer-column a:hover {
-            color: #6B8E23;
+            color: #3E836B;
         }
         
         .footer-bottom {
@@ -824,11 +825,7 @@
     <nav>
         <div class="nav-container">
             <a href="#" class="logo">
-                <svg viewBox="0 0 40 40" fill="none">
-                    <rect width="40" height="40" rx="10" fill="#6B8E23"/>
-                    <text x="20" y="28" font-family="-apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="white">D</text>
-                </svg>
-                <span>DIOSPYROS</span>
+                <img src="new-logo.png" alt="Diospirus" style="height: 40px; width: auto;">
             </a>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
@@ -845,8 +842,8 @@
         <div class="hero-content">
             <div class="hero-badge">
                 <svg viewBox="0 0 20 20" fill="none">
-                    <circle cx="10" cy="10" r="8" fill="#6B8E23" opacity="0.2"/>
-                    <circle cx="10" cy="10" r="3" fill="#6B8E23"/>
+                    <circle cx="10" cy="10" r="8" fill="#3E836B" opacity="0.2"/>
+                    <circle cx="10" cy="10" r="3" fill="#3E836B"/>
                 </svg>
                 <span>Edge-First Technology Stack</span>
             </div>
@@ -854,25 +851,25 @@
             <h1>Complete Data Sovereignty</h1>
             
             <p class="hero-subtitle">
-                Diospyros.app enables true personal cloud architecture where all apps run in your own infrastructure. 
+                Diospirus enables true personal cloud architecture where all apps run in your own infrastructure. 
                 With the Herald managing external interactions, you maintain complete sovereignty 
                 while staying connected to the world.
             </p>
             
             <!-- Architecture Visualization -->
             <div class="architecture-viz" id="architecture">
-                <div class="arch-title">The Diospyros Architecture</div>
+                <div class="arch-title">The Diospirus Architecture</div>
                 <div class="arch-diagram">
                     <!-- Home Cloud -->
                     <div class="home-cloud-box">
                         <div class="home-cloud-header">
                             <svg viewBox="0 0 40 40" fill="none">
-                                <path d="M20 5L35 15V25C35 33.284 28.284 40 20 40C11.716 40 5 33.284 5 25V15L20 5Z" stroke="url(#home-gradient)" stroke-width="2" fill="rgba(102, 126, 234, 0.1)"/>
+                                <path d="M20 5L35 15V25C35 33.284 28.284 40 20 40C11.716 40 5 33.284 5 25V15L20 5Z" stroke="url(#home-gradient)" stroke-width="2" fill="rgba(62, 131, 107, 0.1)"/>
                                 <path d="M20 15L25 20L20 25L15 20L20 15Z" fill="url(#home-gradient)"/>
                                 <defs>
                                     <linearGradient id="home-gradient" x1="5" y1="5" x2="35" y2="40">
-                                        <stop stop-color="#667EEA"/>
-                                        <stop offset="1" stop-color="#764BA2"/>
+                                        <stop stop-color="#3E836B"/>
+                                        <stop offset="1" stop-color="#5FB67C"/>
                                     </linearGradient>
                                 </defs>
                             </svg>
@@ -881,30 +878,30 @@
                         <div class="devices-grid">
                             <div class="device-card">
                                 <svg viewBox="0 0 40 40" fill="none">
-                                    <rect x="12" y="8" width="16" height="24" rx="2" stroke="#667EEA" stroke-width="2" fill="rgba(102, 126, 234, 0.1)"/>
-                                    <circle cx="20" cy="28" r="1.5" fill="#667EEA"/>
+                                    <rect x="12" y="8" width="16" height="24" rx="2" stroke="#3E836B" stroke-width="2" fill="rgba(62, 131, 107, 0.1)"/>
+                                    <circle cx="20" cy="28" r="1.5" fill="#3E836B"/>
                                 </svg>
                                 <span>Phone</span>
                             </div>
                             <div class="device-card">
                                 <svg viewBox="0 0 40 40" fill="none">
-                                    <rect x="6" y="10" width="28" height="18" rx="2" stroke="#764BA2" stroke-width="2" fill="rgba(118, 75, 162, 0.1)"/>
-                                    <path d="M14 30H26" stroke="#764BA2" stroke-width="2" stroke-linecap="round"/>
+                                    <rect x="6" y="10" width="28" height="18" rx="2" stroke="#5FB67C" stroke-width="2" fill="rgba(95, 182, 124, 0.1)"/>
+                                    <path d="M14 30H26" stroke="#5FB67C" stroke-width="2" stroke-linecap="round"/>
                                 </svg>
                                 <span>Laptop</span>
                             </div>
                             <div class="device-card">
                                 <svg viewBox="0 0 40 40" fill="none">
-                                    <rect x="8" y="12" width="24" height="16" rx="2" stroke="#667EEA" stroke-width="2" fill="rgba(102, 126, 234, 0.1)"/>
-                                    <circle cx="13" cy="20" r="1.5" fill="#667EEA"/>
-                                    <circle cx="20" cy="20" r="1.5" fill="#667EEA"/>
-                                    <circle cx="27" cy="20" r="1.5" fill="#667EEA"/>
+                                    <rect x="8" y="12" width="24" height="16" rx="2" stroke="#3E836B" stroke-width="2" fill="rgba(62, 131, 107, 0.1)"/>
+                                    <circle cx="13" cy="20" r="1.5" fill="#3E836B"/>
+                                    <circle cx="20" cy="20" r="1.5" fill="#3E836B"/>
+                                    <circle cx="27" cy="20" r="1.5" fill="#3E836B"/>
                                 </svg>
                                 <span>Home NAS</span>
                             </div>
                             <div class="device-card">
                                 <svg viewBox="0 0 40 40" fill="none">
-                                    <path d="M25 15C25 11.134 21.866 8 18 8C14.686 8 11.726 10.291 10.937 13.5C8.195 14.088 6 16.549 6 19.5C6 22.866 8.634 26 12 26H25C27.761 26 30 23.761 30 21C30 18.239 27.761 16 25 16" stroke="#764BA2" stroke-width="2" fill="rgba(118, 75, 162, 0.1)"/>
+                                    <path d="M25 15C25 11.134 21.866 8 18 8C14.686 8 11.726 10.291 10.937 13.5C8.195 14.088 6 16.549 6 19.5C6 22.866 8.634 26 12 26H25C27.761 26 30 23.761 30 21C30 18.239 27.761 16 25 16" stroke="#5FB67C" stroke-width="2" fill="rgba(95, 182, 124, 0.1)"/>
                                 </svg>
                                 <span>Personal Cloud</span>
                             </div>
@@ -1049,7 +1046,7 @@
                             <circle cx="24" cy="24" r="16" fill="rgba(16, 185, 129, 0.2)"/>
                             <path d="M16 24l4 4 8-8" stroke="#10B981" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
-                        <h3>Diospyros Edge-First</h3>
+                        <h3>Diospirus Edge-First</h3>
                     </div>
                     <ul class="comparison-list">
                         <li>
@@ -1112,7 +1109,7 @@
             <!-- Where Is App -->
             <div class="app-card">
                 <div class="app-header">
-                    <div class="app-icon" style="background: linear-gradient(135deg, #667EEA, #764BA2);">
+                    <div class="app-icon" style="background: linear-gradient(135deg, #3E836B, #5FB67C);">
                         <svg viewBox="0 0 32 32" fill="white">
                             <path d="M16 2C10.477 2 6 6.477 6 12c0 7 10 18 10 18s10-11 10-18c0-5.523-4.477-10-10-10zm0 14a4 4 0 110-8 4 4 0 010 8z"/>
                         </svg>
@@ -1322,7 +1319,7 @@
             <!-- Your App -->
             <div class="app-card">
                 <div class="app-header">
-                    <div class="app-icon" style="background: linear-gradient(135deg, #667EEA, #764BA2);">
+                    <div class="app-icon" style="background: linear-gradient(135deg, #3E836B, #5FB67C);">
                         <svg viewBox="0 0 32 32" fill="white">
                             <path d="M16 2C8.268 2 2 8.268 2 16s6.268 14 14 14 14-6.268 14-14S23.732 2 16 2zm1 15h6v2h-6v6h-2v-6H9v-2h6V9h2v8z"/>
                         </svg>
@@ -1337,7 +1334,7 @@
                             <svg viewBox="0 0 20 20" fill="currentColor">
                                 <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
                             </svg>
-                            Build on Adios SDK
+                            Build on Diospirus SDK
                         </li>
                         <li>
                             <svg viewBox="0 0 20 20" fill="currentColor">
@@ -1369,7 +1366,7 @@
             <h2 class="cta-title">Ready to Build the Post-Cloud World?</h2>
             <p class="cta-subtitle">
                 Join thousands of developers building apps that respect user sovereignty. 
-                Get access to the Adios SDK, funding, and a community that believes in true digital ownership.
+                Get access to the Diospirus SDK, funding, and a community that believes in true digital ownership.
             </p>
             <div class="cta-buttons">
                 <a href="#" class="btn btn-primary">
@@ -1394,10 +1391,10 @@
             <div class="footer-brand">
                 <div class="footer-logo">
                     <svg viewBox="0 0 36 36" fill="none">
-                        <rect width="36" height="36" rx="8" fill="#6B8E23"/>
+                        <rect width="36" height="36" rx="8" fill="#3E836B"/>
                         <text x="18" y="25" font-family="-apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="white">D</text>
                     </svg>
-                    <span>DIOSPYROS</span>
+                    <img src="new-logo.png" alt="Diospirus" style="height: 36px; width: auto;">
                 </div>
                 <p class="footer-description">
                     Building the edge-first technology stack that enables complete data sovereignty. 
@@ -1410,7 +1407,7 @@
                 <ul>
                     <li><a href="#">Where Is</a></li>
                     <li><a href="#">GutFlow</a></li>
-                    <li><a href="#">Adios SDK</a></li>
+                    <li><a href="#">Diospirus SDK</a></li>
                     <li><a href="#">Herald Proxy</a></li>
                 </ul>
             </div>
@@ -1437,7 +1434,7 @@
         </div>
         
         <div class="footer-bottom">
-            <p>© 2024 Diospyros.app · Edge-First Technology Stack</p>
+            <p>© 2024 Diospirus · Privacy-First Technology</p>
         </div>
     </footer>
 </body>

@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-EdgeFirst AI is building a company website and application ecosystem focused on edge-first, privacy-preserving AI applications. The core principle is that all AI processing happens on-device without sending user data to cloud servers.
+Idios (idios.cloud) is building a technology stack and application ecosystem that enables complete data sovereignty. The name comes from ancient Greek meaning "one's own, personal, private." Idios creates a personal cloud architecture where all apps run in the user's own infrastructure (devices, home storage, personal cloud) with an intelligent stateless proxy called the Herald that manages external interactions without storing data.
 
 ## Key Technical Principles
 
@@ -59,13 +59,29 @@ npm run android   # Run on Android emulator
 - 0 bytes to cloud storage for user data
 - Model size optimization through 4-bit quantization
 
+## Key Architecture Components
+
+### The Idios (Personal Infrastructure)
+- User's devices (phone, tablet, laptop)
+- Home infrastructure (NAS, home server)
+- Personal cloud storage (iCloud, Google Drive, Dropbox)
+- All apps run HERE in the user's sovereign space
+
+### The Herald (Intelligent Proxy)
+- Stateless message relay in the cloud
+- Receives messages while devices are offline
+- Brokers AI requests when local models aren't sufficient
+- Auto-expires all data (configurable TTL)
+- Zero permanent storage
+- Acts as a trusted messenger between the idios and external world
+
 ## Key Products
 
-1. **Where Is** - Family location intelligence app
-2. **GutFlow** - Digestive health AI assistant
-3. **BudgetAI** - Financial intelligence (Q2 2025)
-4. **StudyBuddy** - Educational assistant (Q3 2025)
-5. **HealthVault** - Medical records AI (Q4 2025)
+1. **Where Is** - Family location coordination without surveillance
+2. **GutFlow** - Medical data that stays medical
+3. **BudgetAI** - Financial intelligence, truly yours (Q2 2025)
+4. **StudyBuddy** - Education without data harvesting (Q3 2025)
+5. **HealthVault** - Medical records meet sovereignty (Q4 2025)
 
 ## Testing Approach
 
