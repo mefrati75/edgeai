@@ -529,6 +529,13 @@
             border-radius: var(--radius);
             padding: 1.5rem;
             text-align: center;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .vibe-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
         }
         
         .vibe-card h4 {
@@ -541,6 +548,63 @@
         .vibe-card p {
             color: var(--text-light);
             font-size: 0.9rem;
+        }
+        
+        /* Vibe Examples */
+        .vibe-examples {
+            max-width: 1200px;
+            margin: 3rem auto 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .vibe-terminal {
+            background: var(--text-dark);
+            border-radius: var(--radius);
+            padding: 2rem;
+            font-family: 'Courier New', monospace;
+            color: #00FF00;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .vibe-terminal::before {
+            content: '$ ';
+            color: #00FF00;
+        }
+        
+        .typing-effect {
+            display: inline-block;
+            animation: typing 4s steps(40, end), blink-caret 0.75s step-end infinite;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 3px solid #00FF00;
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #00FF00; }
+        }
+        
+        .vibe-result {
+            background: var(--bg-white);
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: var(--shadow-md);
+            text-align: center;
+        }
+        
+        .vibe-result img {
+            height: 60px;
+            width: auto;
+            margin-bottom: 1rem;
         }
         
         /* Death of Cloud Section */
@@ -835,6 +899,10 @@
                 grid-template-columns: 1fr;
             }
             
+            .vibe-examples {
+                grid-template-columns: 1fr;
+            }
+            
             .timeline-item,
             .timeline-item:nth-child(even) {
                 flex-direction: column;
@@ -1029,6 +1097,7 @@
     <!-- Vibe Coding Section -->
     <section class="vibe-section" id="vibe">
         <div class="section-header">
+            <img src="new-logo.png" alt="Diospyros" style="height: 60px; width: auto; margin-bottom: 2rem;">
             <h2 class="section-title">Vibe Coding: Think It. Build It. Ship It.</h2>
             <p class="section-subtitle">
                 The last programming language you'll ever need is the one you already speak. 
@@ -1039,17 +1108,31 @@
         <div class="vibe-demo">
             <div class="vibe-grid">
                 <div class="vibe-card">
-                    <h4>Describe</h4>
+                    <h4>📝 Describe</h4>
                     <p>"I need an app that tracks my mood with the weather"</p>
                 </div>
                 <div class="vibe-card">
-                    <h4>Generate</h4>
+                    <h4>⚡ Generate</h4>
                     <p>AI creates complete app in seconds, runs locally</p>
                 </div>
                 <div class="vibe-card">
-                    <h4>Iterate</h4>
+                    <h4>🔄 Iterate</h4>
                     <p>"Make it more colorful" - instant updates, no deploy</p>
                 </div>
+            </div>
+        </div>
+        
+        <div class="vibe-examples">
+            <div class="vibe-terminal">
+                <span class="typing-effect">Create a recipe app that suggests meals based on what's in my fridge</span>
+            </div>
+            <div class="vibe-result">
+                <img src="new-logo.png" alt="Diospyros">
+                <h4 style="color: var(--primary); margin-bottom: 1rem;">✨ App Generated!</h4>
+                <p style="color: var(--text-light);">
+                    FridgeChef app created. AI-powered recipe suggestions.<br>
+                    Running locally. Zero cloud dependencies. Instant.
+                </p>
             </div>
         </div>
     </section>
