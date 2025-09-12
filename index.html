@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diospyros | Privacy-First Technology</title>
+    <title>Diospyros | AI-Native Edge Computing - The Post-Cloud Era</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
     <style>
         * {
@@ -64,7 +64,7 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 0.75rem;
             text-decoration: none;
         }
         
@@ -82,13 +82,12 @@
             font-size: 1.5rem;
             font-weight: 700;
             color: var(--primary);
-            letter-spacing: -0.02em;
-            margin-left: 0.75rem;
+            letter-spacing: -0.01em;
         }
         
         .nav-links {
             display: flex;
-            gap: 3rem;
+            gap: 2.5rem;
             list-style: none;
             align-items: center;
         }
@@ -99,7 +98,6 @@
             font-weight: 500;
             font-size: 0.95rem;
             transition: all 0.2s;
-            position: relative;
         }
         
         .nav-links a:hover {
@@ -126,7 +124,7 @@
             box-shadow: var(--shadow-md);
         }
         
-        /* Hero Section */
+        /* Hero Section - Revolutionary */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -134,26 +132,42 @@
             justify-content: center;
             padding: 8rem 2rem 4rem;
             background: linear-gradient(180deg, var(--bg-white) 0%, var(--bg-light) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(62, 131, 107, 0.03) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 30%, rgba(95, 182, 124, 0.03) 0%, transparent 50%);
+            pointer-events: none;
         }
         
         .hero-content {
             max-width: 1200px;
             width: 100%;
             text-align: center;
+            position: relative;
+            z-index: 1;
         }
         
         .hero-logo {
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
             animation: fadeInDown 0.8s ease-out;
         }
         
         @keyframes fadeInDown {
             from {
                 opacity: 0;
-                transform: translateY(-20px);
+                transform: translateY(-30px);
             }
             to {
                 opacity: 1;
@@ -166,23 +180,16 @@
             align-items: center;
             gap: 0.5rem;
             padding: 0.5rem 1.25rem;
-            background: var(--bg-white);
-            border: 1px solid var(--border);
+            background: linear-gradient(135deg, rgba(62, 131, 107, 0.1), rgba(95, 182, 124, 0.1));
+            border: 1px solid rgba(62, 131, 107, 0.2);
             border-radius: 100px;
             margin-bottom: 2rem;
+            animation: pulse 2s ease-in-out infinite;
         }
         
-        .hero-cta-group {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            margin-top: 3rem;
-            flex-wrap: wrap;
-        }
-        
-        .btn-lg {
-            padding: 1.125rem 2.5rem;
-            font-size: 1.05rem;
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
         }
         
         .badge-dot {
@@ -190,13 +197,20 @@
             height: 8px;
             background: var(--secondary);
             border-radius: 50%;
+            animation: blink 2s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
         }
         
         .hero-badge span {
-            color: var(--text-light);
+            color: var(--primary);
             font-size: 0.875rem;
-            font-weight: 500;
+            font-weight: 600;
             letter-spacing: 0.02em;
+            text-transform: uppercase;
         }
         
         .hero h1 {
@@ -218,360 +232,16 @@
         .hero-subtitle {
             font-size: 1.25rem;
             color: var(--text-light);
-            max-width: 700px;
+            max-width: 800px;
             margin: 0 auto 3rem;
             line-height: 1.7;
         }
         
-        /* Architecture Section */
-        .architecture-section {
-            padding: 6rem 2rem;
-            background: var(--bg-white);
-        }
-        
-        .architecture-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .arch-grid {
-            display: grid;
-            grid-template-columns: 1fr auto 1fr;
-            gap: 3rem;
-            align-items: center;
-            margin-top: 4rem;
-        }
-        
-        .arch-card {
-            background: var(--bg-light);
-            border-radius: var(--radius-lg);
-            padding: 3rem;
-            text-align: center;
-            position: relative;
-            height: 100%;
-        }
-        
-        .arch-card.primary {
-            background: linear-gradient(135deg, rgba(62, 131, 107, 0.05) 0%, rgba(95, 182, 124, 0.05) 100%);
-            border: 2px solid rgba(62, 131, 107, 0.2);
-        }
-        
-        .arch-card h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-        
-        .arch-icon {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 2rem;
-            background: var(--bg-white);
-            border-radius: var(--radius);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: var(--shadow-sm);
-        }
-        
-        .arch-icon svg {
-            width: 40px;
-            height: 40px;
-        }
-        
-        .arch-features {
-            list-style: none;
-            text-align: left;
-            margin-top: 2rem;
-        }
-        
-        .arch-features li {
-            display: flex;
-            align-items: flex-start;
-            gap: 0.75rem;
-            padding: 0.75rem 0;
-            color: var(--text-light);
-            font-size: 0.95rem;
-        }
-        
-        .arch-features .icon {
-            width: 20px;
-            height: 20px;
-            flex-shrink: 0;
-            margin-top: 2px;
-        }
-        
-        .flow-arrow {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--secondary);
-        }
-        
-        .flow-arrow svg {
-            width: 48px;
-            height: 48px;
-        }
-        
-        /* Comparison Section */
-        .comparison-section {
-            padding: 6rem 2rem;
-            background: var(--bg-light);
-        }
-        
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-        
-        .section-title {
-            font-size: 3rem;
-            font-weight: 900;
-            margin-bottom: 1rem;
-            color: var(--text-dark);
-            letter-spacing: -0.02em;
-        }
-        
-        .section-subtitle {
-            font-size: 1.125rem;
-            color: var(--text-light);
-        }
-        
-        .comparison-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .comparison-card {
-            background: var(--bg-white);
-            border-radius: var(--radius-lg);
-            padding: 3rem;
-            position: relative;
-            box-shadow: var(--shadow-sm);
-        }
-        
-        .comparison-card.old-cloud {
-            border-top: 4px solid var(--text-light);
-        }
-        
-        .comparison-card.new-cloud {
-            border-top: 4px solid var(--primary);
-            box-shadow: var(--shadow-md);
-        }
-        
-        .comparison-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-        
-        .comparison-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: var(--radius-sm);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .old-cloud .comparison-icon {
-            background: rgba(102, 102, 102, 0.1);
-            color: var(--text-light);
-        }
-        
-        .new-cloud .comparison-icon {
-            background: rgba(62, 131, 107, 0.1);
-            color: var(--primary);
-        }
-        
-        .comparison-header h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--text-dark);
-        }
-        
-        .comparison-list {
-            list-style: none;
-        }
-        
-        .comparison-list li {
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-            padding: 1rem 0;
-            border-bottom: 1px solid var(--border);
-        }
-        
-        .comparison-list li:last-child {
-            border-bottom: none;
-        }
-        
-        .comparison-list .icon {
-            width: 24px;
-            height: 24px;
-            flex-shrink: 0;
-            margin-top: 2px;
-        }
-        
-        .old-cloud .comparison-list .icon {
-            color: var(--text-light);
-        }
-        
-        .new-cloud .comparison-list .icon {
-            color: var(--secondary);
-        }
-        
-        .comparison-list strong {
-            display: block;
-            color: var(--text-dark);
-            font-weight: 600;
-            margin-bottom: 0.25rem;
-        }
-        
-        .comparison-list span {
-            color: var(--text-light);
-            font-size: 0.9rem;
-        }
-        
-        /* Apps Section */
-        .apps-section {
-            padding: 6rem 2rem;
-            background: var(--bg-white);
-        }
-        
-        .apps-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            max-width: 1400px;
-            margin: 3rem auto 0;
-        }
-        
-        .app-card {
-            background: var(--bg-light);
-            border-radius: var(--radius-lg);
-            padding: 2.5rem;
-            position: relative;
-            transition: all 0.3s;
-            cursor: pointer;
-        }
-        
-        .app-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-lg);
-        }
-        
-        .app-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 1.5rem;
-        }
-        
-        .app-icon {
-            width: 64px;
-            height: 64px;
-            background: var(--bg-white);
-            border-radius: var(--radius);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: var(--shadow-sm);
-        }
-        
-        .app-icon svg {
-            width: 32px;
-            height: 32px;
-            color: var(--primary);
-        }
-        
-        .app-status {
-            padding: 0.375rem 0.875rem;
-            border-radius: 100px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-        
-        .status-live {
-            background: rgba(95, 182, 124, 0.15);
-            color: var(--secondary);
-        }
-        
-        .status-soon {
-            background: rgba(102, 102, 102, 0.1);
-            color: var(--text-light);
-        }
-        
-        .app-content h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            color: var(--text-dark);
-        }
-        
-        .app-description {
-            color: var(--text-light);
-            margin-bottom: 1.5rem;
-            font-size: 0.95rem;
-        }
-        
-        .app-features {
-            list-style: none;
-        }
-        
-        .app-features li {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            padding: 0.5rem 0;
-            color: var(--text-light);
-            font-size: 0.9rem;
-        }
-        
-        .app-features .check {
-            width: 16px;
-            height: 16px;
-            color: var(--secondary);
-            flex-shrink: 0;
-        }
-        
-        /* CTA Section */
-        .cta-section {
-            padding: 8rem 2rem;
-            background: linear-gradient(135deg, rgba(62, 131, 107, 0.05) 0%, rgba(95, 182, 124, 0.05) 100%);
-            text-align: center;
-        }
-        
-        .cta-content {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        
-        .cta-title {
-            font-size: clamp(2rem, 4vw, 3rem);
-            font-weight: 900;
-            margin-bottom: 1.5rem;
-            color: var(--text-dark);
-            letter-spacing: -0.02em;
-        }
-        
-        .cta-subtitle {
-            font-size: 1.125rem;
-            color: var(--text-light);
-            margin-bottom: 3rem;
-        }
-        
-        .cta-buttons {
+        .hero-cta-group {
             display: flex;
             gap: 1rem;
             justify-content: center;
+            margin-top: 3rem;
             flex-wrap: wrap;
         }
         
@@ -611,11 +281,467 @@
             box-shadow: var(--shadow-sm);
         }
         
+        /* Revolution Section */
+        .revolution-section {
+            padding: 6rem 2rem;
+            background: var(--bg-white);
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .section-title {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+            letter-spacing: -0.02em;
+        }
+        
+        .section-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+        
+        .revolution-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .revolution-card {
+            background: var(--bg-light);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+        
+        .revolution-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary);
+        }
+        
+        .revolution-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, rgba(62, 131, 107, 0.1), rgba(95, 182, 124, 0.1));
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .revolution-icon img {
+            height: 40px;
+            width: auto;
+        }
+        
+        .revolution-number {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            width: 32px;
+            height: 32px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.875rem;
+        }
+        
+        .revolution-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+        
+        .revolution-card p {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+        
+        /* AI-First Section */
+        .ai-section {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, rgba(62, 131, 107, 0.02) 0%, rgba(95, 182, 124, 0.02) 100%);
+        }
+        
+        .ai-showcase {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 4rem auto 0;
+            align-items: center;
+        }
+        
+        .ai-content {
+            padding: 2rem;
+        }
+        
+        .ai-content h3 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+            line-height: 1.2;
+        }
+        
+        .ai-features {
+            list-style: none;
+            margin-top: 2rem;
+        }
+        
+        .ai-features li {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .ai-features li:last-child {
+            border-bottom: none;
+        }
+        
+        .ai-features .icon {
+            width: 24px;
+            height: 24px;
+            color: var(--secondary);
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        
+        .ai-visual {
+            background: var(--bg-white);
+            border-radius: var(--radius-lg);
+            padding: 3rem;
+            box-shadow: var(--shadow-md);
+            text-align: center;
+            position: relative;
+        }
+        
+        .ai-visual img {
+            height: 80px;
+            width: auto;
+            margin-bottom: 2rem;
+        }
+        
+        .code-window {
+            background: var(--text-dark);
+            border-radius: var(--radius-sm);
+            padding: 1.5rem;
+            margin-top: 2rem;
+            text-align: left;
+        }
+        
+        .code-header {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .code-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        
+        .code-dot:nth-child(1) { background: #FF5F56; }
+        .code-dot:nth-child(2) { background: #FFBD2E; }
+        .code-dot:nth-child(3) { background: #27C93F; }
+        
+        .code-content {
+            color: #A8E6CF;
+            font-family: 'Courier New', monospace;
+            font-size: 0.875rem;
+            line-height: 1.6;
+        }
+        
+        .code-content .comment {
+            color: #7C7C7C;
+        }
+        
+        .code-content .keyword {
+            color: #FFD23F;
+        }
+        
+        /* Vibe Coding Section */
+        .vibe-section {
+            padding: 6rem 2rem;
+            background: var(--bg-white);
+        }
+        
+        .vibe-demo {
+            max-width: 1200px;
+            margin: 4rem auto 0;
+            background: var(--bg-light);
+            border-radius: var(--radius-lg);
+            padding: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .vibe-demo::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--primary));
+            background-size: 200% 100%;
+            animation: shimmer 3s linear infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        
+        .vibe-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .vibe-card {
+            background: var(--bg-white);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .vibe-card h4 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .vibe-card p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+        
+        /* Death of Cloud Section */
+        .death-section {
+            padding: 6rem 2rem;
+            background: linear-gradient(180deg, var(--bg-light) 0%, var(--bg-white) 100%);
+        }
+        
+        .death-timeline {
+            max-width: 1000px;
+            margin: 4rem auto 0;
+            position: relative;
+        }
+        
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--border);
+            transform: translateX(-50%);
+        }
+        
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+        
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        
+        .timeline-content {
+            flex: 1;
+            padding: 2rem;
+            background: var(--bg-white);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            margin: 0 2rem;
+        }
+        
+        .timeline-dot {
+            width: 24px;
+            height: 24px;
+            background: var(--primary);
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 4px solid var(--bg-white);
+            z-index: 1;
+        }
+        
+        .timeline-content h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-content .year {
+            color: var(--secondary);
+            font-weight: 600;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+        
+        .timeline-content p {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+        
+        /* Apps Section */
+        .apps-section {
+            padding: 6rem 2rem;
+            background: var(--bg-white);
+        }
+        
+        .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 3rem auto 0;
+        }
+        
+        .app-card {
+            background: var(--bg-light);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            position: relative;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+        
+        .app-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary);
+        }
+        
+        .app-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+        
+        .app-icon {
+            width: 64px;
+            height: 64px;
+            background: var(--bg-white);
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .app-icon img {
+            height: 32px;
+            width: auto;
+        }
+        
+        .app-status {
+            padding: 0.375rem 0.875rem;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .status-live {
+            background: rgba(95, 182, 124, 0.15);
+            color: var(--secondary);
+        }
+        
+        .status-soon {
+            background: rgba(102, 102, 102, 0.1);
+            color: var(--text-light);
+        }
+        
+        .app-content h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+        
+        .app-description {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 8rem 2rem;
+            background: linear-gradient(135deg, rgba(62, 131, 107, 0.05) 0%, rgba(95, 182, 124, 0.05) 100%);
+            text-align: center;
+            position: relative;
+        }
+        
+        .cta-logo {
+            margin-bottom: 2rem;
+        }
+        
+        .cta-logo img {
+            height: 80px;
+            width: auto;
+        }
+        
+        .cta-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .cta-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+            letter-spacing: -0.02em;
+        }
+        
+        .cta-subtitle {
+            font-size: 1.125rem;
+            color: var(--text-light);
+            margin-bottom: 3rem;
+        }
+        
         /* Footer */
         footer {
             padding: 4rem 2rem 2rem;
-            background: var(--bg-white);
-            border-top: 1px solid var(--border);
+            background: var(--text-dark);
+            color: var(--bg-white);
         }
         
         .footer-content {
@@ -642,16 +768,17 @@
         .footer-logo img {
             height: 40px;
             width: auto;
+            filter: brightness(0) invert(1);
         }
         
         .footer-description {
-            color: var(--text-light);
+            color: rgba(255, 255, 255, 0.7);
             line-height: 1.6;
             max-width: 350px;
         }
         
         .footer-column h4 {
-            color: var(--text-dark);
+            color: var(--bg-white);
             margin-bottom: 1.5rem;
             font-size: 0.875rem;
             text-transform: uppercase;
@@ -668,21 +795,21 @@
         }
         
         .footer-column a {
-            color: var(--text-light);
+            color: rgba(255, 255, 255, 0.7);
             text-decoration: none;
             transition: color 0.2s;
             font-size: 0.95rem;
         }
         
         .footer-column a:hover {
-            color: var(--primary);
+            color: var(--secondary);
         }
         
         .footer-bottom {
             padding-top: 2rem;
-            border-top: 1px solid var(--border);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
             text-align: center;
-            color: var(--text-light);
+            color: rgba(255, 255, 255, 0.5);
             font-size: 0.875rem;
         }
         
@@ -696,18 +823,29 @@
                 font-size: 2.5rem;
             }
             
-            .arch-grid {
+            .revolution-grid {
                 grid-template-columns: 1fr;
-                gap: 2rem;
             }
             
-            .flow-arrow {
-                transform: rotate(90deg);
-                margin: -1rem 0;
+            .ai-showcase {
+                grid-template-columns: 1fr;
             }
             
-            .comparison-grid {
+            .vibe-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            .timeline-item,
+            .timeline-item:nth-child(even) {
+                flex-direction: column;
+            }
+            
+            .timeline-line {
+                left: 20px;
+            }
+            
+            .timeline-dot {
+                left: 20px;
             }
             
             .apps-grid {
@@ -730,11 +868,11 @@
                 <span class="logo-text">Diospyros</span>
             </a>
             <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#architecture">Architecture</a></li>
+                <li><a href="#revolution">Revolution</a></li>
+                <li><a href="#ai-first">AI-First</a></li>
+                <li><a href="#vibe">Vibe Coding</a></li>
                 <li><a href="#apps">Apps</a></li>
-                <li><a href="#developers">Developers</a></li>
-                <li><a href="#" class="nav-cta">Get Started</a></li>
+                <li><a href="#" class="nav-cta">Join Revolution</a></li>
             </ul>
         </div>
     </nav>
@@ -742,226 +880,216 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-content">
-            <!-- Large Logo in Hero -->
+            <!-- Large Logo -->
             <div class="hero-logo">
-                <img src="new-logo.png" alt="Diospyros" style="height: 100px; width: auto;">
+                <img src="new-logo.png" alt="Diospyros" style="height: 120px; width: auto;">
             </div>
             
             <div class="hero-badge">
                 <div class="badge-dot"></div>
-                <span>Privacy-First Technology</span>
+                <span>The Post-Cloud Era Begins</span>
             </div>
             
-            <h1>Your Data Belongs <span class="gradient">In Your Hands</span></h1>
+            <h1>AI Killed the Cloud.<br><span class="gradient">We're Building What's Next.</span></h1>
             
             <p class="hero-subtitle">
-                Diospyros enables complete data sovereignty with apps that run entirely in your personal infrastructure. 
-                Experience true digital freedom without sacrificing functionality.
+                Two historic shifts converged: AI makes APIs obsolete. Vibe coding makes anyone a developer. 
+                The result? Software that lives where it belongs—on your devices, under your control, 
+                powered by AI that never leaves home.
             </p>
             
             <div class="hero-cta-group">
-                <a href="#" class="btn btn-primary btn-lg">Get Started</a>
-                <a href="#architecture" class="btn btn-secondary btn-lg">Learn More</a>
+                <a href="#revolution" class="btn btn-primary">See the Revolution</a>
+                <a href="#vibe" class="btn btn-secondary">Try Vibe Coding</a>
             </div>
         </div>
     </section>
     
-    <!-- Architecture Section -->
-    <section class="architecture-section" id="architecture">
-        <div class="architecture-container">
-            <div class="section-header">
-                <h2 class="section-title">The Diospyros Architecture</h2>
-                <p class="section-subtitle">A revolutionary approach to personal computing</p>
+    <!-- Revolution Section -->
+    <section class="revolution-section" id="revolution">
+        <div class="section-header">
+            <h2 class="section-title">The Perfect Storm That Killed SaaS</h2>
+            <p class="section-subtitle">
+                Three unstoppable forces converged to make cloud computing obsolete. 
+                This isn't evolution—it's revolution.
+            </p>
+        </div>
+        
+        <div class="revolution-grid">
+            <div class="revolution-card">
+                <div class="revolution-icon">
+                    <img src="new-logo.png" alt="Diospyros">
+                    <div class="revolution-number">1</div>
+                </div>
+                <h3>Vibe Coding Revolution</h3>
+                <p>
+                    Anyone can now create software by describing what they want. 
+                    No syntax. No frameworks. Just ideas becoming reality in real-time.
+                    The monopoly on software creation is broken.
+                </p>
             </div>
             
-            <div class="arch-grid">
-                <!-- Your Idios -->
-                <div class="arch-card primary">
-                    <div class="arch-icon">
-                        <svg viewBox="0 0 40 40" fill="none">
-                            <path d="M20 5L32 12V22C32 28.627 26.627 34 20 34C13.373 34 8 28.627 8 22V12L20 5Z" 
-                                  stroke="var(--primary)" stroke-width="2" fill="none"/>
-                            <circle cx="20" cy="20" r="4" fill="var(--secondary)"/>
-                        </svg>
-                    </div>
-                    <h3>Your Idios</h3>
-                    <p style="color: var(--text-light); margin-bottom: 1.5rem;">
-                        Personal infrastructure where all your apps and data live
-                    </p>
-                    <ul class="arch-features">
-                        <li>
-                            <svg class="icon" viewBox="0 0 20 20" fill="var(--secondary)">
-                                <path d="M10 2l7 7v7a2 2 0 01-2 2H5a2 2 0 01-2-2V9l7-7z"/>
-                            </svg>
-                            <span>Your devices & storage</span>
-                        </li>
-                        <li>
-                            <svg class="icon" viewBox="0 0 20 20" fill="var(--secondary)">
-                                <path d="M13 7H7v6h6V7z M10 1a9 9 0 100 18 9 9 0 000-18z"/>
-                            </svg>
-                            <span>Local AI processing</span>
-                        </li>
-                        <li>
-                            <svg class="icon" viewBox="0 0 20 20" fill="var(--secondary)">
-                                <path d="M10 2a8 8 0 018 8c0 2.21-.895 4.21-2.343 5.657L10 10V2z"/>
-                            </svg>
-                            <span>Complete sovereignty</span>
-                        </li>
-                    </ul>
+            <div class="revolution-card">
+                <div class="revolution-icon">
+                    <img src="new-logo.png" alt="Diospyros">
+                    <div class="revolution-number">2</div>
                 </div>
-                
-                <!-- Flow Arrow -->
-                <div class="flow-arrow">
-                    <svg viewBox="0 0 48 48" fill="none">
-                        <path d="M12 24h24m0 0l-8-8m8 8l-8 8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                    </svg>
+                <h3>MCP + AI > APIs</h3>
+                <p>
+                    Why call an API when AI can understand and execute intent directly? 
+                    Model Context Protocol makes every interaction intelligent. 
+                    APIs are the new assembly language.
+                </p>
+            </div>
+            
+            <div class="revolution-card">
+                <div class="revolution-icon">
+                    <img src="new-logo.png" alt="Diospyros">
+                    <div class="revolution-number">3</div>
                 </div>
-                
-                <!-- The Herald -->
-                <div class="arch-card">
-                    <div class="arch-icon">
-                        <svg viewBox="0 0 40 40" fill="none">
-                            <circle cx="20" cy="20" r="12" stroke="var(--secondary)" stroke-width="2"/>
-                            <path d="M20 14v12m-6-6h12" stroke="var(--secondary)" stroke-width="2" stroke-linecap="round"/>
+                <h3>Edge AI Supremacy</h3>
+                <p>
+                    Your phone is now more powerful than yesterday's data center. 
+                    AI models run locally, instantly, privately. 
+                    The cloud is now just expensive latency.
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- AI-First Section -->
+    <section class="ai-section" id="ai-first">
+        <div class="section-header">
+            <h2 class="section-title">AI-Native, Not Cloud-Native</h2>
+            <p class="section-subtitle">
+                We're not moving to the edge. We're building an entirely new computing paradigm 
+                where AI is the operating system and privacy is the default.
+            </p>
+        </div>
+        
+        <div class="ai-showcase">
+            <div class="ai-content">
+                <h3>MCP Replaces REST.<br>Intent Replaces Syntax.</h3>
+                <ul class="ai-features">
+                    <li>
+                        <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
                         </svg>
+                        <div>
+                            <strong>No More API Keys</strong><br>
+                            AI understands context and intent without authentication dance
+                        </div>
+                    </li>
+                    <li>
+                        <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                        </svg>
+                        <div>
+                            <strong>Instant Response</strong><br>
+                            Local AI means zero latency, infinite scale
+                        </div>
+                    </li>
+                    <li>
+                        <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                        </svg>
+                        <div>
+                            <strong>Self-Healing Systems</strong><br>
+                            AI adapts to changes without version conflicts
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="ai-visual">
+                <img src="new-logo.png" alt="Diospyros">
+                <h4 style="font-size: 1.5rem; font-weight: 700; color: var(--text-dark); margin-bottom: 1rem;">
+                    The New Stack
+                </h4>
+                <div class="code-window">
+                    <div class="code-header">
+                        <div class="code-dot"></div>
+                        <div class="code-dot"></div>
+                        <div class="code-dot"></div>
                     </div>
-                    <h3>The Herald</h3>
-                    <p style="color: var(--text-light); margin-bottom: 1.5rem;">
-                        Intelligent proxy for external interactions
-                    </p>
-                    <ul class="arch-features">
-                        <li>
-                            <svg class="icon" viewBox="0 0 20 20" fill="var(--secondary)">
-                                <path d="M10 2a8 8 0 100 16 8 8 0 000-16zm1 11H9v-2h2v2zm0-4H9V5h2v4z"/>
-                            </svg>
-                            <span>Stateless relay</span>
-                        </li>
-                        <li>
-                            <svg class="icon" viewBox="0 0 20 20" fill="var(--secondary)">
-                                <path d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v3l2 2v-5z"/>
-                            </svg>
-                            <span>Auto-expiring data</span>
-                        </li>
-                        <li>
-                            <svg class="icon" viewBox="0 0 20 20" fill="var(--secondary)">
-                                <path d="M3 3h14a2 2 0 012 2v10a2 2 0 01-2 2H3a2 2 0 01-2-2V5a2 2 0 012-2z"/>
-                            </svg>
-                            <span>Message queuing</span>
-                        </li>
-                    </ul>
+                    <div class="code-content">
+                        <span class="comment">// Old World: Cloud + API</span><br>
+                        <span class="keyword">const</span> data = await fetch('/api/user');<br>
+                        <span class="keyword">const</span> result = await process(data);<br><br>
+                        <span class="comment">// New World: Local AI + MCP</span><br>
+                        <span class="keyword">const</span> intent = "Get user preferences";<br>
+                        <span class="keyword">const</span> result = AI.execute(intent);<br>
+                        <span class="comment">// Instant. Private. Intelligent.</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
     
-    <!-- Comparison Section -->
-    <section class="comparison-section">
-        <div class="comparison-container">
-            <div class="section-header">
-                <h2 class="section-title">The Privacy Revolution</h2>
-                <p class="section-subtitle">See why millions are choosing data sovereignty</p>
+    <!-- Vibe Coding Section -->
+    <section class="vibe-section" id="vibe">
+        <div class="section-header">
+            <h2 class="section-title">Vibe Coding: Think It. Build It. Ship It.</h2>
+            <p class="section-subtitle">
+                The last programming language you'll ever need is the one you already speak. 
+                Describe what you want. AI builds it. No middleman. No cloud. Just vibes.
+            </p>
+        </div>
+        
+        <div class="vibe-demo">
+            <div class="vibe-grid">
+                <div class="vibe-card">
+                    <h4>Describe</h4>
+                    <p>"I need an app that tracks my mood with the weather"</p>
+                </div>
+                <div class="vibe-card">
+                    <h4>Generate</h4>
+                    <p>AI creates complete app in seconds, runs locally</p>
+                </div>
+                <div class="vibe-card">
+                    <h4>Iterate</h4>
+                    <p>"Make it more colorful" - instant updates, no deploy</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Death of Cloud Timeline -->
+    <section class="death-section">
+        <div class="section-header">
+            <img src="new-logo.png" alt="Diospyros" style="height: 60px; width: auto; margin-bottom: 2rem;">
+            <h2 class="section-title">The Timeline of Disruption</h2>
+            <p class="section-subtitle">How we got here and where we're going</p>
+        </div>
+        
+        <div class="death-timeline">
+            <div class="timeline-line"></div>
+            
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>The Cloud Era</h3>
+                    <div class="year">2006-2020</div>
+                    <p>Everything moved to the cloud. Your data became their product.</p>
+                </div>
+                <div class="timeline-dot"></div>
             </div>
             
-            <div class="comparison-grid">
-                <!-- Traditional Cloud -->
-                <div class="comparison-card old-cloud">
-                    <div class="comparison-header">
-                        <div class="comparison-icon">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/>
-                            </svg>
-                        </div>
-                        <h3>Traditional Cloud</h3>
-                    </div>
-                    <ul class="comparison-list">
-                        <li>
-                            <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
-                                <circle cx="12" cy="12" r="10"/>
-                            </svg>
-                            <div>
-                                <strong>Your data on their servers</strong>
-                                <span>Scattered across corporate data centers globally</span>
-                            </div>
-                        </li>
-                        <li>
-                            <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
-                                <circle cx="12" cy="12" r="10"/>
-                            </svg>
-                            <div>
-                                <strong>You're the product</strong>
-                                <span>Data mined for ads and sold to brokers</span>
-                            </div>
-                        </li>
-                        <li>
-                            <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
-                                <circle cx="12" cy="12" r="10"/>
-                            </svg>
-                            <div>
-                                <strong>Constant breaches</strong>
-                                <span>Your personal info exposed regularly</span>
-                            </div>
-                        </li>
-                        <li>
-                            <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
-                                <circle cx="12" cy="12" r="10"/>
-                            </svg>
-                            <div>
-                                <strong>No real ownership</strong>
-                                <span>Terms change, prices increase, data held hostage</span>
-                            </div>
-                        </li>
-                    </ul>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>AI Breakthrough</h3>
+                    <div class="year">2022-2024</div>
+                    <p>LLMs proved software could be generated, not just written.</p>
                 </div>
-                
-                <!-- Diospyros Edge-First -->
-                <div class="comparison-card new-cloud">
-                    <div class="comparison-header">
-                        <div class="comparison-icon">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
-                            </svg>
-                        </div>
-                        <h3>Diospyros Edge-First</h3>
-                    </div>
-                    <ul class="comparison-list">
-                        <li>
-                            <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
-                            </svg>
-                            <div>
-                                <strong>Your data at home</strong>
-                                <span>Lives on your devices and personal storage</span>
-                            </div>
-                        </li>
-                        <li>
-                            <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
-                            </svg>
-                            <div>
-                                <strong>You're the owner</strong>
-                                <span>Complete sovereignty, no surveillance</span>
-                            </div>
-                        </li>
-                        <li>
-                            <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
-                            </svg>
-                            <div>
-                                <strong>Unbreachable</strong>
-                                <span>No central servers to hack</span>
-                            </div>
-                        </li>
-                        <li>
-                            <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
-                            </svg>
-                            <div>
-                                <strong>Forever yours</strong>
-                                <span>No subscriptions, no lock-in, no limits</span>
-                            </div>
-                        </li>
-                    </ul>
+                <div class="timeline-dot"></div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>The Diospyros Era</h3>
+                    <div class="year">2024+</div>
+                    <p>Edge AI + Vibe Coding = The end of centralized computing.</p>
                 </div>
+                <div class="timeline-dot"></div>
             </div>
         </div>
     </section>
@@ -969,8 +1097,10 @@
     <!-- Apps Section -->
     <section class="apps-section" id="apps">
         <div class="section-header">
-            <h2 class="section-title">Apps Built for Privacy</h2>
-            <p class="section-subtitle">Real products proving that privacy and power aren't mutually exclusive</p>
+            <h2 class="section-title">Apps That Prove the Future</h2>
+            <p class="section-subtitle">
+                Built with vibe coding. Powered by edge AI. Zero cloud dependencies.
+            </p>
         </div>
         
         <div class="apps-grid">
@@ -978,35 +1108,16 @@
             <div class="app-card">
                 <div class="app-header">
                     <div class="app-icon">
-                        <svg viewBox="0 0 32 32" fill="currentColor">
-                            <path d="M16 2C10.477 2 6 6.477 6 12c0 7 10 18 10 18s10-11 10-18c0-5.523-4.477-10-10-10zm0 14a4 4 0 110-8 4 4 0 010 8z"/>
-                        </svg>
+                        <img src="new-logo.png" alt="Diospyros">
                     </div>
                     <span class="app-status status-live">LIVE</span>
                 </div>
                 <div class="app-content">
                     <h3>Where Is</h3>
-                    <p class="app-description">Family coordination without surveillance</p>
-                    <ul class="app-features">
-                        <li>
-                            <svg class="check" viewBox="0 0 16 16" fill="currentColor">
-                                <path d="M6 10.78l-2.39-2.39L2.2 9.8l3.8 3.8 8-8L12.59 4.2z"/>
-                            </svg>
-                            Real-time location in family's home cloud
-                        </li>
-                        <li>
-                            <svg class="check" viewBox="0 0 16 16" fill="currentColor">
-                                <path d="M6 10.78l-2.39-2.39L2.2 9.8l3.8 3.8 8-8L12.59 4.2z"/>
-                            </svg>
-                            Herald manages async family updates
-                        </li>
-                        <li>
-                            <svg class="check" viewBox="0 0 16 16" fill="currentColor">
-                                <path d="M6 10.78l-2.39-2.39L2.2 9.8l3.8 3.8 8-8L12.59 4.2z"/>
-                            </svg>
-                            Natural language AI queries
-                        </li>
-                    </ul>
+                    <p class="app-description">
+                        Family coordination without surveillance. 
+                        AI understands "Is mom at work?" without tracking anyone.
+                    </p>
                 </div>
             </div>
             
@@ -1014,87 +1125,52 @@
             <div class="app-card">
                 <div class="app-header">
                     <div class="app-icon">
-                        <svg viewBox="0 0 32 32" fill="currentColor">
-                            <path d="M16 2C8.268 2 2 8.268 2 16s6.268 14 14 14 14-6.268 14-14S23.732 2 16 2zm6 15h-5v5h-2v-5h-5v-2h5v-5h2v5h5v2z"/>
-                        </svg>
+                        <img src="new-logo.png" alt="Diospyros">
                     </div>
                     <span class="app-status status-live">LIVE</span>
                 </div>
                 <div class="app-content">
                     <h3>GutFlow</h3>
-                    <p class="app-description">Medical data that stays medical</p>
-                    <ul class="app-features">
-                        <li>
-                            <svg class="check" viewBox="0 0 16 16" fill="currentColor">
-                                <path d="M6 10.78l-2.39-2.39L2.2 9.8l3.8 3.8 8-8L12.59 4.2z"/>
-                            </svg>
-                            Health data never leaves your devices
-                        </li>
-                        <li>
-                            <svg class="check" viewBox="0 0 16 16" fill="currentColor">
-                                <path d="M6 10.78l-2.39-2.39L2.2 9.8l3.8 3.8 8-8L12.59 4.2z"/>
-                            </svg>
-                            On-device pattern recognition AI
-                        </li>
-                        <li>
-                            <svg class="check" viewBox="0 0 16 16" fill="currentColor">
-                                <path d="M6 10.78l-2.39-2.39L2.2 9.8l3.8 3.8 8-8L12.59 4.2z"/>
-                            </svg>
-                            Herald fetches nutrition data only
-                        </li>
-                    </ul>
+                    <p class="app-description">
+                        Medical AI that never leaves your device. 
+                        Your health data stays yours forever.
+                    </p>
                 </div>
             </div>
             
-            <!-- BudgetAI App -->
+            <!-- Your App -->
             <div class="app-card">
                 <div class="app-header">
                     <div class="app-icon">
-                        <svg viewBox="0 0 32 32" fill="currentColor">
-                            <path d="M16 2C8.268 2 2 8.268 2 16s6.268 14 14 14 14-6.268 14-14S23.732 2 16 2zm1 19.5v2h-2v-2c-2.21 0-4-1.79-4-4h2c0 1.1.9 2 2 2h2c1.1 0 2-.9 2-2s-.9-2-2-2h-2c-2.21 0-4-1.79-4-4s1.79-4 4-4v-2h2v2c2.21 0 4 1.79 4 4h-2c0-1.1-.9-2-2-2h-2c-1.1 0-2 .9-2 2s.9 2 2 2h2c2.21 0 4 1.79 4 4s-1.79 4-4 4z"/>
-                        </svg>
+                        <img src="new-logo.png" alt="Diospyros">
                     </div>
-                    <span class="app-status status-soon">Q2 2025</span>
+                    <span class="app-status status-soon">YOURS</span>
                 </div>
                 <div class="app-content">
-                    <h3>BudgetAI</h3>
-                    <p class="app-description">Financial intelligence, truly yours</p>
-                    <ul class="app-features">
-                        <li>
-                            <svg class="check" viewBox="0 0 16 16" fill="currentColor">
-                                <path d="M6 10.78l-2.39-2.39L2.2 9.8l3.8 3.8 8-8L12.59 4.2z"/>
-                            </svg>
-                            Bank data stays in home cloud
-                        </li>
-                        <li>
-                            <svg class="check" viewBox="0 0 16 16" fill="currentColor">
-                                <path d="M6 10.78l-2.39-2.39L2.2 9.8l3.8 3.8 8-8L12.59 4.2z"/>
-                            </svg>
-                            Local transaction analysis
-                        </li>
-                        <li>
-                            <svg class="check" viewBox="0 0 16 16" fill="currentColor">
-                                <path d="M6 10.78l-2.39-2.39L2.2 9.8l3.8 3.8 8-8L12.59 4.2z"/>
-                            </svg>
-                            Herald manages secure bank sync
-                        </li>
-                    </ul>
+                    <h3>Build Anything</h3>
+                    <p class="app-description">
+                        Describe your app. Ship in minutes. 
+                        No code. No cloud. Just vibes.
+                    </p>
                 </div>
             </div>
         </div>
     </section>
     
     <!-- CTA Section -->
-    <section class="cta-section" id="developers">
+    <section class="cta-section">
+        <div class="cta-logo">
+            <img src="new-logo.png" alt="Diospyros">
+        </div>
         <div class="cta-content">
-            <h2 class="cta-title">Ready to Build the Privacy-First Future?</h2>
+            <h2 class="cta-title">The Cloud is Dead. Long Live the Edge.</h2>
             <p class="cta-subtitle">
-                Join thousands of developers building apps that respect user sovereignty. 
-                Get access to the Diospyros SDK, funding, and a community that believes in true digital ownership.
+                Join the developers, creators, and visionaries building the post-cloud future. 
+                Where privacy is default. Where AI serves you. Where code is conversation.
             </p>
-            <div class="cta-buttons">
-                <a href="#" class="btn btn-primary">Apply to Incubator</a>
-                <a href="#" class="btn btn-secondary">Learn About Herald</a>
+            <div class="hero-cta-group">
+                <a href="#" class="btn btn-primary">Start Building</a>
+                <a href="#" class="btn btn-secondary">Read Manifesto</a>
             </div>
         </div>
     </section>
@@ -1105,31 +1181,31 @@
             <div class="footer-brand">
                 <div class="footer-logo">
                     <img src="new-logo.png" alt="Diospyros">
-                <span class="logo-text">Diospyros</span>
+                    <span style="font-size: 1.25rem; font-weight: 700;">Diospyros</span>
                 </div>
                 <p class="footer-description">
-                    Building the privacy-first technology stack that enables complete data sovereignty. 
-                    Your data, your devices, your control.
+                    Building the post-cloud future where AI is native, 
+                    privacy is default, and anyone can create software.
                 </p>
             </div>
             
             <div class="footer-column">
-                <h4>Products</h4>
+                <h4>Technology</h4>
                 <ul>
-                    <li><a href="#">Where Is</a></li>
-                    <li><a href="#">GutFlow</a></li>
-                    <li><a href="#">Diospyros SDK</a></li>
-                    <li><a href="#">Herald Proxy</a></li>
+                    <li><a href="#">Vibe Coding</a></li>
+                    <li><a href="#">MCP Protocol</a></li>
+                    <li><a href="#">Edge AI</a></li>
+                    <li><a href="#">Herald System</a></li>
                 </ul>
             </div>
             
             <div class="footer-column">
-                <h4>Developers</h4>
+                <h4>Resources</h4>
                 <ul>
                     <li><a href="#">Documentation</a></li>
-                    <li><a href="#">Incubator Program</a></li>
-                    <li><a href="#">Herald Specs</a></li>
-                    <li><a href="#">Open Source</a></li>
+                    <li><a href="#">Manifesto</a></li>
+                    <li><a href="#">GitHub</a></li>
+                    <li><a href="#">Community</a></li>
                 </ul>
             </div>
             
@@ -1145,7 +1221,7 @@
         </div>
         
         <div class="footer-bottom">
-            <p>© 2024 Diospyros · Privacy-First Technology</p>
+            <p>© 2024 Diospyros · The Post-Cloud Era</p>
         </div>
     </footer>
 </body>
