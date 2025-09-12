@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diospirus | Privacy-First Technology</title>
+    <title>Diospyros | Privacy-First Technology</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
     <style>
         * {
@@ -45,7 +45,7 @@
             position: fixed;
             top: 0;
             width: 100%;
-            padding: 1.25rem 0;
+            padding: 1rem 0;
             background: rgba(255, 255, 255, 0.98);
             backdrop-filter: blur(20px);
             z-index: 1000;
@@ -69,8 +69,21 @@
         }
         
         .logo img {
-            height: 52px;
+            height: 48px;
             width: auto;
+            transition: transform 0.2s;
+        }
+        
+        .logo:hover img {
+            transform: scale(1.05);
+        }
+        
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: -0.02em;
+            margin-left: 0.75rem;
         }
         
         .nav-links {
@@ -129,6 +142,25 @@
             text-align: center;
         }
         
+        .hero-logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            animation: fadeInDown 0.8s ease-out;
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
         .hero-badge {
             display: inline-flex;
             align-items: center;
@@ -138,6 +170,19 @@
             border: 1px solid var(--border);
             border-radius: 100px;
             margin-bottom: 2rem;
+        }
+        
+        .hero-cta-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .btn-lg {
+            padding: 1.125rem 2.5rem;
+            font-size: 1.05rem;
         }
         
         .badge-dot {
@@ -681,7 +726,8 @@
     <nav>
         <div class="nav-container">
             <a href="#" class="logo">
-                <img src="new-logo.png" alt="Diospirus">
+                <img src="new-logo.png" alt="Diospyros">
+                <span class="logo-text">Diospyros</span>
             </a>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
@@ -696,6 +742,11 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-content">
+            <!-- Large Logo in Hero -->
+            <div class="hero-logo">
+                <img src="new-logo.png" alt="Diospyros" style="height: 100px; width: auto;">
+            </div>
+            
             <div class="hero-badge">
                 <div class="badge-dot"></div>
                 <span>Privacy-First Technology</span>
@@ -704,9 +755,14 @@
             <h1>Your Data Belongs <span class="gradient">In Your Hands</span></h1>
             
             <p class="hero-subtitle">
-                Diospirus enables complete data sovereignty with apps that run entirely in your personal infrastructure. 
+                Diospyros enables complete data sovereignty with apps that run entirely in your personal infrastructure. 
                 Experience true digital freedom without sacrificing functionality.
             </p>
+            
+            <div class="hero-cta-group">
+                <a href="#" class="btn btn-primary btn-lg">Get Started</a>
+                <a href="#architecture" class="btn btn-secondary btn-lg">Learn More</a>
+            </div>
         </div>
     </section>
     
@@ -714,7 +770,7 @@
     <section class="architecture-section" id="architecture">
         <div class="architecture-container">
             <div class="section-header">
-                <h2 class="section-title">The Diospirus Architecture</h2>
+                <h2 class="section-title">The Diospyros Architecture</h2>
                 <p class="section-subtitle">A revolutionary approach to personal computing</p>
             </div>
             
@@ -857,7 +913,7 @@
                     </ul>
                 </div>
                 
-                <!-- Diospirus Edge-First -->
+                <!-- Diospyros Edge-First -->
                 <div class="comparison-card new-cloud">
                     <div class="comparison-header">
                         <div class="comparison-icon">
@@ -865,7 +921,7 @@
                                 <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
                             </svg>
                         </div>
-                        <h3>Diospirus Edge-First</h3>
+                        <h3>Diospyros Edge-First</h3>
                     </div>
                     <ul class="comparison-list">
                         <li>
@@ -1034,7 +1090,7 @@
             <h2 class="cta-title">Ready to Build the Privacy-First Future?</h2>
             <p class="cta-subtitle">
                 Join thousands of developers building apps that respect user sovereignty. 
-                Get access to the Diospirus SDK, funding, and a community that believes in true digital ownership.
+                Get access to the Diospyros SDK, funding, and a community that believes in true digital ownership.
             </p>
             <div class="cta-buttons">
                 <a href="#" class="btn btn-primary">Apply to Incubator</a>
@@ -1048,7 +1104,8 @@
         <div class="footer-content">
             <div class="footer-brand">
                 <div class="footer-logo">
-                    <img src="new-logo.png" alt="Diospirus">
+                    <img src="new-logo.png" alt="Diospyros">
+                <span class="logo-text">Diospyros</span>
                 </div>
                 <p class="footer-description">
                     Building the privacy-first technology stack that enables complete data sovereignty. 
@@ -1061,7 +1118,7 @@
                 <ul>
                     <li><a href="#">Where Is</a></li>
                     <li><a href="#">GutFlow</a></li>
-                    <li><a href="#">Diospirus SDK</a></li>
+                    <li><a href="#">Diospyros SDK</a></li>
                     <li><a href="#">Herald Proxy</a></li>
                 </ul>
             </div>
@@ -1088,7 +1145,7 @@
         </div>
         
         <div class="footer-bottom">
-            <p>© 2024 Diospirus · Privacy-First Technology</p>
+            <p>© 2024 Diospyros · Privacy-First Technology</p>
         </div>
     </footer>
 </body>
