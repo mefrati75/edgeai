@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diospirus | Edge-First Technology Stack</title>
+    <title>Diospirus | Privacy-First Technology</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
     <style>
         * {
@@ -17,56 +17,27 @@
             --primary-dark: #2E6352;
             --secondary: #5FB67C;
             --accent: #5FB67C;
-            --success: #5FB67C;
-            --danger: #E85D5D;
-            --dark: #F9F6ED;
-            --dark-surface: #FFFFFF;
-            --light: #2C2C2C;
-            --text: #2C2C2C;
-            --text-dim: #666666;
+            --bg-light: #F9F6ED;
+            --bg-white: #FFFFFF;
+            --text-dark: #2C2C2C;
+            --text-light: #666666;
             --border: #E2E2E2;
-            --gradient-1: linear-gradient(135deg, #3E836B 0%, #5FB67C 100%);
-            --gradient-2: linear-gradient(135deg, #5FB67C 0%, #7FC495 100%);
-            --gradient-3: linear-gradient(135deg, #3E836B 0%, #2E6352 100%);
-            --gradient-4: linear-gradient(135deg, #5FB67C 0%, #3E836B 100%);
+            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.04);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+            --radius: 16px;
+            --radius-sm: 12px;
+            --radius-lg: 24px;
         }
         
         body {
-            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: #F9F6ED;
-            color: #2C2C2C;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: var(--bg-light);
+            color: var(--text-dark);
             overflow-x: hidden;
             line-height: 1.6;
-        }
-        
-        /* Animated Background */
-        .animated-bg {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: -1;
-            background: var(--dark);
-            overflow: hidden;
-        }
-        
-        .animated-bg::before {
-            content: '';
-            position: absolute;
-            width: 200%;
-            height: 200%;
-            top: -50%;
-            left: -50%;
-            background: radial-gradient(circle at 20% 50%, rgba(62, 131, 107, 0.08) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 80%, rgba(95, 182, 124, 0.08) 0%, transparent 50%),
-                        radial-gradient(circle at 40% 20%, rgba(62, 131, 107, 0.05) 0%, transparent 50%);
-            animation: rotate 30s linear infinite;
-        }
-        
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
         
         /* Navigation */
@@ -74,16 +45,17 @@
             position: fixed;
             top: 0;
             width: 100%;
-            padding: 1rem 2rem;
-            background: rgba(249, 246, 237, 0.95);
+            padding: 1.25rem 0;
+            background: rgba(255, 255, 255, 0.98);
             backdrop-filter: blur(20px);
             z-index: 1000;
-            border-bottom: 1px solid var(--border);
+            box-shadow: var(--shadow-sm);
         }
         
         .nav-container {
             max-width: 1400px;
             margin: 0 auto;
+            padding: 0 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -92,70 +64,53 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 0.75rem;
-            font-size: 1.5rem;
-            font-weight: 900;
-            color: var(--light);
+            gap: 1rem;
             text-decoration: none;
         }
         
-        .logo svg {
-            width: 40px;
-            height: 40px;
+        .logo img {
+            height: 52px;
+            width: auto;
         }
         
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 3rem;
             list-style: none;
             align-items: center;
         }
         
         .nav-links a {
-            color: var(--text);
+            color: var(--text-dark);
             text-decoration: none;
             font-weight: 500;
-            transition: all 0.3s;
+            font-size: 0.95rem;
+            transition: all 0.2s;
             position: relative;
-            padding: 0.5rem 0;
         }
         
         .nav-links a:hover {
-            color: var(--light);
-        }
-        
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--gradient-1);
-            transition: width 0.3s;
-        }
-        
-        .nav-links a:hover::after {
-            width: 100%;
+            color: var(--primary);
         }
         
         .nav-cta {
             padding: 0.75rem 2rem;
-            background: var(--gradient-1);
+            background: var(--primary);
             border: none;
-            border-radius: 50px;
+            border-radius: var(--radius-sm);
             color: white;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.2s;
             text-decoration: none;
             display: inline-block;
-            box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3);
+            font-size: 0.95rem;
         }
         
         .nav-cta:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(124, 58, 237, 0.4);
+            background: var(--primary-dark);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
         }
         
         /* Hero Section */
@@ -164,266 +119,160 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 6rem 2rem;
-            position: relative;
+            padding: 8rem 2rem 4rem;
+            background: linear-gradient(180deg, var(--bg-white) 0%, var(--bg-light) 100%);
         }
         
         .hero-content {
             max-width: 1200px;
             width: 100%;
             text-align: center;
-            z-index: 1;
         }
         
         .hero-badge {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            padding: 0.5rem 1.5rem;
-            background: rgba(124, 58, 237, 0.1);
-            border: 1px solid rgba(124, 58, 237, 0.3);
-            border-radius: 50px;
+            padding: 0.5rem 1.25rem;
+            background: var(--bg-white);
+            border: 1px solid var(--border);
+            border-radius: 100px;
             margin-bottom: 2rem;
         }
         
-        .hero-badge svg {
-            width: 20px;
-            height: 20px;
+        .badge-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--secondary);
+            border-radius: 50%;
         }
         
         .hero-badge span {
-            color: #3E836B;
+            color: var(--text-light);
             font-size: 0.875rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
+            font-weight: 500;
+            letter-spacing: 0.02em;
         }
         
         .hero h1 {
-            font-size: clamp(3rem, 7vw, 5rem);
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
             font-weight: 900;
             line-height: 1.1;
             margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, #3E836B 0%, #5FB67C 50%, #F093FB 100%);
+            color: var(--text-dark);
+            letter-spacing: -0.02em;
+        }
+        
+        .hero h1 .gradient {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
         
         .hero-subtitle {
-            font-size: 1.5rem;
-            color: var(--text);
-            max-width: 800px;
-            margin: 0 auto 3rem;
-            line-height: 1.6;
-        }
-        
-        /* Architecture Visualization */
-        .architecture-viz {
-            max-width: 1000px;
-            margin: 4rem auto;
-            padding: 3rem;
-            background: rgba(30, 41, 59, 0.3);
-            border: 1px solid var(--border);
-            border-radius: 2rem;
-            backdrop-filter: blur(10px);
-        }
-        
-        .arch-title {
-            text-align: center;
-            font-size: 1.125rem;
-            font-weight: 700;
-            color: #8FBC8F;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 3rem;
-        }
-        
-        .arch-diagram {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-            align-items: center;
-        }
-        
-        .home-cloud-box {
-            width: 100%;
+            font-size: 1.25rem;
+            color: var(--text-light);
             max-width: 700px;
-            padding: 2.5rem;
-            background: linear-gradient(135deg, rgba(62, 131, 107, 0.1), rgba(95, 182, 124, 0.1));
-            border: 2px solid transparent;
-            background-clip: padding-box;
-            border-image: linear-gradient(135deg, #3E836B, #5FB67C) 1;
-            border-radius: 1.5rem;
-            position: relative;
-            overflow: hidden;
+            margin: 0 auto 3rem;
+            line-height: 1.7;
         }
         
-        .home-cloud-box::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(135deg, #3E836B, #5FB67C);
-            border-radius: 1.5rem;
-            z-index: -1;
-            opacity: 0.3;
-            animation: pulse-border 3s ease-in-out infinite;
+        /* Architecture Section */
+        .architecture-section {
+            padding: 6rem 2rem;
+            background: var(--bg-white);
         }
         
-        @keyframes pulse-border {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 0.6; }
+        .architecture-container {
+            max-width: 1200px;
+            margin: 0 auto;
         }
         
-        .home-cloud-header {
-            display: flex;
+        .arch-grid {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 3rem;
             align-items: center;
-            gap: 1rem;
-            margin-bottom: 2rem;
+            margin-top: 4rem;
         }
         
-        .home-cloud-header svg {
-            width: 40px;
-            height: 40px;
+        .arch-card {
+            background: var(--bg-light);
+            border-radius: var(--radius-lg);
+            padding: 3rem;
+            text-align: center;
+            position: relative;
+            height: 100%;
         }
         
-        .home-cloud-header h3 {
+        .arch-card.primary {
+            background: linear-gradient(135deg, rgba(62, 131, 107, 0.05) 0%, rgba(95, 182, 124, 0.05) 100%);
+            border: 2px solid rgba(62, 131, 107, 0.2);
+        }
+        
+        .arch-card h3 {
             font-size: 1.5rem;
             font-weight: 700;
-            background: linear-gradient(135deg, #3E836B, #5FB67C);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--primary);
+            margin-bottom: 1rem;
         }
         
-        .devices-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 1rem;
-        }
-        
-        .device-card {
-            padding: 1.25rem;
-            background: rgba(15, 23, 42, 0.6);
-            border: 1px solid rgba(62, 131, 107, 0.2);
-            border-radius: 1rem;
-            text-align: center;
-            transition: all 0.3s;
-            cursor: pointer;
-        }
-        
-        .device-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(62, 131, 107, 0.5);
-            background: rgba(62, 131, 107, 0.1);
-        }
-        
-        .device-card svg {
-            width: 40px;
-            height: 40px;
-            margin-bottom: 0.5rem;
-        }
-        
-        .device-card span {
-            display: block;
-            font-size: 0.875rem;
-            color: var(--text);
-        }
-        
-        .flow-indicator {
+        .arch-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 2rem;
+            background: var(--bg-white);
+            border-radius: var(--radius);
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 60px;
-            position: relative;
+            box-shadow: var(--shadow-sm);
         }
         
-        .flow-line {
-            width: 2px;
-            height: 100%;
-            background: linear-gradient(180deg, transparent, var(--secondary), transparent);
-            position: relative;
-            overflow: hidden;
+        .arch-icon svg {
+            width: 40px;
+            height: 40px;
         }
         
-        .flow-line::after {
-            content: '';
-            position: absolute;
-            top: -100%;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(180deg, transparent, var(--light), transparent);
-            animation: flow 2s linear infinite;
+        .arch-features {
+            list-style: none;
+            text-align: left;
+            margin-top: 2rem;
         }
         
-        @keyframes flow {
-            to { top: 100%; }
-        }
-        
-        .broker-box {
-            width: 100%;
-            max-width: 700px;
-            padding: 2rem;
-            background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(79, 172, 254, 0.1));
-            border: 2px solid rgba(6, 182, 212, 0.3);
-            border-radius: 1.5rem;
-            position: relative;
-        }
-        
-        .broker-header {
+        .arch-features li {
             display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .broker-header svg {
-            width: 36px;
-            height: 36px;
-        }
-        
-        .broker-header h3 {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: #8FBC8F;
-        }
-        
-        .broker-features {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-        }
-        
-        .broker-feature {
-            display: flex;
-            align-items: center;
+            align-items: flex-start;
             gap: 0.75rem;
-            padding: 0.75rem;
-            background: rgba(6, 182, 212, 0.05);
-            border-radius: 0.75rem;
-            font-size: 0.875rem;
-            color: var(--text);
+            padding: 0.75rem 0;
+            color: var(--text-light);
+            font-size: 0.95rem;
         }
         
-        .broker-feature svg {
+        .arch-features .icon {
             width: 20px;
             height: 20px;
             flex-shrink: 0;
+            margin-top: 2px;
         }
         
-        /* Cloud Comparison */
+        .flow-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary);
+        }
+        
+        .flow-arrow svg {
+            width: 48px;
+            height: 48px;
+        }
+        
+        /* Comparison Section */
         .comparison-section {
             padding: 6rem 2rem;
-            background: var(--dark-surface);
-        }
-        
-        .comparison-container {
-            max-width: 1400px;
-            margin: 0 auto;
+            background: var(--bg-light);
         }
         
         .section-header {
@@ -435,39 +284,38 @@
             font-size: 3rem;
             font-weight: 900;
             margin-bottom: 1rem;
-            background: linear-gradient(135deg, #F093FB 0%, #F5576C 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--text-dark);
+            letter-spacing: -0.02em;
         }
         
         .section-subtitle {
-            font-size: 1.25rem;
-            color: var(--text);
+            font-size: 1.125rem;
+            color: var(--text-light);
         }
         
         .comparison-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 3rem;
-            margin-top: 3rem;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
         }
         
         .comparison-card {
+            background: var(--bg-white);
+            border-radius: var(--radius-lg);
             padding: 3rem;
-            border-radius: 2rem;
             position: relative;
-            overflow: hidden;
+            box-shadow: var(--shadow-sm);
         }
         
-        .old-cloud {
-            background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(245, 87, 108, 0.1));
-            border: 2px solid rgba(239, 68, 68, 0.2);
+        .comparison-card.old-cloud {
+            border-top: 4px solid var(--text-light);
         }
         
-        .new-cloud {
-            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(56, 249, 215, 0.1));
-            border: 2px solid rgba(16, 185, 129, 0.2);
+        .comparison-card.new-cloud {
+            border-top: 4px solid var(--primary);
+            box-shadow: var(--shadow-md);
         }
         
         .comparison-header {
@@ -477,58 +325,78 @@
             margin-bottom: 2rem;
         }
         
-        .comparison-header svg {
+        .comparison-icon {
             width: 48px;
             height: 48px;
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .old-cloud .comparison-icon {
+            background: rgba(102, 102, 102, 0.1);
+            color: var(--text-light);
+        }
+        
+        .new-cloud .comparison-icon {
+            background: rgba(62, 131, 107, 0.1);
+            color: var(--primary);
         }
         
         .comparison-header h3 {
-            font-size: 1.75rem;
+            font-size: 1.5rem;
             font-weight: 700;
-        }
-        
-        .old-cloud h3 {
-            color: #CD5C5C;
-        }
-        
-        .new-cloud h3 {
-            color: #228B22;
+            color: var(--text-dark);
         }
         
         .comparison-list {
             list-style: none;
-            space-y: 1rem;
         }
         
         .comparison-list li {
             display: flex;
             align-items: flex-start;
             gap: 1rem;
-            padding: 1rem;
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 0.75rem;
-            margin-bottom: 1rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border);
         }
         
-        .comparison-list svg {
+        .comparison-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .comparison-list .icon {
             width: 24px;
             height: 24px;
             flex-shrink: 0;
-            margin-top: 0.125rem;
+            margin-top: 2px;
         }
         
-        .comparison-visual {
-            margin-top: 3rem;
-            padding: 2rem;
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 1rem;
-            text-align: center;
+        .old-cloud .comparison-list .icon {
+            color: var(--text-light);
         }
         
-        /* Apps Showcase */
+        .new-cloud .comparison-list .icon {
+            color: var(--secondary);
+        }
+        
+        .comparison-list strong {
+            display: block;
+            color: var(--text-dark);
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+        
+        .comparison-list span {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+        
+        /* Apps Section */
         .apps-section {
             padding: 6rem 2rem;
-            position: relative;
+            background: var(--bg-white);
         }
         
         .apps-grid {
@@ -540,35 +408,17 @@
         }
         
         .app-card {
-            background: rgba(30, 41, 59, 0.5);
-            border: 1px solid var(--border);
-            border-radius: 1.5rem;
-            padding: 2rem;
+            background: var(--bg-light);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
             position: relative;
-            overflow: hidden;
             transition: all 0.3s;
             cursor: pointer;
         }
         
-        .app-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--gradient-1);
-            transform: scaleX(0);
-            transition: transform 0.3s;
-        }
-        
         .app-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
-        
-        .app-card:hover::before {
-            transform: scaleX(1);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
         }
         
         .app-header {
@@ -579,23 +429,25 @@
         }
         
         .app-icon {
-            width: 60px;
-            height: 60px;
-            background: var(--gradient-1);
-            border-radius: 1rem;
+            width: 64px;
+            height: 64px;
+            background: var(--bg-white);
+            border-radius: var(--radius);
             display: flex;
             align-items: center;
             justify-content: center;
+            box-shadow: var(--shadow-sm);
         }
         
         .app-icon svg {
             width: 32px;
             height: 32px;
+            color: var(--primary);
         }
         
         .app-status {
-            padding: 0.375rem 1rem;
-            border-radius: 50px;
+            padding: 0.375rem 0.875rem;
+            border-radius: 100px;
             font-size: 0.75rem;
             font-weight: 600;
             text-transform: uppercase;
@@ -603,28 +455,26 @@
         }
         
         .status-live {
-            background: rgba(16, 185, 129, 0.2);
-            color: #228B22;
-            border: 1px solid rgba(16, 185, 129, 0.3);
+            background: rgba(95, 182, 124, 0.15);
+            color: var(--secondary);
         }
         
         .status-soon {
-            background: rgba(245, 158, 11, 0.2);
-            color: var(--accent);
-            border: 1px solid rgba(245, 158, 11, 0.3);
+            background: rgba(102, 102, 102, 0.1);
+            color: var(--text-light);
         }
         
         .app-content h3 {
-            font-size: 1.75rem;
+            font-size: 1.5rem;
             font-weight: 700;
             margin-bottom: 0.5rem;
-            color: var(--light);
+            color: var(--text-dark);
         }
         
         .app-description {
-            color: var(--text);
+            color: var(--text-light);
             margin-bottom: 1.5rem;
-            font-size: 1rem;
+            font-size: 0.95rem;
         }
         
         .app-features {
@@ -636,21 +486,21 @@
             align-items: center;
             gap: 0.75rem;
             padding: 0.5rem 0;
-            color: var(--text);
-            font-size: 0.95rem;
+            color: var(--text-light);
+            font-size: 0.9rem;
         }
         
-        .app-features svg {
-            width: 20px;
-            height: 20px;
-            color: #8FBC8F;
+        .app-features .check {
+            width: 16px;
+            height: 16px;
+            color: var(--secondary);
             flex-shrink: 0;
         }
         
         /* CTA Section */
         .cta-section {
             padding: 8rem 2rem;
-            background: linear-gradient(135deg, rgba(62, 131, 107, 0.05), rgba(95, 182, 124, 0.05));
+            background: linear-gradient(135deg, rgba(62, 131, 107, 0.05) 0%, rgba(95, 182, 124, 0.05) 100%);
             text-align: center;
         }
         
@@ -660,35 +510,33 @@
         }
         
         .cta-title {
-            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-size: clamp(2rem, 4vw, 3rem);
             font-weight: 900;
             margin-bottom: 1.5rem;
-            background: var(--gradient-1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--text-dark);
+            letter-spacing: -0.02em;
         }
         
         .cta-subtitle {
-            font-size: 1.25rem;
-            color: var(--text);
+            font-size: 1.125rem;
+            color: var(--text-light);
             margin-bottom: 3rem;
         }
         
         .cta-buttons {
             display: flex;
-            gap: 1.5rem;
+            gap: 1rem;
             justify-content: center;
             flex-wrap: wrap;
         }
         
         .btn {
             padding: 1rem 2.5rem;
-            border-radius: 50px;
-            font-size: 1.125rem;
+            border-radius: var(--radius-sm);
+            font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.2s;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
@@ -696,32 +544,32 @@
         }
         
         .btn-primary {
-            background: var(--gradient-1);
+            background: var(--primary);
             color: white;
             border: none;
-            box-shadow: 0 10px 30px rgba(124, 58, 237, 0.3);
         }
         
         .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(124, 58, 237, 0.4);
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
         }
         
         .btn-secondary {
-            background: transparent;
-            color: var(--light);
-            border: 2px solid rgba(124, 58, 237, 0.5);
+            background: var(--bg-white);
+            color: var(--primary);
+            border: 2px solid var(--border);
         }
         
         .btn-secondary:hover {
-            background: rgba(124, 58, 237, 0.1);
-            transform: translateY(-3px);
+            border-color: var(--primary);
+            box-shadow: var(--shadow-sm);
         }
         
         /* Footer */
         footer {
             padding: 4rem 2rem 2rem;
-            background: var(--dark-surface);
+            background: var(--bg-white);
             border-top: 1px solid var(--border);
         }
         
@@ -743,29 +591,27 @@
         .footer-logo {
             display: flex;
             align-items: center;
-            gap: 0.75rem;
-            font-size: 1.5rem;
-            font-weight: 900;
-            color: var(--light);
+            gap: 1rem;
         }
         
-        .footer-logo svg {
-            width: 36px;
-            height: 36px;
+        .footer-logo img {
+            height: 40px;
+            width: auto;
         }
         
         .footer-description {
-            color: var(--text);
+            color: var(--text-light);
             line-height: 1.6;
             max-width: 350px;
         }
         
         .footer-column h4 {
-            color: var(--light);
+            color: var(--text-dark);
             margin-bottom: 1.5rem;
             font-size: 0.875rem;
             text-transform: uppercase;
             letter-spacing: 0.1em;
+            font-weight: 600;
         }
         
         .footer-column ul {
@@ -777,20 +623,22 @@
         }
         
         .footer-column a {
-            color: var(--text);
+            color: var(--text-light);
             text-decoration: none;
-            transition: color 0.3s;
+            transition: color 0.2s;
+            font-size: 0.95rem;
         }
         
         .footer-column a:hover {
-            color: #3E836B;
+            color: var(--primary);
         }
         
         .footer-bottom {
             padding-top: 2rem;
             border-top: 1px solid var(--border);
             text-align: center;
-            color: var(--text-dim);
+            color: var(--text-light);
+            font-size: 0.875rem;
         }
         
         /* Responsive */
@@ -801,6 +649,16 @@
             
             .hero h1 {
                 font-size: 2.5rem;
+            }
+            
+            .arch-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .flow-arrow {
+                transform: rotate(90deg);
+                margin: -1rem 0;
             }
             
             .comparison-grid {
@@ -819,13 +677,11 @@
     </style>
 </head>
 <body>
-    <div class="animated-bg"></div>
-    
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
             <a href="#" class="logo">
-                <img src="new-logo.png" alt="Diospirus" style="height: 40px; width: auto;">
+                <img src="new-logo.png" alt="Diospirus">
             </a>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
@@ -841,258 +697,214 @@
     <section class="hero" id="home">
         <div class="hero-content">
             <div class="hero-badge">
-                <svg viewBox="0 0 20 20" fill="none">
-                    <circle cx="10" cy="10" r="8" fill="#3E836B" opacity="0.2"/>
-                    <circle cx="10" cy="10" r="3" fill="#3E836B"/>
-                </svg>
-                <span>Edge-First Technology Stack</span>
+                <div class="badge-dot"></div>
+                <span>Privacy-First Technology</span>
             </div>
             
-            <h1>Complete Data Sovereignty</h1>
+            <h1>Your Data Belongs <span class="gradient">In Your Hands</span></h1>
             
             <p class="hero-subtitle">
-                Diospirus enables true personal cloud architecture where all apps run in your own infrastructure. 
-                With the Herald managing external interactions, you maintain complete sovereignty 
-                while staying connected to the world.
+                Diospirus enables complete data sovereignty with apps that run entirely in your personal infrastructure. 
+                Experience true digital freedom without sacrificing functionality.
             </p>
+        </div>
+    </section>
+    
+    <!-- Architecture Section -->
+    <section class="architecture-section" id="architecture">
+        <div class="architecture-container">
+            <div class="section-header">
+                <h2 class="section-title">The Diospirus Architecture</h2>
+                <p class="section-subtitle">A revolutionary approach to personal computing</p>
+            </div>
             
-            <!-- Architecture Visualization -->
-            <div class="architecture-viz" id="architecture">
-                <div class="arch-title">The Diospirus Architecture</div>
-                <div class="arch-diagram">
-                    <!-- Home Cloud -->
-                    <div class="home-cloud-box">
-                        <div class="home-cloud-header">
-                            <svg viewBox="0 0 40 40" fill="none">
-                                <path d="M20 5L35 15V25C35 33.284 28.284 40 20 40C11.716 40 5 33.284 5 25V15L20 5Z" stroke="url(#home-gradient)" stroke-width="2" fill="rgba(62, 131, 107, 0.1)"/>
-                                <path d="M20 15L25 20L20 25L15 20L20 15Z" fill="url(#home-gradient)"/>
-                                <defs>
-                                    <linearGradient id="home-gradient" x1="5" y1="5" x2="35" y2="40">
-                                        <stop stop-color="#3E836B"/>
-                                        <stop offset="1" stop-color="#5FB67C"/>
-                                    </linearGradient>
-                                </defs>
+            <div class="arch-grid">
+                <!-- Your Idios -->
+                <div class="arch-card primary">
+                    <div class="arch-icon">
+                        <svg viewBox="0 0 40 40" fill="none">
+                            <path d="M20 5L32 12V22C32 28.627 26.627 34 20 34C13.373 34 8 28.627 8 22V12L20 5Z" 
+                                  stroke="var(--primary)" stroke-width="2" fill="none"/>
+                            <circle cx="20" cy="20" r="4" fill="var(--secondary)"/>
+                        </svg>
+                    </div>
+                    <h3>Your Idios</h3>
+                    <p style="color: var(--text-light); margin-bottom: 1.5rem;">
+                        Personal infrastructure where all your apps and data live
+                    </p>
+                    <ul class="arch-features">
+                        <li>
+                            <svg class="icon" viewBox="0 0 20 20" fill="var(--secondary)">
+                                <path d="M10 2l7 7v7a2 2 0 01-2 2H5a2 2 0 01-2-2V9l7-7z"/>
                             </svg>
-                            <h3>YOUR IDIOS</h3>
-                        </div>
-                        <div class="devices-grid">
-                            <div class="device-card">
-                                <svg viewBox="0 0 40 40" fill="none">
-                                    <rect x="12" y="8" width="16" height="24" rx="2" stroke="#3E836B" stroke-width="2" fill="rgba(62, 131, 107, 0.1)"/>
-                                    <circle cx="20" cy="28" r="1.5" fill="#3E836B"/>
-                                </svg>
-                                <span>Phone</span>
-                            </div>
-                            <div class="device-card">
-                                <svg viewBox="0 0 40 40" fill="none">
-                                    <rect x="6" y="10" width="28" height="18" rx="2" stroke="#5FB67C" stroke-width="2" fill="rgba(95, 182, 124, 0.1)"/>
-                                    <path d="M14 30H26" stroke="#5FB67C" stroke-width="2" stroke-linecap="round"/>
-                                </svg>
-                                <span>Laptop</span>
-                            </div>
-                            <div class="device-card">
-                                <svg viewBox="0 0 40 40" fill="none">
-                                    <rect x="8" y="12" width="24" height="16" rx="2" stroke="#3E836B" stroke-width="2" fill="rgba(62, 131, 107, 0.1)"/>
-                                    <circle cx="13" cy="20" r="1.5" fill="#3E836B"/>
-                                    <circle cx="20" cy="20" r="1.5" fill="#3E836B"/>
-                                    <circle cx="27" cy="20" r="1.5" fill="#3E836B"/>
-                                </svg>
-                                <span>Home NAS</span>
-                            </div>
-                            <div class="device-card">
-                                <svg viewBox="0 0 40 40" fill="none">
-                                    <path d="M25 15C25 11.134 21.866 8 18 8C14.686 8 11.726 10.291 10.937 13.5C8.195 14.088 6 16.549 6 19.5C6 22.866 8.634 26 12 26H25C27.761 26 30 23.761 30 21C30 18.239 27.761 16 25 16" stroke="#5FB67C" stroke-width="2" fill="rgba(95, 182, 124, 0.1)"/>
-                                </svg>
-                                <span>Personal Cloud</span>
-                            </div>
-                        </div>
-                        <p style="margin-top: 1.5rem; text-align: center; color: var(--text); font-size: 0.95rem;">
-                            All your apps run HERE, in YOUR sovereign space
-                        </p>
-                    </div>
-                    
-                    <!-- Flow Indicator -->
-                    <div class="flow-indicator">
-                        <div class="flow-line"></div>
-                    </div>
-                    
-                    <!-- Herald -->
-                    <div class="broker-box">
-                        <div class="broker-header">
-                            <svg viewBox="0 0 36 36" fill="none">
-                                <circle cx="18" cy="18" r="16" stroke="#06B6D4" stroke-width="2" fill="rgba(6, 182, 212, 0.1)"/>
-                                <path d="M18 10V26M10 18H26" stroke="#06B6D4" stroke-width="2" stroke-linecap="round"/>
-                                <circle cx="18" cy="18" r="4" fill="#06B6D4"/>
+                            <span>Your devices & storage</span>
+                        </li>
+                        <li>
+                            <svg class="icon" viewBox="0 0 20 20" fill="var(--secondary)">
+                                <path d="M13 7H7v6h6V7z M10 1a9 9 0 100 18 9 9 0 000-18z"/>
                             </svg>
-                            <h3>YOUR BROKER</h3>
-                        </div>
-                        <div class="broker-features">
-                            <div class="broker-feature">
-                                <svg viewBox="0 0 20 20" fill="#06B6D4">
-                                    <path d="M10 2L3 7v6c0 3.866 3.134 7 7 7s7-3.134 7-7V7l-7-5z"/>
-                                </svg>
-                                <span>Stateless relay</span>
-                            </div>
-                            <div class="broker-feature">
-                                <svg viewBox="0 0 20 20" fill="#06B6D4">
-                                    <path d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v3.586L7.707 11.88a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 13.172V7z"/>
-                                </svg>
-                                <span>Message queue</span>
-                            </div>
-                            <div class="broker-feature">
-                                <svg viewBox="0 0 20 20" fill="#06B6D4">
-                                    <path d="M13 7H7v6h6V7z"/>
-                                    <path d="M10 18a8 8 0 100-16 8 8 0 000 16zm0-2a6 6 0 110-12 6 6 0 010 12z"/>
-                                </svg>
-                                <span>AI broker</span>
-                            </div>
-                            <div class="broker-feature">
-                                <svg viewBox="0 0 20 20" fill="#06B6D4">
-                                    <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
-                                    <path d="M10 4a6 6 0 00-4.472 10.018l1.428-1.428A4 4 0 1114.414 10h2.022A6 6 0 0010 4z"/>
-                                </svg>
-                                <span>Auto-expire</span>
-                            </div>
-                        </div>
+                            <span>Local AI processing</span>
+                        </li>
+                        <li>
+                            <svg class="icon" viewBox="0 0 20 20" fill="var(--secondary)">
+                                <path d="M10 2a8 8 0 018 8c0 2.21-.895 4.21-2.343 5.657L10 10V2z"/>
+                            </svg>
+                            <span>Complete sovereignty</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Flow Arrow -->
+                <div class="flow-arrow">
+                    <svg viewBox="0 0 48 48" fill="none">
+                        <path d="M12 24h24m0 0l-8-8m8 8l-8 8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                
+                <!-- The Herald -->
+                <div class="arch-card">
+                    <div class="arch-icon">
+                        <svg viewBox="0 0 40 40" fill="none">
+                            <circle cx="20" cy="20" r="12" stroke="var(--secondary)" stroke-width="2"/>
+                            <path d="M20 14v12m-6-6h12" stroke="var(--secondary)" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
                     </div>
-                    
-                    <!-- External World -->
-                    <div class="flow-indicator">
-                        <div class="flow-line"></div>
-                    </div>
-                    
-                    <div style="padding: 1.5rem; background: rgba(100, 116, 139, 0.1); border-radius: 1rem; text-align: center;">
-                        <span style="font-size: 1.5rem; margin-right: 0.5rem;">🌍</span>
-                        <span style="color: var(--text); font-weight: 600;">External World</span>
-                    </div>
+                    <h3>The Herald</h3>
+                    <p style="color: var(--text-light); margin-bottom: 1.5rem;">
+                        Intelligent proxy for external interactions
+                    </p>
+                    <ul class="arch-features">
+                        <li>
+                            <svg class="icon" viewBox="0 0 20 20" fill="var(--secondary)">
+                                <path d="M10 2a8 8 0 100 16 8 8 0 000-16zm1 11H9v-2h2v2zm0-4H9V5h2v4z"/>
+                            </svg>
+                            <span>Stateless relay</span>
+                        </li>
+                        <li>
+                            <svg class="icon" viewBox="0 0 20 20" fill="var(--secondary)">
+                                <path d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v3l2 2v-5z"/>
+                            </svg>
+                            <span>Auto-expiring data</span>
+                        </li>
+                        <li>
+                            <svg class="icon" viewBox="0 0 20 20" fill="var(--secondary)">
+                                <path d="M3 3h14a2 2 0 012 2v10a2 2 0 01-2 2H3a2 2 0 01-2-2V5a2 2 0 012-2z"/>
+                            </svg>
+                            <span>Message queuing</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
     
-    <!-- Cloud Comparison -->
+    <!-- Comparison Section -->
     <section class="comparison-section">
         <div class="comparison-container">
             <div class="section-header">
-                <h2 class="section-title">The Cloud Revolution</h2>
-                <p class="section-subtitle">See why millions are leaving surveillance clouds for home clouds</p>
+                <h2 class="section-title">The Privacy Revolution</h2>
+                <p class="section-subtitle">See why millions are choosing data sovereignty</p>
             </div>
             
             <div class="comparison-grid">
-                <!-- Old Cloud -->
+                <!-- Traditional Cloud -->
                 <div class="comparison-card old-cloud">
                     <div class="comparison-header">
-                        <svg viewBox="0 0 48 48" fill="none">
-                            <path d="M24 8C15.163 8 8 15.163 8 24s7.163 16 16 16 16-7.163 16-16S32.837 8 24 8z" fill="rgba(239, 68, 68, 0.2)"/>
-                            <path d="M31 17L17 31M17 17l14 14" stroke="#EF4444" stroke-width="3" stroke-linecap="round"/>
-                        </svg>
+                        <div class="comparison-icon">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/>
+                            </svg>
+                        </div>
                         <h3>Traditional Cloud</h3>
                     </div>
                     <ul class="comparison-list">
                         <li>
-                            <svg viewBox="0 0 24 24" fill="#EF4444">
-                                <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
+                            <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                                <circle cx="12" cy="12" r="10"/>
                             </svg>
                             <div>
-                                <strong>Your data on their servers</strong><br>
-                                <span style="color: var(--text-dim); font-size: 0.9rem;">Scattered across corporate data centers globally</span>
+                                <strong>Your data on their servers</strong>
+                                <span>Scattered across corporate data centers globally</span>
                             </div>
                         </li>
                         <li>
-                            <svg viewBox="0 0 24 24" fill="#EF4444">
-                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                                <circle cx="12" cy="12" r="10"/>
                             </svg>
                             <div>
-                                <strong>You're the product</strong><br>
-                                <span style="color: var(--text-dim); font-size: 0.9rem;">Data mined for ads and sold to brokers</span>
+                                <strong>You're the product</strong>
+                                <span>Data mined for ads and sold to brokers</span>
                             </div>
                         </li>
                         <li>
-                            <svg viewBox="0 0 24 24" fill="#EF4444">
-                                <path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/>
+                            <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                                <circle cx="12" cy="12" r="10"/>
                             </svg>
                             <div>
-                                <strong>Constant breaches</strong><br>
-                                <span style="color: var(--text-dim); font-size: 0.9rem;">Your personal info exposed regularly</span>
+                                <strong>Constant breaches</strong>
+                                <span>Your personal info exposed regularly</span>
                             </div>
                         </li>
                         <li>
-                            <svg viewBox="0 0 24 24" fill="#EF4444">
-                                <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
+                            <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                                <circle cx="12" cy="12" r="10"/>
                             </svg>
                             <div>
-                                <strong>No real ownership</strong><br>
-                                <span style="color: var(--text-dim); font-size: 0.9rem;">Terms change, prices increase, data held hostage</span>
+                                <strong>No real ownership</strong>
+                                <span>Terms change, prices increase, data held hostage</span>
                             </div>
                         </li>
                     </ul>
-                    <div class="comparison-visual">
-                        <svg viewBox="0 0 200 100" fill="none" style="width: 100%; height: auto;">
-                            <circle cx="50" cy="50" r="8" fill="#EF4444"/>
-                            <circle cx="150" cy="30" r="8" fill="#EF4444"/>
-                            <circle cx="130" cy="70" r="8" fill="#EF4444"/>
-                            <circle cx="80" cy="40" r="8" fill="#EF4444"/>
-                            <circle cx="100" cy="60" r="8" fill="#EF4444"/>
-                            <path d="M50 50L150 30M50 50L130 70M50 50L80 40M50 50L100 60" stroke="#EF4444" stroke-width="1" opacity="0.3"/>
-                            <text x="100" y="90" text-anchor="middle" fill="#EF4444" font-size="12">Your data everywhere</text>
-                        </svg>
-                    </div>
                 </div>
                 
-                <!-- New Cloud -->
+                <!-- Diospirus Edge-First -->
                 <div class="comparison-card new-cloud">
                     <div class="comparison-header">
-                        <svg viewBox="0 0 48 48" fill="none">
-                            <circle cx="24" cy="24" r="16" fill="rgba(16, 185, 129, 0.2)"/>
-                            <path d="M16 24l4 4 8-8" stroke="#10B981" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
+                        <div class="comparison-icon">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                            </svg>
+                        </div>
                         <h3>Diospirus Edge-First</h3>
                     </div>
                     <ul class="comparison-list">
                         <li>
-                            <svg viewBox="0 0 24 24" fill="#10B981">
-                                <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+                            <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
                             </svg>
                             <div>
-                                <strong>Your data at home</strong><br>
-                                <span style="color: var(--text-dim); font-size: 0.9rem;">Lives on your devices and personal storage</span>
+                                <strong>Your data at home</strong>
+                                <span>Lives on your devices and personal storage</span>
                             </div>
                         </li>
                         <li>
-                            <svg viewBox="0 0 24 24" fill="#10B981">
-                                <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/>
+                            <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
                             </svg>
                             <div>
-                                <strong>You're the owner</strong><br>
-                                <span style="color: var(--text-dim); font-size: 0.9rem;">Complete sovereignty, no surveillance</span>
+                                <strong>You're the owner</strong>
+                                <span>Complete sovereignty, no surveillance</span>
                             </div>
                         </li>
                         <li>
-                            <svg viewBox="0 0 24 24" fill="#10B981">
-                                <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2z"/>
+                            <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
                             </svg>
                             <div>
-                                <strong>Unbreachable</strong><br>
-                                <span style="color: var(--text-dim); font-size: 0.9rem;">No central servers to hack</span>
+                                <strong>Unbreachable</strong>
+                                <span>No central servers to hack</span>
                             </div>
                         </li>
                         <li>
-                            <svg viewBox="0 0 24 24" fill="#10B981">
-                                <path d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2z"/>
+                            <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
                             </svg>
                             <div>
-                                <strong>Forever yours</strong><br>
-                                <span style="color: var(--text-dim); font-size: 0.9rem;">No subscriptions, no lock-in, no limits</span>
+                                <strong>Forever yours</strong>
+                                <span>No subscriptions, no lock-in, no limits</span>
                             </div>
                         </li>
                     </ul>
-                    <div class="comparison-visual">
-                        <svg viewBox="0 0 200 100" fill="none" style="width: 100%; height: auto;">
-                            <circle cx="100" cy="50" r="20" fill="rgba(16, 185, 129, 0.2)" stroke="#10B981" stroke-width="2"/>
-                            <circle cx="100" cy="50" r="8" fill="#10B981"/>
-                            <text x="100" y="90" text-anchor="middle" fill="#10B981" font-size="12">Your data at home</text>
-                        </svg>
-                    </div>
                 </div>
             </div>
         </div>
@@ -1101,7 +913,7 @@
     <!-- Apps Section -->
     <section class="apps-section" id="apps">
         <div class="section-header">
-            <h2 class="section-title">Apps Built for Your Home Cloud</h2>
+            <h2 class="section-title">Apps Built for Privacy</h2>
             <p class="section-subtitle">Real products proving that privacy and power aren't mutually exclusive</p>
         </div>
         
@@ -1109,8 +921,8 @@
             <!-- Where Is App -->
             <div class="app-card">
                 <div class="app-header">
-                    <div class="app-icon" style="background: linear-gradient(135deg, #3E836B, #5FB67C);">
-                        <svg viewBox="0 0 32 32" fill="white">
+                    <div class="app-icon">
+                        <svg viewBox="0 0 32 32" fill="currentColor">
                             <path d="M16 2C10.477 2 6 6.477 6 12c0 7 10 18 10 18s10-11 10-18c0-5.523-4.477-10-10-10zm0 14a4 4 0 110-8 4 4 0 010 8z"/>
                         </svg>
                     </div>
@@ -1121,28 +933,22 @@
                     <p class="app-description">Family coordination without surveillance</p>
                     <ul class="app-features">
                         <li>
-                            <svg viewBox="0 0 20 20" fill="currentColor">
-                                <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                            <svg class="check" viewBox="0 0 16 16" fill="currentColor">
+                                <path d="M6 10.78l-2.39-2.39L2.2 9.8l3.8 3.8 8-8L12.59 4.2z"/>
                             </svg>
                             Real-time location in family's home cloud
                         </li>
                         <li>
-                            <svg viewBox="0 0 20 20" fill="currentColor">
-                                <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                            <svg class="check" viewBox="0 0 16 16" fill="currentColor">
+                                <path d="M6 10.78l-2.39-2.39L2.2 9.8l3.8 3.8 8-8L12.59 4.2z"/>
                             </svg>
                             Herald manages async family updates
                         </li>
                         <li>
-                            <svg viewBox="0 0 20 20" fill="currentColor">
-                                <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                            <svg class="check" viewBox="0 0 16 16" fill="currentColor">
+                                <path d="M6 10.78l-2.39-2.39L2.2 9.8l3.8 3.8 8-8L12.59 4.2z"/>
                             </svg>
                             Natural language AI queries
-                        </li>
-                        <li>
-                            <svg viewBox="0 0 20 20" fill="currentColor">
-                                <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
-                            </svg>
-                            Zero corporate tracking
                         </li>
                     </ul>
                 </div>
@@ -1151,8 +957,8 @@
             <!-- GutFlow App -->
             <div class="app-card">
                 <div class="app-header">
-                    <div class="app-icon" style="background: linear-gradient(135deg, #43E97B, #38F9D7);">
-                        <svg viewBox="0 0 32 32" fill="white">
+                    <div class="app-icon">
+                        <svg viewBox="0 0 32 32" fill="currentColor">
                             <path d="M16 2C8.268 2 2 8.268 2 16s6.268 14 14 14 14-6.268 14-14S23.732 2 16 2zm6 15h-5v5h-2v-5h-5v-2h5v-5h2v5h5v2z"/>
                         </svg>
                     </div>
@@ -1163,28 +969,22 @@
                     <p class="app-description">Medical data that stays medical</p>
                     <ul class="app-features">
                         <li>
-                            <svg viewBox="0 0 20 20" fill="currentColor">
-                                <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                            <svg class="check" viewBox="0 0 16 16" fill="currentColor">
+                                <path d="M6 10.78l-2.39-2.39L2.2 9.8l3.8 3.8 8-8L12.59 4.2z"/>
                             </svg>
                             Health data never leaves your devices
                         </li>
                         <li>
-                            <svg viewBox="0 0 20 20" fill="currentColor">
-                                <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                            <svg class="check" viewBox="0 0 16 16" fill="currentColor">
+                                <path d="M6 10.78l-2.39-2.39L2.2 9.8l3.8 3.8 8-8L12.59 4.2z"/>
                             </svg>
                             On-device pattern recognition AI
                         </li>
                         <li>
-                            <svg viewBox="0 0 20 20" fill="currentColor">
-                                <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                            <svg class="check" viewBox="0 0 16 16" fill="currentColor">
+                                <path d="M6 10.78l-2.39-2.39L2.2 9.8l3.8 3.8 8-8L12.59 4.2z"/>
                             </svg>
                             Herald fetches nutrition data only
-                        </li>
-                        <li>
-                            <svg viewBox="0 0 20 20" fill="currentColor">
-                                <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
-                            </svg>
-                            Complete medical privacy
                         </li>
                     </ul>
                 </div>
@@ -1193,8 +993,8 @@
             <!-- BudgetAI App -->
             <div class="app-card">
                 <div class="app-header">
-                    <div class="app-icon" style="background: linear-gradient(135deg, #FA709A, #FEE140);">
-                        <svg viewBox="0 0 32 32" fill="white">
+                    <div class="app-icon">
+                        <svg viewBox="0 0 32 32" fill="currentColor">
                             <path d="M16 2C8.268 2 2 8.268 2 16s6.268 14 14 14 14-6.268 14-14S23.732 2 16 2zm1 19.5v2h-2v-2c-2.21 0-4-1.79-4-4h2c0 1.1.9 2 2 2h2c1.1 0 2-.9 2-2s-.9-2-2-2h-2c-2.21 0-4-1.79-4-4s1.79-4 4-4v-2h2v2c2.21 0 4 1.79 4 4h-2c0-1.1-.9-2-2-2h-2c-1.1 0-2 .9-2 2s.9 2 2 2h2c2.21 0 4 1.79 4 4s-1.79 4-4 4z"/>
                         </svg>
                     </div>
@@ -1205,154 +1005,22 @@
                     <p class="app-description">Financial intelligence, truly yours</p>
                     <ul class="app-features">
                         <li>
-                            <svg viewBox="0 0 20 20" fill="currentColor">
-                                <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                            <svg class="check" viewBox="0 0 16 16" fill="currentColor">
+                                <path d="M6 10.78l-2.39-2.39L2.2 9.8l3.8 3.8 8-8L12.59 4.2z"/>
                             </svg>
                             Bank data stays in home cloud
                         </li>
                         <li>
-                            <svg viewBox="0 0 20 20" fill="currentColor">
-                                <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                            <svg class="check" viewBox="0 0 16 16" fill="currentColor">
+                                <path d="M6 10.78l-2.39-2.39L2.2 9.8l3.8 3.8 8-8L12.59 4.2z"/>
                             </svg>
                             Local transaction analysis
                         </li>
                         <li>
-                            <svg viewBox="0 0 20 20" fill="currentColor">
-                                <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                            <svg class="check" viewBox="0 0 16 16" fill="currentColor">
+                                <path d="M6 10.78l-2.39-2.39L2.2 9.8l3.8 3.8 8-8L12.59 4.2z"/>
                             </svg>
                             Herald manages secure bank sync
-                        </li>
-                        <li>
-                            <svg viewBox="0 0 20 20" fill="currentColor">
-                                <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
-                            </svg>
-                            Zero financial surveillance
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            
-            <!-- StudyBuddy App -->
-            <div class="app-card">
-                <div class="app-header">
-                    <div class="app-icon" style="background: linear-gradient(135deg, #4FACFE, #00F2FE);">
-                        <svg viewBox="0 0 32 32" fill="white">
-                            <path d="M16 2L2 9l14 7 12-6v10h2V9L16 2zm0 14.5L5.5 11 16 5.5 26.5 11 16 16.5zM6 14.88V22l10 5 10-5v-7.12l-10 5-10-5z"/>
-                        </svg>
-                    </div>
-                    <span class="app-status status-soon">Q3 2025</span>
-                </div>
-                <div class="app-content">
-                    <h3>StudyBuddy</h3>
-                    <p class="app-description">Education without data harvesting</p>
-                    <ul class="app-features">
-                        <li>
-                            <svg viewBox="0 0 20 20" fill="currentColor">
-                                <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
-                            </svg>
-                            Student data stays private
-                        </li>
-                        <li>
-                            <svg viewBox="0 0 20 20" fill="currentColor">
-                                <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
-                            </svg>
-                            On-device learning AI
-                        </li>
-                        <li>
-                            <svg viewBox="0 0 20 20" fill="currentColor">
-                                <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
-                            </svg>
-                            Herald coordinates study groups
-                        </li>
-                        <li>
-                            <svg viewBox="0 0 20 20" fill="currentColor">
-                                <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
-                            </svg>
-                            No academic surveillance
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            
-            <!-- HealthVault App -->
-            <div class="app-card">
-                <div class="app-header">
-                    <div class="app-icon" style="background: linear-gradient(135deg, #F093FB, #F5576C);">
-                        <svg viewBox="0 0 32 32" fill="white">
-                            <path d="M22 2H10v6H4v22h24V8h-6V2zm-2 2v4h-8V4h8zm8 24H6V10h4v2h12v-2h4v18zm-12-8v4h-2v-4h-4v-2h4v-4h2v4h4v2h-4z"/>
-                        </svg>
-                    </div>
-                    <span class="app-status status-soon">Q4 2025</span>
-                </div>
-                <div class="app-content">
-                    <h3>HealthVault</h3>
-                    <p class="app-description">Medical records meet sovereignty</p>
-                    <ul class="app-features">
-                        <li>
-                            <svg viewBox="0 0 20 20" fill="currentColor">
-                                <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
-                            </svg>
-                            Records in your home cloud only
-                        </li>
-                        <li>
-                            <svg viewBox="0 0 20 20" fill="currentColor">
-                                <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
-                            </svg>
-                            Local health insights AI
-                        </li>
-                        <li>
-                            <svg viewBox="0 0 20 20" fill="currentColor">
-                                <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
-                            </svg>
-                            Herald manages provider sync
-                        </li>
-                        <li>
-                            <svg viewBox="0 0 20 20" fill="currentColor">
-                                <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
-                            </svg>
-                            HIPAA-compliant by design
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            
-            <!-- Your App -->
-            <div class="app-card">
-                <div class="app-header">
-                    <div class="app-icon" style="background: linear-gradient(135deg, #3E836B, #5FB67C);">
-                        <svg viewBox="0 0 32 32" fill="white">
-                            <path d="M16 2C8.268 2 2 8.268 2 16s6.268 14 14 14 14-6.268 14-14S23.732 2 16 2zm1 15h6v2h-6v6h-2v-6H9v-2h6V9h2v8z"/>
-                        </svg>
-                    </div>
-                    <span class="app-status status-soon">2026</span>
-                </div>
-                <div class="app-content">
-                    <h3>Your App Here</h3>
-                    <p class="app-description">Join the home cloud revolution</p>
-                    <ul class="app-features">
-                        <li>
-                            <svg viewBox="0 0 20 20" fill="currentColor">
-                                <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
-                            </svg>
-                            Build on Diospirus SDK
-                        </li>
-                        <li>
-                            <svg viewBox="0 0 20 20" fill="currentColor">
-                                <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
-                            </svg>
-                            Access our incubator
-                        </li>
-                        <li>
-                            <svg viewBox="0 0 20 20" fill="currentColor">
-                                <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
-                            </svg>
-                            $50K-$200K funding available
-                        </li>
-                        <li>
-                            <svg viewBox="0 0 20 20" fill="currentColor">
-                                <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
-                            </svg>
-                            1M+ privacy-conscious users
                         </li>
                     </ul>
                 </div>
@@ -1363,24 +1031,14 @@
     <!-- CTA Section -->
     <section class="cta-section" id="developers">
         <div class="cta-content">
-            <h2 class="cta-title">Ready to Build the Post-Cloud World?</h2>
+            <h2 class="cta-title">Ready to Build the Privacy-First Future?</h2>
             <p class="cta-subtitle">
                 Join thousands of developers building apps that respect user sovereignty. 
                 Get access to the Diospirus SDK, funding, and a community that believes in true digital ownership.
             </p>
             <div class="cta-buttons">
-                <a href="#" class="btn btn-primary">
-                    <svg viewBox="0 0 20 20" fill="currentColor" style="width: 20px; height: 20px;">
-                        <path d="M10 2a8 8 0 100 16 8 8 0 000-16zm1 11H9v-2h2v2zm0-4H9V5h2v4z"/>
-                    </svg>
-                    Apply to Incubator
-                </a>
-                <a href="#" class="btn btn-secondary">
-                    <svg viewBox="0 0 20 20" fill="currentColor" style="width: 20px; height: 20px;">
-                        <path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z"/>
-                    </svg>
-                    Learn About Herald
-                </a>
+                <a href="#" class="btn btn-primary">Apply to Incubator</a>
+                <a href="#" class="btn btn-secondary">Learn About Herald</a>
             </div>
         </div>
     </section>
@@ -1390,15 +1048,11 @@
         <div class="footer-content">
             <div class="footer-brand">
                 <div class="footer-logo">
-                    <svg viewBox="0 0 36 36" fill="none">
-                        <rect width="36" height="36" rx="8" fill="#3E836B"/>
-                        <text x="18" y="25" font-family="-apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="white">D</text>
-                    </svg>
-                    <img src="new-logo.png" alt="Diospirus" style="height: 36px; width: auto;">
+                    <img src="new-logo.png" alt="Diospirus">
                 </div>
                 <p class="footer-description">
-                    Building the edge-first technology stack that enables complete data sovereignty. 
-                    Your data, your devices, your control. Finally.
+                    Building the privacy-first technology stack that enables complete data sovereignty. 
+                    Your data, your devices, your control.
                 </p>
             </div>
             
