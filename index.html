@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diospyros | AI-Native Edge Computing - The Post-Cloud Era</title>
+    <title>Diospyros | Vibe Coding Incubator - Build Apps by Describing Them</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
     <style>
         * {
@@ -279,6 +279,35 @@
         .btn-secondary:hover {
             border-color: var(--primary);
             box-shadow: var(--shadow-sm);
+        }
+
+        /* Hero Stats */
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            margin-top: 4rem;
+            padding-top: 3rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            display: block;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--primary);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--text-light);
+            font-weight: 500;
         }
         
         /* Revolution Section */
@@ -785,6 +814,33 @@
             background: rgba(102, 102, 102, 0.1);
             color: var(--text-light);
         }
+
+        .status-alpha {
+            background: rgba(245, 158, 11, 0.15);
+            color: #D97706;
+        }
+
+        .status-dev {
+            background: rgba(59, 130, 246, 0.15);
+            color: #2563EB;
+        }
+
+        .app-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .tag {
+            padding: 0.25rem 0.75rem;
+            background: var(--bg-white);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--text-light);
+        }
         
         .app-content h3 {
             font-size: 1.5rem;
@@ -916,47 +972,60 @@
             .nav-links {
                 display: none;
             }
-            
+
             .hero h1 {
                 font-size: 2.5rem;
             }
-            
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
             .revolution-grid {
                 grid-template-columns: 1fr;
             }
-            
+
             .ai-showcase {
                 grid-template-columns: 1fr;
             }
-            
+
             .vibe-grid {
                 grid-template-columns: 1fr;
             }
-            
+
             .vibe-examples {
                 grid-template-columns: 1fr;
             }
-            
+
             .timeline-item,
             .timeline-item:nth-child(even) {
                 flex-direction: column;
             }
-            
+
             .timeline-line {
                 left: 20px;
             }
-            
+
             .timeline-dot {
                 left: 20px;
             }
-            
+
             .apps-grid {
                 grid-template-columns: 1fr;
             }
-            
+
             .footer-content {
                 grid-template-columns: 1fr;
                 gap: 2rem;
+            }
+
+            .cta-title {
+                font-size: 1.75rem;
             }
         }
     </style>
@@ -970,11 +1039,11 @@
                 <span class="logo-text">Diospyros</span>
             </a>
             <ul class="nav-links">
-                <li><a href="#revolution">Revolution</a></li>
-                <li><a href="#ai-first">AI-First</a></li>
-                <li><a href="#vibe">Vibe Coding</a></li>
-                <li><a href="#apps">Apps</a></li>
-                <li><a href="#" class="nav-cta">Join Revolution</a></li>
+                <li><a href="#apps">Portfolio</a></li>
+                <li><a href="#vibe">How We Build</a></li>
+                <li><a href="#revolution">Our Thesis</a></li>
+                <li><a href="#ai-first">Technology</a></li>
+                <li><a href="#" class="nav-cta">Work With Us</a></li>
             </ul>
         </div>
     </nav>
@@ -989,20 +1058,36 @@
             
             <div class="hero-badge">
                 <div class="badge-dot"></div>
-                <span>The Edge Computing Revolution</span>
+                <span>Vibe Coding Incubator</span>
             </div>
-            
-            <h1>AI Will Commoditize SaaS.<br><span class="gradient">We're Building What's Next.</span></h1>
-            
+
+            <h1>We Build Apps<br><span class="gradient">By Describing Them.</span></h1>
+
             <p class="hero-subtitle">
-                Two historic shifts converged: AI makes building software trivial. Edge computing makes hosting it smarter. 
-                80% of your digital life happens at home. Your iPhone is more powerful than yesterday's data center. 
-                Why send everything to the cloud when the edge is faster, cheaper, and private?
+                Diospyros is a vibe coding incubator. We describe apps, AI builds them, and they run on the edge.
+                Our portfolio proves it works: 8+ apps shipped, from health tracking to aviation, all built with conversation.
+                The future of software isn't coded—it's spoken.
             </p>
             
             <div class="hero-cta-group">
-                <a href="#revolution" class="btn btn-primary">See the Revolution</a>
-                <a href="#vibe" class="btn btn-secondary">Try Vibe Coding</a>
+                <a href="#apps" class="btn btn-primary">See Our Portfolio</a>
+                <a href="#vibe" class="btn btn-secondary">How We Build</a>
+            </div>
+
+            <!-- Stats Bar -->
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number">8+</span>
+                    <span class="stat-label">Apps Built</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">3</span>
+                    <span class="stat-label">Live in App Store</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Vibe Coded</span>
+                </div>
             </div>
         </div>
     </section>
@@ -1010,50 +1095,50 @@
     <!-- Revolution Section -->
     <section class="revolution-section" id="revolution">
         <div class="section-header">
-            <h2 class="section-title">The Perfect Storm Transforming SaaS</h2>
+            <h2 class="section-title">Our Thesis: Why Vibe Coding Wins</h2>
             <p class="section-subtitle">
-                Three unstoppable forces converged to make edge computing superior. 
-                This isn't disruption—it's evolution to where computing belongs.
+                Three forces converged to make our approach inevitable.
+                We're not just building apps—we're proving a new paradigm.
             </p>
         </div>
-        
+
         <div class="revolution-grid">
             <div class="revolution-card">
                 <div class="revolution-icon">
-                    <img src="new-logo.png" alt="Diospyros">
+                    <span style="font-size: 32px;">🎯</span>
                     <div class="revolution-number">1</div>
                 </div>
-                <h3>Vibe Coding Revolution</h3>
+                <h3>Vibe Coding Works</h3>
                 <p>
-                    Anyone can now create software by describing what they want. 
-                    No syntax. No frameworks. Just ideas becoming reality in real-time.
-                    The monopoly on software creation is broken.
+                    Our portfolio proves it. 8+ apps, all built by describing them to AI.
+                    GutFlow took days, not months. Avi8 has real users.
+                    This isn't theory—it's our daily practice.
                 </p>
             </div>
-            
+
             <div class="revolution-card">
                 <div class="revolution-icon">
-                    <img src="new-logo.png" alt="Diospyros">
+                    <span style="font-size: 32px;">🔌</span>
                     <div class="revolution-number">2</div>
                 </div>
                 <h3>MCP + AI > APIs</h3>
                 <p>
-                    Why call an API when AI can understand and execute intent directly? 
-                    Model Context Protocol makes every interaction intelligent. 
-                    APIs are the new assembly language.
+                    Model Context Protocol replaces REST APIs with intent.
+                    AI understands what you want without parsing JSON.
+                    Our apps communicate through meaning, not syntax.
                 </p>
             </div>
-            
+
             <div class="revolution-card">
                 <div class="revolution-icon">
-                    <img src="new-logo.png" alt="Diospyros">
+                    <span style="font-size: 32px;">📱</span>
                     <div class="revolution-number">3</div>
                 </div>
-                <h3>Edge AI Supremacy</h3>
+                <h3>Edge-First Privacy</h3>
                 <p>
-                    Your iPhone has more compute than a 2010 data center. 
-                    AI models run locally, instantly, privately. 
-                    The cloud becomes optional when the edge is this powerful.
+                    Your iPhone is a supercomputer. Our apps run AI locally.
+                    GutFlow analyzes food without uploading photos.
+                    Privacy isn't a feature—it's the architecture.
                 </p>
             </div>
         </div>
@@ -1230,64 +1315,211 @@
         </div>
     </section>
     
-    <!-- Apps Section -->
+    <!-- Portfolio Section -->
     <section class="apps-section" id="apps">
         <div class="section-header">
-            <h2 class="section-title">Apps That Prove the Future</h2>
+            <h2 class="section-title">Our Portfolio</h2>
             <p class="section-subtitle">
-                Built with vibe coding. Powered by edge AI. Zero cloud dependencies.
+                Apps born from vibe coding. Each one built with AI, running on the edge, respecting your privacy.
+                <br><strong>This is what a vibe coding incubator looks like.</strong>
             </p>
         </div>
-        
+
         <div class="apps-grid">
-            <!-- Where Is App -->
-            <div class="app-card">
-                <div class="app-header">
-                    <div class="app-icon">
-                        <img src="new-logo.png" alt="Diospyros">
-                    </div>
-                    <span class="app-status status-live">LIVE</span>
-                </div>
-                <div class="app-content">
-                    <h3>Where Is</h3>
-                    <p class="app-description">
-                        Family coordination without surveillance. 
-                        AI understands "Is mom at work?" without tracking anyone.
-                    </p>
-                </div>
-            </div>
-            
             <!-- GutFlow App -->
             <div class="app-card">
                 <div class="app-header">
-                    <div class="app-icon">
-                        <img src="new-logo.png" alt="Diospyros">
+                    <div class="app-icon" style="background: linear-gradient(135deg, #3E836B 0%, #5FB67C 100%);">
+                        <img src="logos/gutflow-logo.png" alt="GutFlow" style="height: 48px; border-radius: 10px;">
                     </div>
                     <span class="app-status status-live">LIVE</span>
                 </div>
                 <div class="app-content">
                     <h3>GutFlow</h3>
                     <p class="app-description">
-                        Medical AI that never leaves your device. 
-                        Your health data stays yours forever.
+                        AI-powered nutrition analysis meets digestive health tracking.
+                        Snap food photos, get instant insights. All data stays on your device.
                     </p>
+                    <div class="app-tags">
+                        <span class="tag">iOS</span>
+                        <span class="tag">Health</span>
+                        <span class="tag">AI</span>
+                    </div>
                 </div>
             </div>
-            
-            <!-- Your App -->
+
+            <!-- EyeFly/Avi8 App -->
             <div class="app-card">
                 <div class="app-header">
-                    <div class="app-icon">
-                        <img src="new-logo.png" alt="Diospyros">
+                    <div class="app-icon" style="background: linear-gradient(135deg, #F59E0B 0%, #3B82F6 100%);">
+                        <img src="logos/eyefly-logo.png" alt="Avi8" style="height: 48px; border-radius: 10px;">
                     </div>
-                    <span class="app-status status-soon">YOURS</span>
+                    <span class="app-status status-alpha">ALPHA</span>
                 </div>
                 <div class="app-content">
-                    <h3>Build Anything</h3>
+                    <h3>Avi8 (EyeFly)</h3>
                     <p class="app-description">
-                        Describe your app. Ship in minutes. 
-                        No code. No cloud. Just vibes.
+                        Strava for pilots. Social flight tracking that validates iPhone sensors for
+                        professional aviation feedback. Your flights, your data.
                     </p>
+                    <div class="app-tags">
+                        <span class="tag">iOS</span>
+                        <span class="tag">Aviation</span>
+                        <span class="tag">Sensors</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TruthLens App -->
+            <div class="app-card">
+                <div class="app-header">
+                    <div class="app-icon" style="background: linear-gradient(135deg, #1E3A8A 0%, #10B981 100%);">
+                        <img src="logos/truthlens-logo.png" alt="TruthLens" style="height: 48px; border-radius: 10px;">
+                    </div>
+                    <span class="app-status status-dev">IN DEV</span>
+                </div>
+                <div class="app-content">
+                    <h3>TruthLens</h3>
+                    <p class="app-description">
+                        AI-powered fact verification at your fingertips. Share any content,
+                        get instant credibility analysis. Privacy-first truth detection.
+                    </p>
+                    <div class="app-tags">
+                        <span class="tag">iOS</span>
+                        <span class="tag">AI</span>
+                        <span class="tag">Share Extension</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AI-Logy App -->
+            <div class="app-card">
+                <div class="app-header">
+                    <div class="app-icon" style="background: linear-gradient(135deg, #6B46C1 0%, #F59E0B 100%);">
+                        <span style="font-size: 28px;">✨</span>
+                    </div>
+                    <span class="app-status status-dev">IN DEV</span>
+                </div>
+                <div class="app-content">
+                    <h3>AI-Logy</h3>
+                    <p class="app-description">
+                        Personalized astrology powered by Swiss Ephemeris and AI.
+                        Natal charts, transits, and life insights - all computed locally.
+                    </p>
+                    <div class="app-tags">
+                        <span class="tag">iOS</span>
+                        <span class="tag">Astrology</span>
+                        <span class="tag">AI</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TraqPack Platform -->
+            <div class="app-card">
+                <div class="app-header">
+                    <div class="app-icon" style="background: linear-gradient(135deg, #D4AF37 0%, #2C2C2C 100%);">
+                        <span style="font-size: 28px;">📍</span>
+                    </div>
+                    <span class="app-status status-live">LIVE</span>
+                </div>
+                <div class="app-content">
+                    <h3>TraqPack</h3>
+                    <p class="app-description">
+                        Real-time GPS tracking platform with Apple-inspired design.
+                        Full-stack monorepo with customer portal and admin dashboard.
+                    </p>
+                    <div class="app-tags">
+                        <span class="tag">Web</span>
+                        <span class="tag">IoT</span>
+                        <span class="tag">Real-time</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- WingMate App -->
+            <div class="app-card">
+                <div class="app-header">
+                    <div class="app-icon" style="background: linear-gradient(135deg, #1E3A8A 0%, #F59E0B 100%);">
+                        <span style="font-size: 28px;">🛩️</span>
+                    </div>
+                    <span class="app-status status-dev">IN DEV</span>
+                </div>
+                <div class="app-content">
+                    <h3>WingMate</h3>
+                    <p class="app-description">
+                        Transform analog cockpits into glass cockpit displays.
+                        Computer vision reads gauges, sensor fusion creates a modern PFD.
+                    </p>
+                    <div class="app-tags">
+                        <span class="tag">iOS</span>
+                        <span class="tag">Aviation</span>
+                        <span class="tag">Vision AI</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LuminaOne App -->
+            <div class="app-card">
+                <div class="app-header">
+                    <div class="app-icon" style="background: linear-gradient(135deg, #10B981 0%, #3B82F6 100%);">
+                        <span style="font-size: 28px;">💡</span>
+                    </div>
+                    <span class="app-status status-dev">IN DEV</span>
+                </div>
+                <div class="app-content">
+                    <h3>LuminaOne</h3>
+                    <p class="app-description">
+                        iOS app with powerful share extension capabilities.
+                        Firebase-powered backend with privacy-first architecture.
+                    </p>
+                    <div class="app-tags">
+                        <span class="tag">iOS</span>
+                        <span class="tag">Share Extension</span>
+                        <span class="tag">Firebase</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SimCheck Platform -->
+            <div class="app-card">
+                <div class="app-header">
+                    <div class="app-icon" style="background: linear-gradient(135deg, #3B82F6 0%, #10B981 100%);">
+                        <span style="font-size: 28px;">📶</span>
+                    </div>
+                    <span class="app-status status-dev">IN DEV</span>
+                </div>
+                <div class="app-content">
+                    <h3>SimCheck AI</h3>
+                    <p class="app-description">
+                        Test cellular network connectivity with AI-powered diagnostics.
+                        Interactive prompt interface with beautiful animations.
+                    </p>
+                    <div class="app-tags">
+                        <span class="tag">Web</span>
+                        <span class="tag">Network</span>
+                        <span class="tag">AI</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Your App CTA -->
+            <div class="app-card" style="border: 2px dashed var(--border); background: transparent;">
+                <div class="app-header">
+                    <div class="app-icon" style="background: var(--bg-light);">
+                        <span style="font-size: 28px;">🚀</span>
+                    </div>
+                    <span class="app-status status-soon">YOUR IDEA</span>
+                </div>
+                <div class="app-content">
+                    <h3>Build With Us</h3>
+                    <p class="app-description">
+                        Have an app idea? We'll vibe code it together.
+                        From concept to App Store in record time.
+                    </p>
+                    <div class="app-tags">
+                        <span class="tag">Vibe Coding</span>
+                        <span class="tag">Incubation</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1299,14 +1531,14 @@
             <img src="new-logo.png" alt="Diospyros">
         </div>
         <div class="cta-content">
-            <h2 class="cta-title">The Future is Edge-First. The Future is Now.</h2>
+            <h2 class="cta-title">Have an App Idea?<br>Let's Vibe Code It Together.</h2>
             <p class="cta-subtitle">
-                Join the developers, creators, and visionaries building the post-cloud future. 
-                Where privacy is default. Where AI serves you. Where code is conversation.
+                We're an incubator that builds apps by describing them. Bring your idea,
+                we'll turn it into reality. From concept to App Store, powered by AI.
             </p>
             <div class="hero-cta-group">
-                <a href="#" class="btn btn-primary">Start Building</a>
-                <a href="#" class="btn btn-secondary">Read Manifesto</a>
+                <a href="mailto:hello@diospyros.dev" class="btn btn-primary">Get In Touch</a>
+                <a href="#apps" class="btn btn-secondary">See Our Work</a>
             </div>
         </div>
     </section>
@@ -1320,44 +1552,45 @@
                     <span style="font-size: 1.25rem; font-weight: 700;">Diospyros</span>
                 </div>
                 <p class="footer-description">
-                    Building the edge-first future where AI is native, 
-                    privacy is default, and computing happens where you are.
+                    A vibe coding incubator. We describe apps to AI, and ship them.
+                    8+ apps built, 3 live in the App Store.
                 </p>
             </div>
-            
+
             <div class="footer-column">
-                <h4>Technology</h4>
+                <h4>Portfolio</h4>
                 <ul>
-                    <li><a href="#">Vibe Coding</a></li>
-                    <li><a href="#">MCP Protocol</a></li>
-                    <li><a href="#">Edge AI</a></li>
-                    <li><a href="#">Herald System</a></li>
+                    <li><a href="#apps">GutFlow</a></li>
+                    <li><a href="#apps">Avi8 (EyeFly)</a></li>
+                    <li><a href="#apps">TruthLens</a></li>
+                    <li><a href="#apps">AI-Logy</a></li>
+                    <li><a href="#apps">TraqPack</a></li>
                 </ul>
             </div>
-            
+
             <div class="footer-column">
-                <h4>Resources</h4>
+                <h4>Approach</h4>
                 <ul>
-                    <li><a href="#">Documentation</a></li>
-                    <li><a href="#">Manifesto</a></li>
+                    <li><a href="#vibe">Vibe Coding</a></li>
+                    <li><a href="#revolution">Our Thesis</a></li>
+                    <li><a href="#ai-first">Edge-First</a></li>
+                    <li><a href="#">Privacy by Design</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4>Connect</h4>
+                <ul>
+                    <li><a href="mailto:hello@diospyros.dev">Email Us</a></li>
                     <li><a href="#">GitHub</a></li>
-                    <li><a href="#">Community</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-column">
-                <h4>Company</h4>
-                <ul>
-                    <li><a href="#">Mission</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">Careers</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">LinkedIn</a></li>
                 </ul>
             </div>
         </div>
-        
+
         <div class="footer-bottom">
-            <p>© 2024 Diospyros · The Post-Cloud Era</p>
+            <p>© 2025 Diospyros · Vibe Coding Incubator</p>
         </div>
     </footer>
 </body>
