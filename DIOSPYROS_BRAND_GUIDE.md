@@ -1,87 +1,103 @@
+# DIOSPYROS -- Brand Guidelines
 
-# DIOSPYROS – Brand Guidelines
+## Brand Essence
 
-## 🛡️ Brand Essence
-
-Diospyros is the fruit of the gods — now reimagined as privacy-first, local, AI-native technology. The brand bridges **nature and future**, **trust and intelligence**, **organic growth and technical clarity**.
+Diospyros is a boutique AI-first business incubator. The brand communicates exclusivity, precision, and quiet confidence. It should feel like discovering something that wasn't meant to be found -- secretive, minimal, and deliberate.
 
 ---
 
-## 🌿 Logo
+## Logo
 
-**Logo Concept**:  
-The lock emblem features a leaf, symbolizing nature and data privacy. The shape evokes a fruit core and a padlock — securing data ownership.
+**Logo Concept**:
+The lock emblem features a leaf, symbolizing nature and data sovereignty. The shape evokes a fruit core and a padlock -- securing data ownership.
 
 **Usage Rules**:
-- Always use on a **light neutral background** (Soft Beige recommended).
-- Minimum spacing: **0.5x height** clear space around the logo.
+- Primary usage is on dark backgrounds (Ink #0A0A0A recommended).
+- The logo should appear large and prominent in hero contexts (minimum 160px).
+- Minimum spacing: 0.5x height clear space around the logo.
 - Do not distort, rotate, or alter the logo colors.
+- A subtle white glow animation is permitted in digital contexts.
 
 ---
 
-## 🎨 Color Palette
+## Color Palette
 
-| Name           | Hex     | Usage                         |
-|----------------|---------|-------------------------------|
-| Primary Green  | #3E836B | Brand elements, CTA buttons   |
-| Leaf Green     | #5FB67C | Highlights, icons              |
-| Soft Beige     | #F9F6ED | Backgrounds                   |
-| Charcoal Text  | #2C2C2C | Headlines, paragraph text     |
-| Light Gray     | #E2E2E2 | Dividers, form borders        |
+| Token   | Hex       | Usage                                    |
+|---------|-----------|------------------------------------------|
+| Ink     | #0A0A0A   | Primary background, dark sections        |
+| Paper   | #FAFAFA   | Light section backgrounds                |
+| Smoke   | #141414   | Card backgrounds on dark, subtle depth   |
+| Ash     | #8A8A8A   | Secondary/body text, muted content       |
+| Silver  | #E0E0E0   | Borders, dividers, step numbers          |
+| White   | #FFFFFF   | Headlines on dark, primary text on dark  |
+| Accent  | #C8FF00   | Sparingly -- CTA hover, key emphasis     |
+
+**Accent usage**: The accent color (electric lime) should appear rarely and deliberately. It is reserved for interactive states (button hovers) and a single emphasis line. Overuse diminishes its impact.
 
 ---
 
-## 🔠 Typography
+## Typography
 
-**Primary Font**: `Inter` (Google Fonts)  
-URL: https://fonts.google.com/specimen/Inter
+**Headlines**: Instrument Serif (Google Fonts)
+- Weight: 400 (Regular only)
+- Usage: All section headings, hero headline, blockquotes, card titles
+- Creates editorial, high-end magazine feel
 
-- `Inter Bold` – Logo, headers
-- `Inter Regular` – Body copy
-- `Inter Medium` – UI elements, buttons
+**Body / UI**: Inter (Google Fonts)
+- Weights: 400 (body), 500 (UI elements), 600 (emphasis)
+- Usage: Paragraphs, navigation, buttons, labels
 
-**Backup Fonts**:  
-`system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif`
+**Backup Fonts**:
+- Serif: Georgia, serif
+- Sans: system-ui, -apple-system, sans-serif
 
 ```css
-font-family: 'Inter', sans-serif;
+/* Headlines */
+font-family: 'Instrument Serif', Georgia, serif;
+
+/* Body */
+font-family: 'Inter', system-ui, sans-serif;
 ```
 
 ---
 
-## 🧩 Layout & Spacing
+## Layout and Spacing
 
-- **Logo spacing**: Minimum padding = 0.5x logo height
-- **Section spacing**: At least `2rem` above and below each section
-- **Button radius**: `8px` border-radius standard
+- **Section padding**: 8-12rem vertical padding between sections
+- **Maximum content width**: 72rem (1152px) for grids, 42rem (672px) for text
+- **Button radius**: Fully rounded (pill shape) for CTAs
+- **Card radius**: 16px (rounded-2xl)
+- **Dark/light rhythm**: Sections alternate between Ink and Paper backgrounds
 
 ---
 
-## 🔖 Favicon/Icon Guidelines
+## Favicon / Icon Guidelines
 
-- Use the **lock-leaf symbol** (without text) for:
-  - Favicon (`favicon.svg`, `favicon.ico`)
+- Use the lock-leaf symbol (without text) for:
+  - Favicon (favicon.svg, favicon.ico)
   - App icon
   - Browser tab icon
 
 ---
 
-## 🔧 Developer Notes
+## Tone of Voice
 
-- All assets should use **SVG** or **high-res PNG**.
-- Font files should be imported via Google Fonts CDN or self-hosted.
-- Ensure **WCAG AA contrast ratios** for text on background colors.
-- Logos should be served in **dark + light versions** for dark mode.
+- Confident but understated. Never exclamatory.
+- Deliberately sparse -- say less than you know.
+- Sophisticated vocabulary: "sovereign" not "private", "conceive" not "build", "venture" not "app".
+- No emojis. No jargon. No tech-stack listings.
+
+---
+
+## Developer Notes
+
+- All assets should use SVG or high-res PNG.
+- Font files imported via Google Fonts CDN.
+- Ensure WCAG AA contrast ratios for all text.
+- White on Ink (#FFFFFF on #0A0A0A) = 19.3:1 ratio.
+- Ash on Ink (#8A8A8A on #0A0A0A) = 5.3:1 ratio (passes AA).
+- Ash on Paper (#8A8A8A on #FAFAFA) = 3.5:1 ratio (use for large text only; darken to #737373 for small body text if needed).
 
 ---
 
-## 📁 Assets Checklist
-
-- [ ] `logo-full.svg` (logo + wordmark)
-- [ ] `logo-icon.svg` (leaf-lock only)
-- [ ] `favicon.ico`
-- [ ] Font: Inter (hosted via CDN)
-- [ ] This file: `BRAND_GUIDE.md`
-
----
-© 2025 Diospyros. All rights reserved.
+(c) 2026 Diospyros. All rights reserved.
