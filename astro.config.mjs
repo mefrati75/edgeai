@@ -3,7 +3,7 @@ import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://diospyros.dev',
+  site: 'https://diospyros.ai',
   integrations: [tailwind(), sitemap()],
   output: 'static',
 });
